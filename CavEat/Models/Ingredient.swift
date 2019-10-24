@@ -14,7 +14,7 @@ struct Ingredient: Codable {
     let composition: String?
     let description: String?
     let source: String?
-    let isWarning: Bool?
+    let isWarning: Bool
 
     enum CodingKeys: String, CodingKey {
         case id
