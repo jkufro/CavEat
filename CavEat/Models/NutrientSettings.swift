@@ -14,6 +14,7 @@ class NutrientSettings {
     private var nutrientDictionary: [String: NutrientSetting]
 
     private init() {
+        // set the defaults
         nutrientDictionary = [
             "Added Sugars": NutrientSetting(name: "Added Sugars", unit: "g", dailyValue: 32),
             "Dietary Fiber": NutrientSetting(name: "Dietary Fiber", unit: "g", dailyValue: 25)
@@ -26,10 +27,10 @@ class NutrientSettings {
         }
         return nil
     }
-
-    public func dailyValuePercentage(name: String, nutrientValue: Float) -> String {
+    
+    public func dailyValuePercentage(name: String, nutrientValue: Float) -> Int? {
         guard let nutrientSetting = getSetting(name: name) else {
-            return ""
+            return nil
         }
         return nutrientSetting.dailyValuePercentage(nutrientValue: nutrientValue)
     }

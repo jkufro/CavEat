@@ -15,6 +15,7 @@ struct NutritionFact: Codable, Identifiable {
     let source: String?
     let amount: Float
     let unit: String
+    let isLimiting: Bool
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,13 +24,14 @@ struct NutritionFact: Codable, Identifiable {
         case source
         case amount
         case unit
+        case isLimiting = "is_limiting"
     }
 
     func measurement() -> String {
-        var result: String = "\(self.amount)\(self.unit)"
-        let dvPercentage: String = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount)
-        if dvPercentage != "" {
-            result += " | " + dvPercentage
+        let roundedFloat:String = String(format: "%.1f", self.amount)
+        var result: String = "\(roundedFloat)\(self.unit)"
+        if let dvPercentage = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount) {
+            result += " | \(dvPercentage)%"
         }
         return result
     }
@@ -39,6 +41,10 @@ struct NutritionFact: Codable, Identifiable {
     }
 
     func isWarning() -> Bool {
-        return true
+        let warningThreshold:Int = 33
+        if let dvPercentage = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount) {
+            return self.isLimiting && dvPercentage >= warningThreshold
+        }
+        return false
     }
 }

@@ -30,14 +30,14 @@ class NutrientSettingTests: XCTestCase {
     }
 
     func test_dailyValuePercentage() {
-        XCTAssertEqual("0%", addedSugars.dailyValuePercentage(nutrientValue: 0))
-        XCTAssertEqual("50%", addedSugars.dailyValuePercentage(nutrientValue: 16))
-        XCTAssertEqual("200%", addedSugars.dailyValuePercentage(nutrientValue: 64))
+        XCTAssertEqual(0, addedSugars.dailyValuePercentage(nutrientValue: 0))
+        XCTAssertEqual(50, addedSugars.dailyValuePercentage(nutrientValue: 16))
+        XCTAssertEqual(200, addedSugars.dailyValuePercentage(nutrientValue: 64))
         addedSugars.dailyValue = 0.09
-        XCTAssertEqual("", addedSugars.dailyValuePercentage(nutrientValue: 5))
+        XCTAssertEqual(nil, addedSugars.dailyValuePercentage(nutrientValue: 5))
         addedSugars.dailyValue = 0
-        XCTAssertEqual("", addedSugars.dailyValuePercentage(nutrientValue: 5))
+        XCTAssertEqual(nil, addedSugars.dailyValuePercentage(nutrientValue: 5))
         addedSugars.dailyValue = -1.555
-        XCTAssertEqual("", addedSugars.dailyValuePercentage(nutrientValue: 5))
+        XCTAssertEqual(nil, addedSugars.dailyValuePercentage(nutrientValue: 5))
     }
 }

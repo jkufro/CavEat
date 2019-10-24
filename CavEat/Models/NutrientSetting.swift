@@ -13,17 +13,13 @@ struct NutrientSetting {
     let unit: String
     var dailyValue: Float?
 
-//    mutating func updateValue(newDailyValue: Float) {
-//        self.dailyValue = newDailyValue
-//    }
-
-    func dailyValuePercentage(nutrientValue: Float) -> String {
+    func dailyValuePercentage(nutrientValue: Float) -> Int? {
         guard let dValue = self.dailyValue else {
-            return ""
+            return nil
         }
         guard dValue > 0.1 else { // avoid absurdly large percentages
-            return ""
+            return nil
         }
-        return "\(Int((nutrientValue / dValue) * 100))%"
+        return Int((nutrientValue / dValue) * 100)
     }
 }
