@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NutritionFact: Codable {
+struct NutritionFact: Codable, Identifiable {
     let id: String
     let name: String
     let description: String?
@@ -23,5 +23,17 @@ struct NutritionFact: Codable {
         case source
         case amount
         case unit
+    }
+    
+    func measurement() -> String {
+        return "\(self.amount)\(self.unit)"
+    }
+    
+    func getDescription() -> String {
+        return self.description ?? "No description available"
+    }
+    
+    func isWarning() -> Bool {
+        return true
     }
 }
