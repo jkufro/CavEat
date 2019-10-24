@@ -26,7 +26,12 @@ struct NutritionFact: Codable, Identifiable {
     }
     
     func measurement() -> String {
-        return "\(self.amount)\(self.unit)"
+        var result:String = "\(self.amount)\(self.unit)"
+        let dvPercentage:String = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount)
+        if dvPercentage != "" {
+            result += " | " + dvPercentage
+        }
+        return result
     }
     
     func getDescription() -> String {

@@ -38,9 +38,7 @@ struct NutritionFactRow: View {
                 .font(.body)
                 .padding(.bottom)
                 .lineLimit(nil)
-            Text("Source")
-                .foregroundColor(Color.blue)
-                .multilineTextAlignment(.leading)
+            SourceLink(url: nutritionFact.source)
         }.padding(.leading)
         
     }
