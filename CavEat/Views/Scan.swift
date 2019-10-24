@@ -10,7 +10,27 @@ import SwiftUI
 
 struct Scan: View {
     var body: some View {
-        Text("Scan Page")
+        VStack {
+            ZStack {
+                Rectangle()
+                .frame(height: 100)
+                .foregroundColor(Color.black)
+                .opacity(0.75)
+                HStack(alignment: .center) {
+                    Image(systemName: "barcode")
+                        .imageScale(.large)
+                    .foregroundColor(Color.white)
+                    Text("Point camera at bar code")
+                        .font(.title)
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.top)
+            }
+            Spacer()
+            Text("Scan Page")
+        }.edgesIgnoringSafeArea(.top)
+        
     }
 }
 
