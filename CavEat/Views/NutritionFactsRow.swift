@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct NutritionFactRow: View {
-    var nutritionFact:NutritionFact
-    
+    var nutritionFact: NutritionFact
+
     var body: some View {
         VStack {
             HStack {
@@ -37,7 +37,7 @@ struct NutritionFactRow: View {
             Text(nutritionFact.getDescription())
                 .font(.body)
         }
-        
+
     }
 }
 

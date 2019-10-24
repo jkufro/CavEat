@@ -30,7 +30,6 @@ struct Scan: View {
             Spacer()
             Text("Scan Page")
         }.edgesIgnoringSafeArea(.top)
-        
     }
 }
 

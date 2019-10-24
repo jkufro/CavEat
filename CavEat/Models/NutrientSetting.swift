@@ -9,21 +9,21 @@
 import Foundation
 
 struct NutrientSetting {
-    let name:String
-    let unit:String
-    var dailyValue:Float?
-    
-    mutating func updateValue(newDailyValue:Float) {
+    let name: String
+    let unit: String
+    var dailyValue: Float?
+
+    mutating func updateValue(newDailyValue: Float) {
         self.dailyValue = newDailyValue
     }
-    
-    func dailyValuePercentage(nutrientValue:Float) -> String {
-        guard let dv = self.dailyValue else {
+
+    func dailyValuePercentage(nutrientValue: Float) -> String {
+        guard let dValue = self.dailyValue else {
             return ""
         }
-        guard dv >= 0.1 else { // avoid absurdly large percentages
+        guard dValue >= 0.1 else { // avoid absurdly large percentages
             return ""
         }
-        return "\(Int((nutrientValue / dv) * 100))%"
+        return "\(Int((nutrientValue / dValue) * 100))%"
     }
 }

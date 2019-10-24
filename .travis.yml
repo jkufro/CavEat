@@ -1,0 +1,19 @@
+osx_image: xcode11.2
+language: swift
+xcode_workspace: CavEat.xcworkspace
+xcode_scheme: CavEat
+xcode_destination: platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro Max
+jobs:
+  include:
+    - stage: lint
+      before_script:
+        - pod install
+        - brew update && brew install swiftlint
+      script:
+        - swiftlint lint
+    - stage: test
+      before_script:
+        - pod install
+      script:
+        - xcodebuild build-for-testing -workspace CavEat.xcworkspace -scheme CavEat -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+        - xctool run-tests -workspace CavEat.xcworkspace -scheme Pods-CavEatTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

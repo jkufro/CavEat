@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */; };
 		9725FDF52361D0E500EA9094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF42361D0E500EA9094 /* AppDelegate.swift */; };
 		9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF62361D0E500EA9094 /* SceneDelegate.swift */; };
 		9725FDFA2361D0E500EA9094 /* CavEat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF82361D0E500EA9094 /* CavEat.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 		97745B3B2361F7D3001E5B76 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3A2361F7D3001E5B76 /* Scan.swift */; };
 		97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3C2361F7E3001E5B76 /* DVSettings.swift */; };
 		97A6CE1F2361E1B5008B9825 /* NutritionFactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */; };
+		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
+		621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9725FDF12361D0E500EA9094 /* CavEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CavEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9725FDF42361D0E500EA9094 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9725FDF62361D0E500EA9094 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,8 @@
 		97745B3A2361F7D3001E5B76 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		97745B3C2361F7E3001E5B76 /* DVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettings.swift; sourceTree = "<group>"; };
 		97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactRow.swift; sourceTree = "<group>"; };
+		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
+		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,18 +87,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BE39BEDAB0FDF4A1383E0E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */,
+				001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51ED9D2D5EB8493F34B1FC3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */,
+				5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */,
+				A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */,
+				24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9725FDE82361D0E500EA9094 = {
 			isa = PBXGroup;
 			children = (
 				9725FDF32361D0E500EA9094 /* CavEat */,
 				9725FE0D2361D0E700EA9094 /* CavEatTests */,
 				9725FDF22361D0E500EA9094 /* Products */,
+				51ED9D2D5EB8493F34B1FC3E /* Pods */,
+				2BE39BEDAB0FDF4A1383E0E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9725FE132361D0E700EA9094 /* Build configuration list for PBXNativeTarget "CavEat" */;
 			buildPhases = (
+				56226C45DEF9F42780B4B748 /* [CP] Check Pods Manifest.lock */,
 				9725FDED2361D0E500EA9094 /* Sources */,
 				9725FDEE2361D0E500EA9094 /* Frameworks */,
 				9725FDEF2361D0E500EA9094 /* Resources */,
+				B5EEFAE927105532ECAD984B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9725FE162361D0E700EA9094 /* Build configuration list for PBXNativeTarget "CavEatTests" */;
 			buildPhases = (
+				14343F1EC33AEAC0614B6DD6 /* [CP] Check Pods Manifest.lock */,
 				9725FE062361D0E700EA9094 /* Sources */,
 				9725FE072361D0E700EA9094 /* Frameworks */,
 				9725FE082361D0E700EA9094 /* Resources */,
@@ -257,6 +293,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14343F1EC33AEAC0614B6DD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CavEatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56226C45DEF9F42780B4B748 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CavEat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5EEFAE927105532ECAD984B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CavEat/Pods-CavEat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CavEat/Pods-CavEat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CavEat/Pods-CavEat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9725FDED2361D0E500EA9094 /* Sources */ = {
@@ -428,6 +528,7 @@
 		};
 		9725FE142361D0E700EA9094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +549,7 @@
 		};
 		9725FE152361D0E700EA9094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +570,7 @@
 		};
 		9725FE172361D0E700EA9094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +593,7 @@
 		};
 		9725FE182361D0E700EA9094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

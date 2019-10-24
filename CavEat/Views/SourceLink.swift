@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct SourceLink: View {
-    var url:String?
-    
+    var url: String?
+
     var body: some View {
         HStack {
             if url != nil {
@@ -20,7 +20,7 @@ struct SourceLink: View {
             }
             Spacer()
         }
-        
+
     }
 }
 

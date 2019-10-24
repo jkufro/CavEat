@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct NutritionFactRow: View {
-    var nutritionFact:NutritionFact
-    
+    var nutritionFact: NutritionFact
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -29,7 +29,7 @@ struct NutritionFactRow: View {
                     .fontWeight(.regular)
                     .foregroundColor(Color.gray)
                 }
-                
+
                 Spacer()
             }
             .padding(.bottom)
@@ -40,7 +40,7 @@ struct NutritionFactRow: View {
                 .lineLimit(nil)
             SourceLink(url: nutritionFact.source)
         }.padding(.leading)
-        
+
     }
 }
 

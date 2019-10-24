@@ -1,0 +1,35 @@
+PODS:
+  - Alamofire (4.9.0)
+  - Japx (2.1.0):
+    - Japx/Core (= 2.1.0)
+  - Japx/Alamofire (2.1.0):
+    - Alamofire (~> 4.8)
+    - Japx/Core
+  - Japx/Codable (2.1.0):
+    - Japx/Core
+  - Japx/CodableAlamofire (2.1.0):
+    - Japx/Alamofire
+    - Japx/Codable
+  - Japx/Core (2.1.0)
+  - SwiftLint (0.35.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8)
+  - Japx (~> 2.1)
+  - Japx/CodableAlamofire
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Japx
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  Japx: 4fbfa9c85c0d89e93d011b7ef55625a3de6a445e
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+
+PODFILE CHECKSUM: 8d6a591a9badd66318968c97546cfead28fd6980
+
+COCOAPODS: 1.8.4

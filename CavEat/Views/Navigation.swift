@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Navigation: View {
     @State var selectedView = 1
-    
+
     var body: some View {
         TabView(selection: $selectedView) {
             SavedScans()

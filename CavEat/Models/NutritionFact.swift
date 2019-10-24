@@ -13,10 +13,10 @@ struct NutritionFact: Codable, Identifiable {
     let name: String
     let description: String?
     let source: String?
-    let amount:Float
-    let unit:String
-  
-    enum CodingKeys : String, CodingKey {
+    let amount: Float
+    let unit: String
+
+    enum CodingKeys: String, CodingKey {
         case id
         case name = "common_name"
         case description
@@ -24,20 +24,20 @@ struct NutritionFact: Codable, Identifiable {
         case amount
         case unit
     }
-    
+
     func measurement() -> String {
-        var result:String = "\(self.amount)\(self.unit)"
-        let dvPercentage:String = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount)
+        var result: String = "\(self.amount)\(self.unit)"
+        let dvPercentage: String = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount)
         if dvPercentage != "" {
             result += " | " + dvPercentage
         }
         return result
     }
-    
+
     func getDescription() -> String {
         return self.description ?? "No description available"
     }
-    
+
     func isWarning() -> Bool {
         return true
     }
