@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Navigation: View {
+struct MainView: View {
     @State var selectedView = 1
 
     var body: some View {
@@ -32,8 +32,8 @@ struct Navigation: View {
     }
 }
 
-struct Navigation_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        Navigation()
+        MainView()
     }
 }
