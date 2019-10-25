@@ -11,7 +11,7 @@ import Alamofire
 import Japx
 
 class APIClient {
-    private static let baseURL:String = "http://0.0.0.0:3000"
+    private static let baseURL: String = "http://0.0.0.0:3000"
 
     func findByUpc(upc: String, _ completion: @escaping (Food?) -> Void) {
         let url = APIClient.baseURL + "/api/v1/upc"
@@ -31,7 +31,7 @@ class APIClient {
         }
     }
 
-    private func APIRequest(url:String, parameters:[String:String], _ completion: @escaping (Food?) -> Void) {
+    internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
         Alamofire.request(url,
                    method: .post,
                    parameters: parameters)
@@ -40,7 +40,7 @@ class APIClient {
             switch response.result {
             case .success(let food):
                 completion(food)
-            case .failure(_):
+            case .failure:
                 completion(nil)
             }
         })
