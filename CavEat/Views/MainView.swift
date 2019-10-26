@@ -15,20 +15,20 @@ struct MainView: View {
         TabView(selection: $selectedView) {
             SavedScans()
                 .tabItem {
-                    Image(systemName: "rectangle.stack")
+                    Image(systemName: "rectangle.stack").imageScale(.large)
                     Text("Saved Scans")
                 }.tag(0)
             Scan()
                 .tabItem {
-                    Image(systemName: "barcode.viewfinder")
+                    Image(systemName: "barcode.viewfinder").imageScale(.large)
                     Text("Scan")
                 }.tag(1)
             DVSettings()
                 .tabItem {
-                    Image(systemName: "gear")
+                    Image(systemName: "gear").imageScale(.large)
                     Text("DV Settings")
                 }.tag(2)
-        }
+        }.edgesIgnoringSafeArea(.top)
     }
 }
 

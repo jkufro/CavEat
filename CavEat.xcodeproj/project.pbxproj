@@ -28,6 +28,9 @@
 		97745B3B2361F7D3001E5B76 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3A2361F7D3001E5B76 /* Scan.swift */; };
 		97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3C2361F7E3001E5B76 /* DVSettings.swift */; };
 		97A6CE1F2361E1B5008B9825 /* NutritionFactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */; };
+		97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF12365190A001AB241 /* LoadingOverlay.swift */; };
+		97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */; };
+		97C3BBF62365228D001AB241 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF52365228D001AB241 /* CaptureButton.swift */; };
 		97E52321236237CD006116D4 /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E52320236237CD006116D4 /* FoodTests.swift */; };
 		97E523232362380A006116D4 /* IngredientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523222362380A006116D4 /* IngredientTests.swift */; };
 		97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523242362382D006116D4 /* NutritionFactTests.swift */; };
@@ -35,6 +38,15 @@
 		97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5232D2362414B006116D4 /* NutrientSettingTests.swift */; };
 		97E5233123627517006116D4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5233023627517006116D4 /* APIClient.swift */; };
 		97E5233423627989006116D4 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5233323627989006116D4 /* APIClientTests.swift */; };
+		97E7D4AE2365CDBC0016C3CE /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7D4AD2365CDBC0016C3CE /* ScanViewModel.swift */; };
+		97E7D4B02365DB200016C3CE /* ImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7D4AF2365DB200016C3CE /* ImageReader.swift */; };
+		97E7D4B6236717E50016C3CE /* ScanCapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7D4B5236717E50016C3CE /* ScanCapViewController.swift */; };
+		97E7D4B8236719130016C3CE /* ScanCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7D4B7236719130016C3CE /* ScanCap.swift */; };
+		97F611AC23646837001A7271 /* UPCScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611AB23646837001A7271 /* UPCScan.swift */; };
+		97F611AE23646936001A7271 /* ManualScanHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611AD23646936001A7271 /* ManualScanHeader.swift */; };
+		97F611B12364C85C001A7271 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611B02364C85C001A7271 /* ResultViewModel.swift */; };
+		97F611B42364C94A001A7271 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611B32364C94A001A7271 /* Result.swift */; };
+		97F611B62364CD79001A7271 /* FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611B52364CD79001A7271 /* FoodList.swift */; };
 		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +89,9 @@
 		97745B3A2361F7D3001E5B76 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		97745B3C2361F7E3001E5B76 /* DVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettings.swift; sourceTree = "<group>"; };
 		97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactRow.swift; sourceTree = "<group>"; };
+		97C3BBF12365190A001AB241 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		97C3BBF52365228D001AB241 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
 		97E52320236237CD006116D4 /* FoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTests.swift; sourceTree = "<group>"; };
 		97E523222362380A006116D4 /* IngredientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTests.swift; sourceTree = "<group>"; };
 		97E523242362382D006116D4 /* NutritionFactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactTests.swift; sourceTree = "<group>"; };
@@ -84,6 +99,15 @@
 		97E5232D2362414B006116D4 /* NutrientSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettingTests.swift; sourceTree = "<group>"; };
 		97E5233023627517006116D4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		97E5233323627989006116D4 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		97E7D4AD2365CDBC0016C3CE /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
+		97E7D4AF2365DB200016C3CE /* ImageReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReader.swift; sourceTree = "<group>"; };
+		97E7D4B5236717E50016C3CE /* ScanCapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCapViewController.swift; sourceTree = "<group>"; };
+		97E7D4B7236719130016C3CE /* ScanCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCap.swift; sourceTree = "<group>"; };
+		97F611AB23646837001A7271 /* UPCScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCScan.swift; sourceTree = "<group>"; };
+		97F611AD23646936001A7271 /* ManualScanHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualScanHeader.swift; sourceTree = "<group>"; };
+		97F611B02364C85C001A7271 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		97F611B32364C94A001A7271 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		97F611B52364CD79001A7271 /* FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodList.swift; sourceTree = "<group>"; };
 		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
 		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +175,9 @@
 		9725FDF32361D0E500EA9094 /* CavEat */ = {
 			isa = PBXGroup;
 			children = (
-				97E5232F236274F4006116D4 /* Network */,
+				97C3BBEC236507C4001AB241 /* ViewControllers */,
+				97F611AF2364C846001A7271 /* ViewModels */,
+				97E5232F236274F4006116D4 /* Services */,
 				9725FE232361D54700EA9094 /* Views */,
 				9725FE192361D3F500EA9094 /* Models */,
 				9725FDF42361D0E500EA9094 /* AppDelegate.swift */,
@@ -200,15 +226,47 @@
 		9725FE232361D54700EA9094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97C3BBFD2365408E001AB241 /* Scanning */,
+				97C3BBFE236540E1001AB241 /* Representables */,
 				9725FE292361DF2C00EA9094 /* NutritionFactsList.swift */,
 				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				97745B2E2361EB9F001E5B76 /* SourceLink.swift */,
 				97745B362361F6A2001E5B76 /* MainView.swift */,
 				97745B382361F7A2001E5B76 /* SavedScans.swift */,
-				97745B3A2361F7D3001E5B76 /* Scan.swift */,
 				97745B3C2361F7E3001E5B76 /* DVSettings.swift */,
+				97F611B32364C94A001A7271 /* Result.swift */,
+				97F611B52364CD79001A7271 /* FoodList.swift */,
+				97C3BBF12365190A001AB241 /* LoadingOverlay.swift */,
+				97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		97C3BBEC236507C4001AB241 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97E7D4B5236717E50016C3CE /* ScanCapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		97C3BBFD2365408E001AB241 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				97745B3A2361F7D3001E5B76 /* Scan.swift */,
+				97F611AB23646837001A7271 /* UPCScan.swift */,
+				97F611AD23646936001A7271 /* ManualScanHeader.swift */,
+				97C3BBF52365228D001AB241 /* CaptureButton.swift */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
+		97C3BBFE236540E1001AB241 /* Representables */ = {
+			isa = PBXGroup;
+			children = (
+				97E7D4B7236719130016C3CE /* ScanCap.swift */,
+			);
+			path = Representables;
 			sourceTree = "<group>";
 		};
 		97E5231F236237B6006116D4 /* Models */ = {
@@ -223,12 +281,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		97E5232F236274F4006116D4 /* Network */ = {
+		97E5232F236274F4006116D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				97E5233023627517006116D4 /* APIClient.swift */,
+				97E7D4AF2365DB200016C3CE /* ImageReader.swift */,
 			);
-			path = Network;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		97E5233223627973006116D4 /* Network */ = {
@@ -237,6 +296,15 @@
 				97E5233323627989006116D4 /* APIClientTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		97F611AF2364C846001A7271 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				97F611B02364C85C001A7271 /* ResultViewModel.swift */,
+				97E7D4AD2365CDBC0016C3CE /* ScanViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,18 +479,30 @@
 				97E5233123627517006116D4 /* APIClient.swift in Sources */,
 				9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */,
 				97745B332361EDAF001E5B76 /* NutrientSetting.swift in Sources */,
+				97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */,
 				97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */,
+				97F611AC23646837001A7271 /* UPCScan.swift in Sources */,
 				97745B2F2361EB9F001E5B76 /* SourceLink.swift in Sources */,
+				97E7D4B02365DB200016C3CE /* ImageReader.swift in Sources */,
+				97E7D4B6236717E50016C3CE /* ScanCapViewController.swift in Sources */,
 				9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */,
 				97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */,
 				9725FE1B2361D41400EA9094 /* Food.swift in Sources */,
 				9725FE2A2361DF2C00EA9094 /* NutritionFactsList.swift in Sources */,
+				97F611B12364C85C001A7271 /* ResultViewModel.swift in Sources */,
+				97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
+				97F611AE23646936001A7271 /* ManualScanHeader.swift in Sources */,
 				97745B372361F6A2001E5B76 /* MainView.swift in Sources */,
 				97745B392361F7A2001E5B76 /* SavedScans.swift in Sources */,
+				97E7D4AE2365CDBC0016C3CE /* ScanViewModel.swift in Sources */,
 				97745B3B2361F7D3001E5B76 /* Scan.swift in Sources */,
+				97E7D4B8236719130016C3CE /* ScanCap.swift in Sources */,
+				97F611B62364CD79001A7271 /* FoodList.swift in Sources */,
 				9725FDFC2361D0E500EA9094 /* ContentView.swift in Sources */,
+				97F611B42364C94A001A7271 /* Result.swift in Sources */,
 				9725FDFA2361D0E500EA9094 /* CavEat.xcdatamodeld in Sources */,
+				97C3BBF62365228D001AB241 /* CaptureButton.swift in Sources */,
 				97A6CE1F2361E1B5008B9825 /* NutritionFactRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
