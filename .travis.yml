@@ -8,7 +8,7 @@ jobs:
     - stage: lint
       before_script:
         - pod install
-        - brew update && brew install swiftlint
+        - brew update && (brew install swiftlint || brew upgrade swiftlint)
       script:
         - swiftlint lint
     - stage: test

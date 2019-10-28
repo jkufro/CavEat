@@ -17,7 +17,7 @@ class NutrientSettingsTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
     func test_getSetting() {
         XCTAssertEqual("Added Sugars", NutrientSettings.shared.getSetting(name: "Added Sugars")!.name)
         XCTAssertEqual("Dietary Fiber", NutrientSettings.shared.getSetting(name: "Dietary Fiber")!.name)
