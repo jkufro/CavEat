@@ -10,22 +10,20 @@ import SwiftUI
 
 struct Result: View {
     @Binding var showFood: Bool
-    let resultVM:ResultViewModel
+    let resultVM: ResultViewModel
 
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
-                    self.showFood.toggle()
-                }) {
-                    Text("Discard").padding()
-                }
+                Button(
+                    action: { self.showFood.toggle() },
+                    label: { Text("Discard").padding() }
+                )
                 Spacer()
-                Button(action: {
-
-                }) {
-                    Text("Save").padding()
-                }
+                Button(
+                    action: {},
+                    label: { Text("Save").padding() }
+                )
             }
             HStack {
                 Text(resultVM.food.name)

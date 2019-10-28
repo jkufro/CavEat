@@ -14,7 +14,7 @@ import Vision
 protocol ImageReaderProtocol {
     // true => recognition request initiated
     // false => recognition request could not be initiated
-    func imageToText(image:UIImage, _ completion: @escaping (String) -> Void) -> Bool
+    func imageToText(image: UIImage, _ completion: @escaping (String) -> Void) -> Bool
 }
 
 class ImageReader: ImageReaderProtocol {
@@ -37,7 +37,7 @@ class ImageReader: ImageReaderProtocol {
     }
 
     private func getRequest(_ completion: @escaping (String) -> Void) -> VNRecognizeTextRequest {
-        let textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
+        let textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, _) in
             if let results = request.results, !results.isEmpty {
                 if let requestResults = request.results as? [VNRecognizedTextObservation] {
                     completion(self.getRecognizedText(requestResults))
@@ -52,7 +52,7 @@ class ImageReader: ImageReaderProtocol {
     }
 
     private func getRecognizedText(_ recognizedText: [VNRecognizedTextObservation]) -> String {
-        var result:String = ""
+        var result: String = ""
         let maximumCandidates = 1
         for observation in recognizedText {
             guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }

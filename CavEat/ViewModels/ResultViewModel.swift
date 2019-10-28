@@ -9,22 +9,22 @@
 import Foundation
 
 protocol ResultViewModelProtocol {
-    func renameFood(newName:String) -> Void
-    func renameAndSaveFood(newName:String) -> Void
+    func renameFood(newName: String)
+    func renameAndSaveFood(newName: String)
 }
 
 class ResultViewModel: ObservableObject, ResultViewModelProtocol {
     @Published var food: Food
 
-    init(food:Food) {
+    init(food: Food) {
         self.food = food
     }
 
-    func renameFood(newName:String) {
-        
+    func renameFood(newName: String) {
+
     }
 
-    func renameAndSaveFood(newName:String) {
+    func renameAndSaveFood(newName: String) {
 
     }
 }

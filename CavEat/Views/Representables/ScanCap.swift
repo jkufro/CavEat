@@ -20,15 +20,15 @@ struct ScanCap: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> ScanCapViewController {
-        let vc = ScanCapViewController()
-        vc.delegate = context.coordinator
-        return vc
+        let viewController = ScanCapViewController()
+        viewController.delegate = context.coordinator
+        return viewController
     }
 
-    func updateUIViewController(_ vc: ScanCapViewController, context: Context) {
+    func updateUIViewController(_ viewController: ScanCapViewController, context: Context) {
         if captureRequested {
-            captureRequested = false;
-            vc.captureImage()
+            captureRequested = false
+            viewController.captureImage()
         }
     }
 
@@ -54,7 +54,7 @@ struct ScanCap: UIViewControllerRepresentable {
 #if DEBUG
 struct ScanCap_Previews: PreviewProvider {
     static var previews: some View {
-        ScanCap(captureRequested: .constant(false), scanCompletionHandler: {_ in}, captureCompletionHandler: {_,_  in })
+        ScanCap(captureRequested: .constant(false), scanCompletionHandler: {_ in}, captureCompletionHandler: {_, _  in })
     }
 }
 #endif

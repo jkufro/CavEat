@@ -12,10 +12,10 @@ struct Scan: View {
     @ObservedObject var scanVM: ScanViewModel = ScanViewModel()
 
     var currentHeaderView: AnyView {
-        switch (scanVM.state) {
-        case .UPC_Scanning:
+        switch scanVM.state {
+        case .upcScanning:
             return AnyView(UPCScan())
-        case .NutritionFactScanning, .IngredientScanning:
+        case .nutritionFactScanning, .ingredientScanning:
             return AnyView(ManualScanHeader(
                 state: scanVM.state,
                 pressHandler: scanVM.goToUpcScan
@@ -25,7 +25,7 @@ struct Scan: View {
         }
     }
 
-    var upcAlert:Alert {
+    var upcAlert: Alert {
         Alert(
             title: Text("UPC Not Found"),
             message: Text("Would you like to scan the nutrition facts and ingredients list?"),
@@ -34,7 +34,7 @@ struct Scan: View {
         )
     }
 
-    var errorAlert:Alert {
+    var errorAlert: Alert {
         Alert(
             title: Text("Error"),
             message: Text(self.scanVM.errorMessage),
@@ -52,7 +52,7 @@ struct Scan: View {
 
             currentHeaderView
 
-            if scanVM.state == .NutritionFactScanning || scanVM.state == .IngredientScanning {
+            if scanVM.state == .nutritionFactScanning || scanVM.state == .ingredientScanning {
                 CaptureButton(pressHandler: {
                     self.scanVM.updateBool = !self.scanVM.updateBool
                     self.scanVM.captureRequested = true

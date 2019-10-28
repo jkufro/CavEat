@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CaptureButton: View {
-    let cameraButtonSize:CGFloat = 75
+    let cameraButtonSize: CGFloat = 75
     let pressHandler: () -> Void
 
     var body: some View {

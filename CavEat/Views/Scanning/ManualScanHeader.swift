@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ManualScanHeader: View {
-    let state:ScanVMState;
-    let inactiveColor:Color = Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
+    let state: ScanVMState
+    let inactiveColor: Color = Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
     let pressHandler: () -> Void
 
     var body: some View {
@@ -20,17 +20,17 @@ struct ManualScanHeader: View {
                     .frame(height: 120)
                     .foregroundColor(Color.black)
                     .opacity(0.75)
-                VStack  {
+                VStack {
                     Spacer()
                         .frame(height: 35)
                     HStack {
-                        if state == .NutritionFactScanning {
+                        if state == .nutritionFactScanning {
                             Button(action: pressHandler) {
                                 Image(systemName: "x.circle")
                                     .imageScale(.large)
                                     .foregroundColor(Color.white)
                             }
-                        } else if state == .IngredientScanning {
+                        } else if state == .ingredientScanning {
                             Button(action: pressHandler) {
                                 Image(systemName: "arrow.uturn.left.circle")
                                     .imageScale(.large)
@@ -41,13 +41,13 @@ struct ManualScanHeader: View {
 
                         Text("1. Capture nutrition facts")
                             .font(.title)
-                            .foregroundColor(state == .NutritionFactScanning ? Color.white : inactiveColor)
+                            .foregroundColor(state == .nutritionFactScanning ? Color.white : inactiveColor)
                             .multilineTextAlignment(.center)
                     }
                     HStack {
                         Text("2. Capture ingredients")
                             .font(.title)
-                            .foregroundColor(state == .IngredientScanning ? Color.white : inactiveColor)
+                            .foregroundColor(state == .ingredientScanning ? Color.white : inactiveColor)
                             .multilineTextAlignment(.center)
                     }
                 }
@@ -60,6 +60,6 @@ struct ManualScanHeader: View {
 
 struct ManualScanHeader_Previews: PreviewProvider {
     static var previews: some View {
-        ManualScanHeader(state: .NutritionFactScanning, pressHandler: {})
+        ManualScanHeader(state: .nutritionFactScanning, pressHandler: {})
     }
 }

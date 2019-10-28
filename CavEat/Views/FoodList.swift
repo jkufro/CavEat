@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FoodList: View {
-    let food:Food
+    let food: Food
 
     var body: some View {
         List {

@@ -9,11 +9,11 @@
 import AVFoundation
 import UIKit
 
-protocol BarCodeScannerDelegate {
+protocol BarCodeScannerDelegate: class {
     func codeDidFind(_ code: String)
 }
 
-protocol ImageCaptureDelegate {
+protocol ImageCaptureDelegate: class {
     func photoCaptureCompletion(_ image: UIImage?, _ error: Error?)
 }
 
@@ -24,7 +24,7 @@ protocol ScanCapDelegate: ImageCaptureDelegate, BarCodeScannerDelegate {}
 class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    var delegate: ScanCapDelegate?
+    var delegate: ScanCapDelegate? // swiftlint:disable:this weak_delegate
     var photoOutput: AVCapturePhotoOutput?
 
     override func viewDidLoad() {
@@ -32,26 +32,27 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         setupCaptureSession()
     }
 
+    // swiftlint:disable function_body_length
     func setupCaptureSession() {
         DispatchQueue.main.async {
             print("setting up capture session")
             switch AVCaptureDevice.authorizationStatus(for: .video) {
-                case .authorized: // The user has previously granted access to the camera.
-                    print("authorized")
-                case .notDetermined: // The user has not yet been asked for camera access.
-                    AVCaptureDevice.requestAccess(for: .video) { granted in
-                        if granted {
-                            print("authorized")
-                        } else {
-                            return
-                        }
+            case .authorized: // The user has previously granted access to the camera.
+                print("authorized")
+            case .notDetermined: // The user has not yet been asked for camera access.
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                        print("authorized")
+                    } else {
+                        return
                     }
-                case .denied: // The user has previously denied access.
-                    return
-                case .restricted: // The user can't grant access due to restrictions.
-                    return
-                default:
-                    return
+                }
+            case .denied: // The user has previously denied access.
+                return
+            case .restricted: // The user can't grant access due to restrictions.
+                return
+            default:
+                return
             }
             print("capture session is authorized")
 
@@ -73,7 +74,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             }
             print("got videoInput")
 
-            if (self.captureSession.canAddInput(videoInput)) {
+            if self.captureSession.canAddInput(videoInput) {
                 self.captureSession.addInput(videoInput)
             } else {
                 self.failed()
@@ -83,7 +84,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
 
             let metadataOutput = AVCaptureMetadataOutput()
 
-            if (self.captureSession.canAddOutput(metadataOutput)) {
+            if self.captureSession.canAddOutput(metadataOutput) {
                 self.captureSession.addOutput(metadataOutput)
 
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
@@ -117,18 +118,23 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             print("added previewLayer")
         }
     }
+    // swiftlint:enable function_body_length
 
     func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        let alertController = UIAlertController(
+            title: "Scanning not supported",
+            message: "Your device does not support scanning a code from an item. Please use a device with a camera.",
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
         captureSession = nil
         view.backgroundColor = UIColor.red
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (captureSession?.isRunning == false) {
+        if captureSession?.isRunning == false {
             print("running stopped capture")
             captureSession.startRunning()
         }
@@ -138,7 +144,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         super.viewWillDisappear(animated)
 
         print("stopping capture session")
-        if (captureSession?.isRunning == true) {
+        if captureSession?.isRunning == true {
             captureSession.stopRunning()
         }
         print("capture session stopped")
@@ -147,7 +153,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
     func captureImage() {
         print("capturing image")
         let settings = AVCapturePhotoSettings()
-        if let photoOut = self.photoOutput{
+        if let photoOut = self.photoOutput {
             photoOut.capturePhoto(with: settings, delegate: self)
         } else {
             print("no photo out")

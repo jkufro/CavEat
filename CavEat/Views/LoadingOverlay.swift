@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct LoadingOverlay: View {
-    let squareWidth:CGFloat = 120
+    let squareWidth: CGFloat = 120
 
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
-                .frame(width:squareWidth, height: squareWidth)
+                .frame(width: squareWidth, height: squareWidth)
                 .foregroundColor(Color.black)
                 .opacity(0.5)
             VStack {

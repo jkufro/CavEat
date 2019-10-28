@@ -12,35 +12,35 @@ import SwiftUI
 import Combine
 
 enum ScanVMState {
-    case UPC_Scanning
-    case NutritionFactScanning
-    case IngredientScanning
+    case upcScanning
+    case nutritionFactScanning
+    case ingredientScanning
 }
 
 protocol ScanViewModelProtocol {
-    func scanCompletionHandler(_ upc:String) -> Void
-    func captureCompletionHandler(_ image:UIImage?, _ error:Error?) -> Void
+    func scanCompletionHandler(_ upc: String)
+    func captureCompletionHandler(_ image: UIImage?, _ error: Error?)
 
-    func goToUpcScan() -> Void
-    func goToFactsScan() -> Void
-    func goToIngredientsScan() -> Void
+    func goToUpcScan()
+    func goToFactsScan()
+    func goToIngredientsScan()
 
-    func acceptUpcAlert() -> Void
-    func dismissUpcAlert() -> Void
-    func dismissErrorAlert() -> Void
+    func acceptUpcAlert()
+    func dismissUpcAlert()
+    func dismissErrorAlert()
 
-    func handleFoodResult(_ food:Food) -> Void
+    func handleFoodResult(_ food: Food)
 }
 
 class ScanViewModel: ScanViewModelProtocol, ObservableObject {
-    @Published var state:ScanVMState = .UPC_Scanning
-    @Published var waiting:Bool = false
+    @Published var state: ScanVMState = .upcScanning
+    @Published var waiting: Bool = false
     @Published var anyAlerts: Bool = false
     @Published var updateBool: Bool = false // hack for taking pictures. split from captureRequested so that view does not continually update when it is flipped back to false
     @Published var showFood: Bool = false
 
     let apiClient = APIClient()
-    let imageReader:ImageReader = ImageReader()
+    let imageReader: ImageReader = ImageReader()
 
     var food: Food = Food(id: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
     var upc: String?
@@ -52,7 +52,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     var captureRequested: Bool = false
 
     func scanCompletionHandler(_ upc: String) {
-        if !showFood && self.state == .UPC_Scanning && !promptForManualDecision {
+        if !showFood && self.state == .upcScanning && !promptForManualDecision {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             print("got UPC code")
             self.upc = upc
@@ -75,10 +75,10 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     func captureCompletionHandler(_ image: UIImage?, _ error: Error?) {
         if self.ingredientsImage != nil { return } // why is ImageCapture taking two images?
         if let image = image {
-            if self.state == .NutritionFactScanning {
+            if self.state == .nutritionFactScanning {
                 self.nutritionFactsImage = image
                 goToIngredientsScan()
-            } else if self.state == .IngredientScanning {
+            } else if self.state == .ingredientScanning {
                 self.ingredientsImage = image
                 completeManualScan()
             }
@@ -139,24 +139,24 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     }
 
     func goToUpcScan() {
-        self.state = .UPC_Scanning
+        self.state = .upcScanning
         self.upc = nil
         self.nutritionFactsImage = nil
         self.ingredientsImage = nil
     }
 
     func goToFactsScan() {
-        self.state = .NutritionFactScanning
+        self.state = .nutritionFactScanning
         self.nutritionFactsImage = nil
         self.ingredientsImage = nil
     }
 
     func goToIngredientsScan() {
-        self.state = .IngredientScanning
+        self.state = .ingredientScanning
         self.ingredientsImage = nil
     }
 
-    private func setError(_ errorMessage:String) {
+    private func setError(_ errorMessage: String) {
         print(errorMessage)
         self.errorNeedsAttention = true
         self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
@@ -185,7 +185,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
         self.goToUpcScan()
     }
 
-    func handleFoodResult(_ food:Food) {
+    func handleFoodResult(_ food: Food) {
         showFood = true
         self.food = food
     }
