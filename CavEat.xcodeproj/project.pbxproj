@@ -23,7 +23,7 @@
 		97745B2F2361EB9F001E5B76 /* SourceLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B2E2361EB9F001E5B76 /* SourceLink.swift */; };
 		97745B332361EDAF001E5B76 /* NutrientSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B322361EDAF001E5B76 /* NutrientSetting.swift */; };
 		97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B342361EDBA001E5B76 /* NutrientSettings.swift */; };
-		97745B372361F6A2001E5B76 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B362361F6A2001E5B76 /* Navigation.swift */; };
+		97745B372361F6A2001E5B76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B362361F6A2001E5B76 /* MainView.swift */; };
 		97745B392361F7A2001E5B76 /* SavedScans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B382361F7A2001E5B76 /* SavedScans.swift */; };
 		97745B3B2361F7D3001E5B76 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3A2361F7D3001E5B76 /* Scan.swift */; };
 		97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B3C2361F7E3001E5B76 /* DVSettings.swift */; };
@@ -33,6 +33,8 @@
 		97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523242362382D006116D4 /* NutritionFactTests.swift */; };
 		97E5232923623863006116D4 /* NutrientSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5232823623863006116D4 /* NutrientSettingsTests.swift */; };
 		97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5232D2362414B006116D4 /* NutrientSettingTests.swift */; };
+		97E5233123627517006116D4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5233023627517006116D4 /* APIClient.swift */; };
+		97E5233423627989006116D4 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5233323627989006116D4 /* APIClientTests.swift */; };
 		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
 		E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929E92367FCD000F7757D /* IngredientRow.swift */; };
 		E1F929EC236802A300F7757D /* IngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929EB236802A300F7757D /* IngredientsList.swift */; };
@@ -72,7 +74,7 @@
 		97745B2E2361EB9F001E5B76 /* SourceLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLink.swift; sourceTree = "<group>"; };
 		97745B322361EDAF001E5B76 /* NutrientSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSetting.swift; sourceTree = "<group>"; };
 		97745B342361EDBA001E5B76 /* NutrientSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettings.swift; sourceTree = "<group>"; };
-		97745B362361F6A2001E5B76 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		97745B362361F6A2001E5B76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		97745B382361F7A2001E5B76 /* SavedScans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScans.swift; sourceTree = "<group>"; };
 		97745B3A2361F7D3001E5B76 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		97745B3C2361F7E3001E5B76 /* DVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettings.swift; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 		97E523242362382D006116D4 /* NutritionFactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactTests.swift; sourceTree = "<group>"; };
 		97E5232823623863006116D4 /* NutrientSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettingsTests.swift; sourceTree = "<group>"; };
 		97E5232D2362414B006116D4 /* NutrientSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettingTests.swift; sourceTree = "<group>"; };
+		97E5233023627517006116D4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		97E5233323627989006116D4 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
 		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F929E92367FCD000F7757D /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		9725FDF32361D0E500EA9094 /* CavEat */ = {
 			isa = PBXGroup;
 			children = (
+				97E5232F236274F4006116D4 /* Network */,
 				9725FE232361D54700EA9094 /* Views */,
 				9725FE192361D3F500EA9094 /* Models */,
 				9725FDF42361D0E500EA9094 /* AppDelegate.swift */,
@@ -176,6 +181,7 @@
 		9725FE0D2361D0E700EA9094 /* CavEatTests */ = {
 			isa = PBXGroup;
 			children = (
+				97E5233223627973006116D4 /* Network */,
 				97E5231F236237B6006116D4 /* Models */,
 				9725FE0E2361D0E700EA9094 /* CavEatTests.swift */,
 				9725FE102361D0E700EA9094 /* Info.plist */,
@@ -201,7 +207,7 @@
 				9725FE292361DF2C00EA9094 /* NutritionFactsList.swift */,
 				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				97745B2E2361EB9F001E5B76 /* SourceLink.swift */,
-				97745B362361F6A2001E5B76 /* Navigation.swift */,
+				97745B362361F6A2001E5B76 /* MainView.swift */,
 				97745B382361F7A2001E5B76 /* SavedScans.swift */,
 				97745B3A2361F7D3001E5B76 /* Scan.swift */,
 				97745B3C2361F7E3001E5B76 /* DVSettings.swift */,
@@ -221,6 +227,22 @@
 				97E5232D2362414B006116D4 /* NutrientSettingTests.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		97E5232F236274F4006116D4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				97E5233023627517006116D4 /* APIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		97E5233223627973006116D4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				97E5233323627989006116D4 /* APIClientTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9725FDF52361D0E500EA9094 /* AppDelegate.swift in Sources */,
+				97E5233123627517006116D4 /* APIClient.swift in Sources */,
 				9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */,
 				97745B332361EDAF001E5B76 /* NutrientSetting.swift in Sources */,
 				97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */,
@@ -403,7 +426,7 @@
 				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,
 				9725FE2A2361DF2C00EA9094 /* NutritionFactsList.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
-				97745B372361F6A2001E5B76 /* Navigation.swift in Sources */,
+				97745B372361F6A2001E5B76 /* MainView.swift in Sources */,
 				97745B392361F7A2001E5B76 /* SavedScans.swift in Sources */,
 				97745B3B2361F7D3001E5B76 /* Scan.swift in Sources */,
 				9725FDFC2361D0E500EA9094 /* ContentView.swift in Sources */,
@@ -419,6 +442,7 @@
 				97E5232923623863006116D4 /* NutrientSettingsTests.swift in Sources */,
 				97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */,
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
+				97E5233423627989006116D4 /* APIClientTests.swift in Sources */,
 				97E523232362380A006116D4 /* IngredientTests.swift in Sources */,
 				9725FE0F2361D0E700EA9094 /* CavEatTests.swift in Sources */,
 				97E52321236237CD006116D4 /* FoodTests.swift in Sources */,

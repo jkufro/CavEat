@@ -28,7 +28,7 @@ struct NutritionFact: Codable, Identifiable {
     }
 
     func measurement() -> String {
-        let roundedFloat:String = String(format: "%.1f", self.amount)
+        let roundedFloat: String = String(format: "%.1f", self.amount)
         var result: String = "\(roundedFloat)\(self.unit)"
         if let dvPercentage = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount) {
             result += " | \(dvPercentage)%"
@@ -41,7 +41,7 @@ struct NutritionFact: Codable, Identifiable {
     }
 
     func isWarning() -> Bool {
-        let warningThreshold:Int = 33
+        let warningThreshold: Int = 33
         if let dvPercentage = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount) {
             return self.isLimiting && dvPercentage >= warningThreshold
         }

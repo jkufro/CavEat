@@ -10,8 +10,8 @@ import XCTest
 @testable import CavEat
 
 class ONutrientSettingTests: XCTestCase {
-    var addedSugars:NutrientSetting = NutrientSetting(name: "Added Sugars", unit: "g", dailyValue: 32)
-    var dietaryFiber:NutrientSetting = NutrientSetting(name: "Dietary Fiber", unit: "g", dailyValue: 25)
+    var addedSugars: NutrientSetting = NutrientSetting(name: "Added Sugars", unit: "g", dailyValue: 32)
+    var dietaryFiber: NutrientSetting = NutrientSetting(name: "Dietary Fiber", unit: "g", dailyValue: 25)
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,7 +22,7 @@ class ONutrientSettingTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
     func test_updateValue() {
         XCTAssertEqual(32, addedSugars.dailyValue)
         addedSugars.dailyValue = 42

@@ -27,7 +27,7 @@ class NutrientSettings {
         }
         return nil
     }
-    
+
     public func dailyValuePercentage(name: String, nutrientValue: Float) -> Int? {
         guard let nutrientSetting = getSetting(name: name) else {
             return nil
