@@ -34,6 +34,8 @@
 		97E5232923623863006116D4 /* NutrientSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5232823623863006116D4 /* NutrientSettingsTests.swift */; };
 		97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5232D2362414B006116D4 /* NutrientSettingTests.swift */; };
 		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
+		E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929E92367FCD000F7757D /* IngredientRow.swift */; };
+		E1F929EC236802A300F7757D /* IngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929EB236802A300F7757D /* IngredientsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		97E5232D2362414B006116D4 /* NutrientSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettingTests.swift; sourceTree = "<group>"; };
 		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
 		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1F929E92367FCD000F7757D /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
+		E1F929EB236802A300F7757D /* IngredientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 				97745B382361F7A2001E5B76 /* SavedScans.swift */,
 				97745B3A2361F7D3001E5B76 /* Scan.swift */,
 				97745B3C2361F7E3001E5B76 /* DVSettings.swift */,
+				E1F929E92367FCD000F7757D /* IngredientRow.swift */,
+				E1F929EB236802A300F7757D /* IngredientsList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -393,6 +399,8 @@
 				9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */,
 				97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */,
 				9725FE1B2361D41400EA9094 /* Food.swift in Sources */,
+				E1F929EC236802A300F7757D /* IngredientsList.swift in Sources */,
+				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,
 				9725FE2A2361DF2C00EA9094 /* NutritionFactsList.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
 				97745B372361F6A2001E5B76 /* Navigation.swift in Sources */,

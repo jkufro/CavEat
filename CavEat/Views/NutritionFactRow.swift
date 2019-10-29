@@ -17,7 +17,7 @@ struct NutritionFactRow: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(nutritionFact.name)
-                            .font(.body)
+                          .font(.title)
                         if nutritionFact.isWarning() {
                             Image(systemName: "exclamationmark.circle.fill")
                             .imageScale(.medium)
@@ -35,8 +35,8 @@ struct NutritionFactRow: View {
             .padding(.bottom)
 
             Text(nutritionFact.getDescription())
-                .font(.body)
-                .padding(.bottom)
+                .font(.callout)
+              .padding(.bottom)
                 .lineLimit(nil)
             SourceLink(url: nutritionFact.source)
         }.padding(.leading)

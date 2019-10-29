@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Ingredient: Codable {
+struct Ingredient: Codable, Identifiable {
     let id: String
     let name: String
     let composition: String?
@@ -18,10 +18,14 @@ struct Ingredient: Codable {
 
     enum CodingKeys: String, CodingKey {
         case id
-        case name
+        case name = "name"
         case composition
         case description
         case source
         case isWarning = "is_warning"
     }
+  
+  func getDescription() -> String {
+      return self.description ?? "No description available"
+  }
 }
