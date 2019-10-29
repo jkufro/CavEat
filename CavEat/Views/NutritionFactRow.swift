@@ -10,35 +10,55 @@ import SwiftUI
 
 struct NutritionFactRow: View {
     var nutritionFact: NutritionFact
+    @State private var showDetail = false
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(nutritionFact.name)
-                          .font(.title)
-                        if nutritionFact.isWarning() {
-                            Image(systemName: "exclamationmark.circle.fill")
-                            .imageScale(.medium)
-                            .foregroundColor(Color.red)
-                        }
+            Button(
+                action: {
+                    withAnimation {
+                        self.showDetail.toggle()
                     }
-                    Text(nutritionFact.measurement())
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray)
+                },
+                label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(nutritionFact.name)
+                                    .font(.title)
+                                    .foregroundColor(.primary)
+                                if nutritionFact.isWarning() {
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .imageScale(.medium)
+                                        .foregroundColor(Color.red)
+                                }
+                            }
+                            Text(nutritionFact.measurement())
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color.gray)
+                        }
+
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .imageScale(.large)
+                            .rotationEffect(.degrees(showDetail ? 90 : 0))
+                            .padding()
+                    }
+                    .padding(.bottom)
                 }
+            )
 
-                Spacer()
+            if showDetail {
+                VStack(alignment: .leading) {
+                    Text(nutritionFact.getDescription())
+                        .font(.callout)
+                        .padding(.bottom)
+                        .fixedSize(horizontal: false, vertical: true)
+                    SourceLink(url: nutritionFact.source)
+                }
+                .animation(.easeInOut)
             }
-            .padding(.bottom)
-
-            Text(nutritionFact.getDescription())
-                .font(.callout)
-              .padding(.bottom)
-                .lineLimit(nil)
-            SourceLink(url: nutritionFact.source)
         }.padding(.leading)
 
     }

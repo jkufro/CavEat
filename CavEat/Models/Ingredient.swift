@@ -18,13 +18,13 @@ struct Ingredient: Codable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case id
-        case name = "name"
+        case name
         case composition
         case description
         case source
         case isWarning = "is_warning"
     }
-  
+
   func getDescription() -> String {
       return self.description ?? "No description available"
   }

@@ -9,35 +9,56 @@ import SwiftUI
 
 struct IngredientRow: View {
     var ingredient: Ingredient
+    @State private var showDetail = false
 
     var body: some View {
       VStack(alignment: HorizontalAlignment.leading) {
-            HStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(ingredient.name)
-                          .font(.title)
-                        if ingredient.isWarning {
-                            Image(systemName: "exclamationmark.circle.fill")
-                            .imageScale(.medium)
-                            .foregroundColor(Color.red)
-                        }
+            Button(
+                action: {
+                    withAnimation {
+                        self.showDetail.toggle()
                     }
-                    Text(ingredient.composition!)
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray)
+                },
+                label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(ingredient.name)
+                                    .font(.title)
+                                    .foregroundColor(.primary)
+                                if ingredient.isWarning {
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .imageScale(.medium)
+                                        .foregroundColor(Color.red)
+                                }
+                            }
+                            Text(ingredient.composition!)
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color.gray)
+                        }
+
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .imageScale(.large)
+                            .rotationEffect(.degrees(showDetail ? 90 : 0))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding()
+
+                    }
+                    .padding(.bottom)
                 }
+            )
 
-                Spacer()
+            if showDetail {
+                VStack(alignment: .leading) {
+                    Text(ingredient.getDescription())
+                        .font(.callout)
+                        .padding(.bottom)
+                        .lineLimit(nil)
+                    SourceLink(url: ingredient.source)
+                }
             }
-            .padding(.bottom)
-
-            Text(ingredient.getDescription())
-                .font(.callout)
-              .padding(.bottom)
-                .lineLimit(nil)
-            SourceLink(url: ingredient.source)
         }.padding(.leading)
 
     }
@@ -50,4 +71,3 @@ struct IngredientRow_Previews: PreviewProvider {
           source: "https://bakerpedia.com/ingredients/whole-wheat-flour/", isWarning: false))
     }
 }
-
