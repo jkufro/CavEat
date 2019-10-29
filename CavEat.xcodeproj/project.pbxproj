@@ -19,7 +19,6 @@
 		9725FE1B2361D41400EA9094 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FE1A2361D41400EA9094 /* Food.swift */; };
 		9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FE1D2361D42000EA9094 /* Ingredient.swift */; };
 		9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FE202361D42A00EA9094 /* NutritionFact.swift */; };
-		9725FE2A2361DF2C00EA9094 /* NutritionFactsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FE292361DF2C00EA9094 /* NutritionFactsList.swift */; };
 		97745B2F2361EB9F001E5B76 /* SourceLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B2E2361EB9F001E5B76 /* SourceLink.swift */; };
 		97745B332361EDAF001E5B76 /* NutrientSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B322361EDAF001E5B76 /* NutrientSetting.swift */; };
 		97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97745B342361EDBA001E5B76 /* NutrientSettings.swift */; };
@@ -37,7 +36,6 @@
 		97E5233423627989006116D4 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5233323627989006116D4 /* APIClientTests.swift */; };
 		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
 		E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929E92367FCD000F7757D /* IngredientRow.swift */; };
-		E1F929EC236802A300F7757D /* IngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929EB236802A300F7757D /* IngredientsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +68,6 @@
 		9725FE1A2361D41400EA9094 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		9725FE1D2361D42000EA9094 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		9725FE202361D42A00EA9094 /* NutritionFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFact.swift; sourceTree = "<group>"; };
-		9725FE292361DF2C00EA9094 /* NutritionFactsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsList.swift; sourceTree = "<group>"; };
 		97745B2E2361EB9F001E5B76 /* SourceLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLink.swift; sourceTree = "<group>"; };
 		97745B322361EDAF001E5B76 /* NutrientSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSetting.swift; sourceTree = "<group>"; };
 		97745B342361EDBA001E5B76 /* NutrientSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettings.swift; sourceTree = "<group>"; };
@@ -89,7 +86,6 @@
 		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
 		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F929E92367FCD000F7757D /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
-		E1F929EB236802A300F7757D /* IngredientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +200,6 @@
 		9725FE232361D54700EA9094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9725FE292361DF2C00EA9094 /* NutritionFactsList.swift */,
 				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				97745B2E2361EB9F001E5B76 /* SourceLink.swift */,
 				97745B362361F6A2001E5B76 /* MainView.swift */,
@@ -212,7 +207,6 @@
 				97745B3A2361F7D3001E5B76 /* Scan.swift */,
 				97745B3C2361F7E3001E5B76 /* DVSettings.swift */,
 				E1F929E92367FCD000F7757D /* IngredientRow.swift */,
-				E1F929EB236802A300F7757D /* IngredientsList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -422,9 +416,7 @@
 				9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */,
 				97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */,
 				9725FE1B2361D41400EA9094 /* Food.swift in Sources */,
-				E1F929EC236802A300F7757D /* IngredientsList.swift in Sources */,
 				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,
-				9725FE2A2361DF2C00EA9094 /* NutritionFactsList.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
 				97745B372361F6A2001E5B76 /* MainView.swift in Sources */,
 				97745B392361F7A2001E5B76 /* SavedScans.swift in Sources */,
