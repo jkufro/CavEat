@@ -10,56 +10,15 @@ import SwiftUI
 
 struct NutritionFactRow: View {
     var nutritionFact: NutritionFact
-    @State private var showDetail = false
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Button(
-                action: {
-                    //withAnimation {
-                        self.showDetail.toggle()
-                    //}
-                },
-                label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(nutritionFact.name)
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
-                                if nutritionFact.isWarning() {
-                                    Image(systemName: "exclamationmark.circle.fill")
-                                        .imageScale(.medium)
-                                        .foregroundColor(Color.red)
-                                }
-                            }
-                            Text(nutritionFact.measurement())
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .foregroundColor(Color.gray)
-                        }
-
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .imageScale(.large)
-                            .rotationEffect(.degrees(showDetail ? 90 : 0))
-                            .padding()
-                    }
-                }
-            )
-
-            if showDetail {
-                VStack(alignment: .leading) {
-                    Text(nutritionFact.getDescription())
-                        .font(.callout)
-                        .padding(.bottom)
-                        .lineLimit(nil)
-                    SourceLink(url: nutritionFact.source)
-                }
-                //.animation(.linear)
-            }
-        }.padding(.leading)
-
+        ResultRow(
+            title: nutritionFact.name,
+            isWarning: nutritionFact.isWarning(),
+            subtitle: nutritionFact.measurement(),
+            description: nutritionFact.getDescription(),
+            source: nutritionFact.source
+        )
     }
 }
 

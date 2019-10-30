@@ -9,60 +9,15 @@ import SwiftUI
 
 struct IngredientRow: View {
     var ingredient: Ingredient
-    @State private var showDetail = false
 
     var body: some View {
-      VStack(alignment: HorizontalAlignment.leading) {
-            Button(
-                action: {
-                    //withAnimation {
-                        self.showDetail.toggle()
-                    //}
-                },
-                label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(ingredient.name)
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
-                                if ingredient.isWarning {
-                                    Image(systemName: "exclamationmark.circle.fill")
-                                        .imageScale(.medium)
-                                        .foregroundColor(Color.red)
-                                }
-                            }
-                            if ingredient.composition != nil && ingredient.composition != "" {
-                                Text(ingredient.composition!)
-                                    .font(.subheadline)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(Color.gray)
-                            }
-                        }
-
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .imageScale(.large)
-                            .rotationEffect(.degrees(showDetail ? 90 : 0))
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding()
-
-                    }
-                    //.padding(.bottom)
-                }
-            )
-
-            if showDetail {
-                VStack(alignment: .leading) {
-                    Text(ingredient.getDescription())
-                        .font(.callout)
-                        .padding(.bottom)
-                        .lineLimit(nil)
-                    SourceLink(url: ingredient.source)
-                }
-            }
-            //.animation(.linear)
-        }.padding(.leading)
+        ResultRow(
+            title: ingredient.name,
+            isWarning: ingredient.isWarning,
+            subtitle: ingredient.composition,
+            description: ingredient.getDescription(),
+            source: ingredient.source
+        )
     }
 }
 

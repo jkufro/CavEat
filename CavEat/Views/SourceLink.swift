@@ -25,13 +25,14 @@ struct SourceLink: View {
     var body: some View {
         HStack {
             if parsedURL != nil {
-                Button(
-                    action: { UIApplication.shared.open(self.parsedURL!) },
-                    label: {
-                        Text("Source")
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.blue)
-                    }
+                Text("Source")
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.blue)
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            UIApplication.shared.open(self.parsedURL!)
+                        }
                 )
             }
             Spacer()
