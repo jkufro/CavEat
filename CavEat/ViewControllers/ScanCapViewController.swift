@@ -175,35 +175,27 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             self.delegate?.photoCaptureCompletion(nil, error)
             return
         } else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
-            if let pngData = image.pngData() {
-                if let pngImage = UIImage(data: pngData) {
-                    //UIImageWriteToSavedPhotosAlbum(pngImage, nil, nil, nil)
-                    self.delegate?.photoCaptureCompletion(pngImage, nil)
-                    return
-                }
-            }
+            self.delegate?.photoCaptureCompletion(image, nil)
+            return
         }
         self.delegate?.photoCaptureCompletion(nil, nil)
     }
 
 //    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-//        guard error == nil else {
-//            print("Error capturing photo: \(error!)")
+//        print("took image")
+//        if let error = error {
 //            self.delegate?.photoCaptureCompletion(nil, error)
 //            return
+//        } else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
+//            if let pngData = image.pngData() {
+//                if let pngImage = UIImage(data: pngData) {
+//                    //UIImageWriteToSavedPhotosAlbum(pngImage, nil, nil, nil)
+//                    self.delegate?.photoCaptureCompletion(pngImage, nil)
+//                    return
+//                }
+//            }
 //        }
-//
-//        //let colorSpace = self.getBackCameraDevice()?.activeColorSpace
-//
-//        // Create a CIImage from the pixel buffer and apply a filter
-//        let image:CIImage = CIImage(cvPixelBuffer: photo.pixelBuffer!)
-//        let filteredImage:CIImage = image.applyingFilter("CIPhotoEffectNoir", parameters: [:])
-//        if let date = filteredImage.fileDataRepresentation() {
-//
-//        }
-//        let uiImage = UIImage(ciImage: filteredImage)
-//        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
-//        self.delegate?.photoCaptureCompletion(uiImage, nil)
+//        self.delegate?.photoCaptureCompletion(nil, nil)
 //    }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
