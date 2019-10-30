@@ -157,7 +157,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         let pixelFormatType = kCVPixelFormatType_32BGRA
         guard self.photoOutput!.availablePhotoPixelFormatTypes.contains(pixelFormatType) else { return }
         let settings = AVCapturePhotoSettings(format:
-            [ kCVPixelBufferPixelFormatTypeKey as String : pixelFormatType ])
+            [ kCVPixelBufferPixelFormatTypeKey as String: pixelFormatType ])
 
         //let settings = AVCapturePhotoSettings()
         if let photoOut = self.photoOutput {
