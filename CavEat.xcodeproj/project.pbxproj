@@ -237,7 +237,6 @@
 			children = (
 				97C3BBFD2365408E001AB241 /* Scanning */,
 				97C3BBFE236540E1001AB241 /* Representables */,
-				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				97745B2E2361EB9F001E5B76 /* SourceLink.swift */,
 				97745B362361F6A2001E5B76 /* MainView.swift */,
 				97745B382361F7A2001E5B76 /* SavedScans.swift */,
@@ -246,6 +245,7 @@
 				97F611B52364CD79001A7271 /* FoodList.swift */,
 				97C3BBF12365190A001AB241 /* LoadingOverlay.swift */,
 				97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */,
+				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				E1F929E92367FCD000F7757D /* IngredientRow.swift */,
 				978821E8236923DE008BD9A4 /* ResultRow.swift */,
 			);

@@ -17,57 +17,55 @@ struct ResultRow: View {
     let source: String?
 
     var body: some View {
-        VStack(alignment: HorizontalAlignment.leading) {
-            Button(
-                action: {
-                    //withAnimation {
-                        self.showDetail.toggle()
-                    //}
-                },
-                label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(title)
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
-                                if isWarning {
-                                    Image(systemName: "exclamationmark.circle.fill")
-                                        .imageScale(.medium)
-                                        .foregroundColor(Color.red)
+        HStack(alignment: .top) {
+            VStack(alignment: HorizontalAlignment.leading) {
+                Button(
+                    action: {
+                        withAnimation {
+                            self.showDetail.toggle()
+                        }
+                    },
+                    label: {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(title)
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    if isWarning {
+                                        Image(systemName: "exclamationmark.circle.fill")
+                                            .imageScale(.medium)
+                                            .foregroundColor(Color.red)
+                                    }
+                                }
+                                if subtitle != nil && subtitle != "" {
+                                    Text(subtitle!)
+                                        .font(.subheadline)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(Color.gray)
                                 }
                             }
-                            if subtitle != nil && subtitle != "" {
-                                Text(subtitle!)
-                                    .font(.subheadline)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(Color.gray)
-                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .imageScale(.large)
+                                .rotationEffect(.degrees(showDetail ? 90 : 0))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding()
                         }
-
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .imageScale(.large)
-                            .rotationEffect(.degrees(showDetail ? 90 : 0))
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding()
-
                     }
-                    //.padding(.bottom)
-                }
-            )
+                )
 
-            if showDetail {
-                VStack(alignment: .leading) {
-                    Text(description)
-                        .font(.callout)
-                        .padding(.bottom)
-                        .lineLimit(nil)
-                    SourceLink(url: source)
+                if showDetail {
+                    VStack(alignment: .leading) {
+                        Text(description)
+                            .font(.callout)
+                            .padding(.bottom)
+                            .lineLimit(nil)
+                        SourceLink(url: source)
+                    }
                 }
-            }
-            //.animation(.linear)
-        }.padding(.leading)
+            }.padding(.leading).animation(.spring())
+        }
     }
 }
 
