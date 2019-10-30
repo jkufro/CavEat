@@ -1,19 +1,18 @@
 //
-//  NutritionFactRow.swift
+//  IngredientRow.swift
 //  CavEat
 //
-//  Created by Justin Kufro on 10/24/19.
+//  Created by John Kim on 10/29/19.
 //  Copyright © 2019 Justin Kufro. All rights reserved.
-//
 
 import SwiftUI
 
-struct NutritionFactRow: View {
-    var nutritionFact: NutritionFact
+struct IngredientRow: View {
+    var ingredient: Ingredient
     @State private var showDetail = false
 
     var body: some View {
-        VStack(alignment: .leading) {
+      VStack(alignment: HorizontalAlignment.leading) {
             Button(
                 action: {
                     withAnimation {
@@ -24,16 +23,16 @@ struct NutritionFactRow: View {
                     HStack {
                         VStack(alignment: .leading) {
                             HStack {
-                                Text(nutritionFact.name)
+                                Text(ingredient.name)
                                     .font(.title)
                                     .foregroundColor(.primary)
-                                if nutritionFact.isWarning() {
+                                if ingredient.isWarning {
                                     Image(systemName: "exclamationmark.circle.fill")
                                         .imageScale(.medium)
                                         .foregroundColor(Color.red)
                                 }
                             }
-                            Text(nutritionFact.measurement())
+                            Text(ingredient.composition!)
                                 .font(.subheadline)
                                 .fontWeight(.regular)
                                 .foregroundColor(Color.gray)
@@ -43,7 +42,9 @@ struct NutritionFactRow: View {
                         Image(systemName: "chevron.right")
                             .imageScale(.large)
                             .rotationEffect(.degrees(showDetail ? 90 : 0))
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding()
+
                     }
                     .padding(.bottom)
                 }
@@ -51,21 +52,22 @@ struct NutritionFactRow: View {
 
             if showDetail {
                 VStack(alignment: .leading) {
-                    Text(nutritionFact.getDescription())
+                    Text(ingredient.getDescription())
                         .font(.callout)
                         .padding(.bottom)
-                        .fixedSize(horizontal: false, vertical: true)
-                    SourceLink(url: nutritionFact.source)
+                        .lineLimit(nil)
+                    SourceLink(url: ingredient.source)
                 }
-                .animation(.easeInOut)
             }
         }.padding(.leading)
 
     }
 }
 
-struct NutritionFactRow_Previews: PreviewProvider {
+struct IngredientRow_Previews: PreviewProvider {
     static var previews: some View {
-        NutritionFactRow(nutritionFact: NutritionFact(id: "2", name: "Dietary Fiber", description: "Helps digestions and prevent constipation, and helps control your weight by making you feel full faster. You should get enough fiber, but adding too much too quickly can lead to gas, bloating, and cramps.", source: "https://medlineplus.gov/dietaryfiber.html", amount: 3, unit: "g", isLimiting: false))
+        IngredientRow(ingredient: Ingredient(id: "2", name: "Whole Wheat", composition: "moisture (14%), protein (9-14%), fat (1-2%), carbohydrates (54-62%), fiber (1.7-2.6%) and ash (1.2-1.7%)",
+          description: "made of ground entire wheat kernels.",
+          source: "https://bakerpedia.com/ingredients/whole-wheat-flour/", isWarning: false))
     }
 }
