@@ -15,16 +15,16 @@ struct IngredientRow: View {
       VStack(alignment: HorizontalAlignment.leading) {
             Button(
                 action: {
-                    withAnimation {
+                    //withAnimation {
                         self.showDetail.toggle()
-                    }
+                    //}
                 },
                 label: {
                     HStack {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(ingredient.name)
-                                    .font(.title)
+                                    .font(.headline)
                                     .foregroundColor(.primary)
                                 if ingredient.isWarning {
                                     Image(systemName: "exclamationmark.circle.fill")
@@ -32,10 +32,12 @@ struct IngredientRow: View {
                                         .foregroundColor(Color.red)
                                 }
                             }
-                            Text(ingredient.composition!)
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .foregroundColor(Color.gray)
+                            if ingredient.composition != nil && ingredient.composition != "" {
+                                Text(ingredient.composition!)
+                                    .font(.subheadline)
+                                    .fontWeight(.regular)
+                                    .foregroundColor(Color.gray)
+                            }
                         }
 
                         Spacer()
@@ -46,7 +48,7 @@ struct IngredientRow: View {
                             .padding()
 
                     }
-                    .padding(.bottom)
+                    //.padding(.bottom)
                 }
             )
 
@@ -59,8 +61,8 @@ struct IngredientRow: View {
                     SourceLink(url: ingredient.source)
                 }
             }
+            //.animation(.linear)
         }.padding(.leading)
-
     }
 }
 

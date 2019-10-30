@@ -16,16 +16,16 @@ struct NutritionFactRow: View {
         VStack(alignment: .leading) {
             Button(
                 action: {
-                    withAnimation {
+                    //withAnimation {
                         self.showDetail.toggle()
-                    }
+                    //}
                 },
                 label: {
                     HStack {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(nutritionFact.name)
-                                    .font(.title)
+                                    .font(.headline)
                                     .foregroundColor(.primary)
                                 if nutritionFact.isWarning() {
                                     Image(systemName: "exclamationmark.circle.fill")
@@ -45,7 +45,6 @@ struct NutritionFactRow: View {
                             .rotationEffect(.degrees(showDetail ? 90 : 0))
                             .padding()
                     }
-                    .padding(.bottom)
                 }
             )
 
@@ -54,10 +53,10 @@ struct NutritionFactRow: View {
                     Text(nutritionFact.getDescription())
                         .font(.callout)
                         .padding(.bottom)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(nil)
                     SourceLink(url: nutritionFact.source)
                 }
-                .animation(.easeInOut)
+                //.animation(.linear)
             }
         }.padding(.leading)
 

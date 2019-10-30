@@ -20,7 +20,9 @@ struct FoodList: View {
             }
 
             Section(header: Text("Ingredients (\(food.ingredients.count))")) {
-                Text("foo")
+                ForEach(food.ingredients) {
+                    IngredientRow(ingredient: $0)
+                }
             }
         }
     }
@@ -35,7 +37,7 @@ struct FoodList_Previews: PreviewProvider {
                 name: "My Food",
                 ingredients: [
                     Ingredient(
-                        id: "123",
+                        id: "13",
                         name: "Milk",
                         composition: nil,
                         description: nil,

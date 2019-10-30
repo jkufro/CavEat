@@ -30,6 +30,7 @@ struct SourceLink: View {
                     label: {
                         Text("Source")
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(.blue)
                     }
                 )
             }
