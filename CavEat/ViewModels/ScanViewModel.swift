@@ -116,6 +116,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
                                 self.waiting = false
                                 if let food = food {
                                     self.handleFoodResult(food)
+                                    self.goToUpcScan()
                                 } else { // didnt get a food back
                                     self.setError("Did not get result back from server.")
                                 }
