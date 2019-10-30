@@ -57,6 +57,8 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             print("capture session is authorized")
 
             self.captureSession = AVCaptureSession()
+            // https://developer.apple.com/documentation/avfoundation/avcapturesession/preset
+            self.captureSession.sessionPreset = .photo
             print("got captureSession")
 
             guard let videoCaptureDevice = self.getBackCameraDevice() else {
@@ -96,9 +98,6 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             print("added barcode output")
 
             self.photoOutput = AVCapturePhotoOutput()
-            self.photoOutput!.setPreparedPhotoSettingsArray([
-                AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-            ], completionHandler: nil)
 
             if self.captureSession.canAddOutput(self.photoOutput!) {
                 self.captureSession.addOutput(self.photoOutput!)
@@ -152,10 +151,20 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
 
     func captureImage() {
         print("capturing image")
-        let settings = AVCapturePhotoSettings()
+        // https://nsscreencast.com/episodes/303-camera-capture-high-quality-photo
+        // https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/capturing_still_and_live_photos/capturing_uncompressed_image_data
+        // Choose a 32-bit BGRA pixel format and verify the camera supports it.
+        let pixelFormatType = kCVPixelFormatType_32BGRA
+        guard self.photoOutput!.availablePhotoPixelFormatTypes.contains(pixelFormatType) else { return }
+        let settings = AVCapturePhotoSettings(format:
+            [ kCVPixelBufferPixelFormatTypeKey as String : pixelFormatType ])
+
+        //let settings = AVCapturePhotoSettings()
         if let photoOut = self.photoOutput {
+            print("photo out")
             photoOut.capturePhoto(with: settings, delegate: self)
         } else {
+            self.delegate?.photoCaptureCompletion(nil, nil) // way for it to know image capture failed
             print("no photo out")
         }
     }
@@ -164,12 +173,38 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         print("took image")
         if let error = error {
             self.delegate?.photoCaptureCompletion(nil, error)
+            return
         } else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
-            self.delegate?.photoCaptureCompletion(image, nil)
-        } else {
-            self.delegate?.photoCaptureCompletion(nil, nil)
+            if let pngData = image.pngData() {
+                if let pngImage = UIImage(data: pngData) {
+                    //UIImageWriteToSavedPhotosAlbum(pngImage, nil, nil, nil)
+                    self.delegate?.photoCaptureCompletion(pngImage, nil)
+                    return
+                }
+            }
         }
+        self.delegate?.photoCaptureCompletion(nil, nil)
     }
+
+//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+//        guard error == nil else {
+//            print("Error capturing photo: \(error!)")
+//            self.delegate?.photoCaptureCompletion(nil, error)
+//            return
+//        }
+//
+//        //let colorSpace = self.getBackCameraDevice()?.activeColorSpace
+//
+//        // Create a CIImage from the pixel buffer and apply a filter
+//        let image:CIImage = CIImage(cvPixelBuffer: photo.pixelBuffer!)
+//        let filteredImage:CIImage = image.applyingFilter("CIPhotoEffectNoir", parameters: [:])
+//        if let date = filteredImage.fileDataRepresentation() {
+//
+//        }
+//        let uiImage = UIImage(ciImage: filteredImage)
+//        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+//        self.delegate?.photoCaptureCompletion(uiImage, nil)
+//    }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if let metadataObject = metadataObjects.first {

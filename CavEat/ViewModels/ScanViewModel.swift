@@ -73,7 +73,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     }
 
     func captureCompletionHandler(_ image: UIImage?, _ error: Error?) {
-        if self.ingredientsImage != nil { return } // why is ImageCapture taking two images?
+        if self.ingredientsImage != nil { return }
         if let image = image {
             if self.state == .nutritionFactScanning {
                 self.nutritionFactsImage = image

@@ -19,14 +19,16 @@ protocol ImageReaderProtocol {
 
 class ImageReader: ImageReaderProtocol {
     func imageToText(image: UIImage, _ completion: @escaping (String) -> Void) -> Bool {
-        guard let cgImage = image.cgImage else {
+        // UIImageWriteToSavedPhotosAlbum(convertToGrayScale(image: image), nil, nil, nil)
+        guard let cgImage = convertToGrayScale(image: image).cgImage else {
             print("Failed to get cgimage from input image")
             return false
         }
 
         let textRecognitionRequest = getRequest(completion)
 
-        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        // https://developer.apple.com/documentation/imageio/cgimagepropertyorientation
+        let handler = VNImageRequestHandler(cgImage: cgImage, orientation: .right, options: [:])
         do {
             try handler.perform([textRecognitionRequest])
             return true
@@ -57,8 +59,35 @@ class ImageReader: ImageReaderProtocol {
         for observation in recognizedText {
             guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }
             result += candidate.string
+            result += "\n"
         }
+        print(result)
         return result
     }
 
+    // https://stackoverflow.com/questions/22422480/apply-black-and-white-filter-to-uiimage
+    private func convertToGrayScale(image: UIImage) -> UIImage {
+
+        // Create image rectangle with current image width/height
+        let imageRect:CGRect = CGRect(x:0, y:0, width:image.size.width, height: image.size.height)
+
+        // Grayscale color space
+        let colorSpace = CGColorSpaceCreateDeviceGray()
+        let width = image.size.width
+        let height = image.size.height
+
+        // Create bitmap content with current image size and grayscale colorspace
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+
+        // Draw image into current context, with specified rectangle
+        // using previously defined context (with grayscale colorspace)
+        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+        context?.draw(image.cgImage!, in: imageRect)
+        let imageRef = context!.makeImage()
+
+        // Create a new UIImage object
+        let newImage = UIImage(cgImage: imageRef!)
+
+        return newImage
+    }
 }
