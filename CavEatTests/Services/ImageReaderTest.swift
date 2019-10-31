@@ -13,7 +13,7 @@ class ImageReaderTest: XCTestCase {
     let imageReader = ImageReader()
 
     func test_imageToText() {
-        if let image = loadUIImageAsData("caveat_image", "jpg") {
+        if let image = ImagesHelper.shared.loadUIImage("caveat_image", "jpg") {
             let success = imageReader.imageToText(image: image) { result in
                 let modifiedResult = result.replacingOccurrences(of: "\n", with: " ").lowercased()
                 XCTAssert(modifiedResult.contains("total fat"))
@@ -42,7 +42,7 @@ class ImageReaderTest: XCTestCase {
             XCTAssertEqual(0, 1)
         }
 
-        if let image = loadUIImageAsData("no_text_image", "jpg") {
+        if let image = ImagesHelper.shared.loadUIImage("no_text_image", "jpg") {
             let success = imageReader.imageToText(image: image) { result in
                 XCTAssertEqual("", result)
             }
@@ -50,11 +50,5 @@ class ImageReaderTest: XCTestCase {
         } else {
             XCTAssertEqual(0, 1)
         }
-    }
-
-    private func loadUIImageAsData(_ filename: String, _ fileType: String) -> UIImage? {
-        let bundle = Bundle(for: type(of: self))
-        let path = bundle.path(forResource: filename, ofType: fileType)
-        return (try? UIImage(data: Data(contentsOf: URL(fileURLWithPath: path!))))
     }
 }

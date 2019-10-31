@@ -9,7 +9,11 @@
 import SwiftUI
 
 struct Scan: View {
-    @ObservedObject var scanVM: ScanViewModel = ScanViewModel()
+    @ObservedObject var scanVM: ScanViewModel
+
+    init() {
+        scanVM = ScanViewModel()
+    }
 
     var currentHeaderView: AnyView {
         switch scanVM.state {

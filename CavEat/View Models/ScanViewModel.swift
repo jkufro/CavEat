@@ -39,7 +39,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     @Published var updateBool: Bool = false // hack for taking pictures. split from captureRequested so that view does not continually update when it is flipped back to false
     @Published var showFood: Bool = false
 
-    let apiClient = APIClient()
+    var apiClient = APIClient() // set to var for testing purposes
     let imageReader: ImageReader = ImageReader()
 
     var food: Food = Food(id: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
@@ -73,7 +73,6 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     }
 
     func captureCompletionHandler(_ image: UIImage?, _ error: Error?) {
-        if self.ingredientsImage != nil { return }
         if let image = image {
             if self.state == .nutritionFactScanning {
                 self.nutritionFactsImage = image
@@ -83,11 +82,51 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
                 completeManualScan()
             }
         } else { // something went wrong
-            print("got no image result for ingredients")
+            setError("Picture could not be taken")
         }
     }
 
-    func completeManualScan() {
+    func goToUpcScan() {
+        self.state = .upcScanning
+        self.upc = nil
+        self.nutritionFactsImage = nil
+        self.ingredientsImage = nil
+    }
+
+    func goToFactsScan() {
+        self.state = .nutritionFactScanning
+        self.nutritionFactsImage = nil
+        self.ingredientsImage = nil
+    }
+
+    func goToIngredientsScan() {
+        self.state = .ingredientScanning
+        self.ingredientsImage = nil
+    }
+
+    func acceptUpcAlert() {
+        self.promptForManualDecision = false
+        self.goToFactsScan()
+    }
+
+    func dismissUpcAlert() {
+        self.promptForManualDecision = false
+        self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
+        self.goToUpcScan()
+    }
+
+    func dismissErrorAlert() {
+        self.errorNeedsAttention = false
+        self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
+        self.goToUpcScan()
+    }
+
+    func handleFoodResult(_ food: Food) {
+        showFood = true
+        self.food = food
+    }
+
+    private func completeManualScan() {
         self.waiting = true
         guard let upc = self.upc else {
             goToUpcScan()
@@ -139,24 +178,6 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
         }
     }
 
-    func goToUpcScan() {
-        self.state = .upcScanning
-        self.upc = nil
-        self.nutritionFactsImage = nil
-        self.ingredientsImage = nil
-    }
-
-    func goToFactsScan() {
-        self.state = .nutritionFactScanning
-        self.nutritionFactsImage = nil
-        self.ingredientsImage = nil
-    }
-
-    func goToIngredientsScan() {
-        self.state = .ingredientScanning
-        self.ingredientsImage = nil
-    }
-
     private func setError(_ errorMessage: String) {
         print(errorMessage)
         self.errorNeedsAttention = true
@@ -167,27 +188,5 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     private func promptForManual() {
         self.promptForManualDecision = true
         self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
-    }
-
-    func acceptUpcAlert() {
-        self.promptForManualDecision = false
-        self.goToFactsScan()
-    }
-
-    func dismissUpcAlert() {
-        self.promptForManualDecision = false
-        self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
-        self.goToUpcScan()
-    }
-
-    func dismissErrorAlert() {
-        self.errorNeedsAttention = false
-        self.anyAlerts = self.errorNeedsAttention || self.promptForManualDecision
-        self.goToUpcScan()
-    }
-
-    func handleFoodResult(_ food: Food) {
-        showFood = true
-        self.food = food
     }
 }

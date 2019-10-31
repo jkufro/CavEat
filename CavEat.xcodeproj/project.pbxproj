@@ -29,6 +29,9 @@
 		978821E9236923DE008BD9A4 /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978821E8236923DE008BD9A4 /* ResultRow.swift */; };
 		978821ED2369DA75008BD9A4 /* caveat_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 978821EC2369DA74008BD9A4 /* caveat_image.jpg */; };
 		978821EF2369DA7A008BD9A4 /* no_text_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 978821EE2369DA7A008BD9A4 /* no_text_image.jpg */; };
+		978E76A3236B5D4A00B9DA5D /* ScanViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978E76A2236B5D4A00B9DA5D /* ScanViewModelTests.swift */; };
+		978E76A6236B5DAD00B9DA5D /* MockAPIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */; };
+		978E76A8236B644900B9DA5D /* ImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978E76A7236B644900B9DA5D /* ImagesHelper.swift */; };
 		97A6CE1F2361E1B5008B9825 /* NutritionFactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */; };
 		97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF12365190A001AB241 /* LoadingOverlay.swift */; };
 		97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */; };
@@ -94,6 +97,9 @@
 		978821E8236923DE008BD9A4 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
 		978821EC2369DA74008BD9A4 /* caveat_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = caveat_image.jpg; sourceTree = "<group>"; };
 		978821EE2369DA7A008BD9A4 /* no_text_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_text_image.jpg; sourceTree = "<group>"; };
+		978E76A2236B5D4A00B9DA5D /* ScanViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModelTests.swift; sourceTree = "<group>"; };
+		978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClients.swift; sourceTree = "<group>"; };
+		978E76A7236B644900B9DA5D /* ImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesHelper.swift; sourceTree = "<group>"; };
 		97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactRow.swift; sourceTree = "<group>"; };
 		97C3BBF12365190A001AB241 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -183,8 +189,8 @@
 		9725FDF32361D0E500EA9094 /* CavEat */ = {
 			isa = PBXGroup;
 			children = (
-				97C3BBEC236507C4001AB241 /* ViewControllers */,
-				97F611AF2364C846001A7271 /* ViewModels */,
+				97C3BBEC236507C4001AB241 /* View Controllers */,
+				97F611AF2364C846001A7271 /* View Models */,
 				97E5232F236274F4006116D4 /* Services */,
 				9725FE232361D54700EA9094 /* Views */,
 				9725FE192361D3F500EA9094 /* Models */,
@@ -211,6 +217,8 @@
 		9725FE0D2361D0E700EA9094 /* CavEatTests */ = {
 			isa = PBXGroup;
 			children = (
+				978E76A4236B5D8F00B9DA5D /* Helpers */,
+				978E76A1236B5D2100B9DA5D /* View Models */,
 				97E7D4BF2368F9BB0016C3CE /* Resources */,
 				97E5233223627973006116D4 /* Services */,
 				97E5231F236237B6006116D4 /* Models */,
@@ -252,12 +260,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		97C3BBEC236507C4001AB241 /* ViewControllers */ = {
+		978E76A1236B5D2100B9DA5D /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				978E76A2236B5D4A00B9DA5D /* ScanViewModelTests.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		978E76A4236B5D8F00B9DA5D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */,
+				978E76A7236B644900B9DA5D /* ImagesHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		97C3BBEC236507C4001AB241 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				97E7D4B5236717E50016C3CE /* ScanCapViewController.swift */,
 			);
-			path = ViewControllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		97C3BBFD2365408E001AB241 /* Scanning */ = {
@@ -318,13 +343,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		97F611AF2364C846001A7271 /* ViewModels */ = {
+		97F611AF2364C846001A7271 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				97F611B02364C85C001A7271 /* ResultViewModel.swift */,
 				97E7D4AD2365CDBC0016C3CE /* ScanViewModel.swift */,
 			);
-			path = ViewModels;
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,13 +560,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				97E5232923623863006116D4 /* NutrientSettingsTests.swift in Sources */,
+				978E76A6236B5DAD00B9DA5D /* MockAPIClients.swift in Sources */,
 				97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */,
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
 				97E5233423627989006116D4 /* APIClientTests.swift in Sources */,
 				97E523232362380A006116D4 /* IngredientTests.swift in Sources */,
 				9725FE0F2361D0E700EA9094 /* CavEatTests.swift in Sources */,
+				978E76A8236B644900B9DA5D /* ImagesHelper.swift in Sources */,
 				97E7D4BD2368F7630016C3CE /* ImageReaderTest.swift in Sources */,
 				97E52321236237CD006116D4 /* FoodTests.swift in Sources */,
+				978E76A3236B5D4A00B9DA5D /* ScanViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +714,7 @@
 			baseConfigurationReference = 9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CavEat/Preview Content\"";
 				DEVELOPMENT_TEAM = 376366D83D;
@@ -697,6 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkufro.CavEat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -707,6 +737,7 @@
 			baseConfigurationReference = 5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CavEat/Preview Content\"";
 				DEVELOPMENT_TEAM = 376366D83D;
@@ -718,6 +749,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkufro.CavEat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
