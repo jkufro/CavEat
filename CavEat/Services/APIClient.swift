@@ -11,7 +11,7 @@ import Alamofire
 import Japx
 
 class APIClient {
-    private static let baseURL: String = "http://caveat.cmuis.org"
+    private static let baseURL: String = "https://caveat.cmuis.org"
 
     func findByUpc(upc: String, _ completion: @escaping (Food?) -> Void) {
         let url = APIClient.baseURL + "/api/v1/upc"

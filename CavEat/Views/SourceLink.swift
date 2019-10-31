@@ -11,12 +11,29 @@ import SwiftUI
 struct SourceLink: View {
     var url: String?
 
+    var parsedURL: URL? {
+        if let url = self.url {
+            if let urlObject = URL(string: url) {
+                if UIApplication.shared.canOpenURL(urlObject) {
+                    return urlObject
+                }
+            }
+        }
+        return nil
+    }
+
     var body: some View {
         HStack {
-            if url != nil {
+            if parsedURL != nil {
                 Text("Source")
-                .foregroundColor(Color.blue)
                 .multilineTextAlignment(.leading)
+                .foregroundColor(.blue)
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            UIApplication.shared.open(self.parsedURL!)
+                        }
+                )
             }
             Spacer()
         }

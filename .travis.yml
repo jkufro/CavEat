@@ -16,4 +16,4 @@ jobs:
         - pod install
       script:
         - xcodebuild build-for-testing -workspace CavEat.xcworkspace -scheme CavEat -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-        - xcodebuild test -workspace CavEat.xcworkspace -scheme CavEatTests -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=13.2,name=iPhone 11 Pro Max' ONLY_ACTIVE_ARCH=NO
+        - xcodebuild test -workspace CavEat.xcworkspace -scheme CavEat -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=13.2,name=iPhone 11 Pro Max' ONLY_ACTIVE_ARCH=NO
