@@ -32,17 +32,19 @@ class APIClient {
     }
 
     internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
-        Alamofire.request(url,
-                   method: .post,
-                   parameters: parameters)
-            .validate(statusCode: 200...200)
-            .responseCodableJSONAPI(keyPath: "data", completionHandler: { (response: DataResponse<Food>) in
-            switch response.result {
-            case .success(let food):
-                completion(food)
-            case .failure:
-                completion(nil)
-            }
-        })
+        DispatchQueue.global(qos: .utility).async {
+            Alamofire.request(url,
+                       method: .post,
+                       parameters: parameters)
+                .validate(statusCode: 200...200)
+                .responseCodableJSONAPI(keyPath: "data", completionHandler: { (response: DataResponse<Food>) in
+                switch response.result {
+                case .success(let food):
+                    completion(food)
+                case .failure:
+                    completion(nil)
+                }
+            })
+        }
     }
 }

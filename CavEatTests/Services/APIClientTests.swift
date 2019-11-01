@@ -9,18 +9,6 @@
 import XCTest
 @testable import CavEat
 
-class SuccessfulAPIClientMock: APIClient {
-    override internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
-        completion(Food(id: "1", upc: 1234567890, name: "My Food", ingredients: [], nutritionFacts: []))
-    }
-}
-
-class FailedAPIClientMock: APIClient {
-    override internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
-        completion(nil)
-    }
-}
-
 class APIClientTests: XCTestCase {
     let successfulClient: SuccessfulAPIClientMock = SuccessfulAPIClientMock()
     let failedClient: FailedAPIClientMock = FailedAPIClientMock()
