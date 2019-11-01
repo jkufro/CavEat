@@ -10,13 +10,14 @@ import XCTest
 @testable import CavEat
 
 class ScanViewModelTests: XCTestCase {
-    var scanVM: ScanViewModel = ScanViewModel()
     let textImage: UIImage = ImagesHelper.shared.loadUIImage("caveat_image", "jpg")!
     let noTextImage: UIImage = ImagesHelper.shared.loadUIImage("no_text_image", "jpg")!
+    var scanVM = ScanViewModel()
 
     override func setUp() {
         scanVM = ScanViewModel()
         scanVM.apiClient = SuccessfulAPIClientMock()
+        scanVM.imageReader = SuccessfulMockImageReader(sequence: ["Some Text"])
     }
 
     override func tearDown() {
@@ -48,18 +49,14 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_captureCompletionHandler_success() {
-        guard let image = ImagesHelper.shared.loadUIImage("no_text_image", "jpg") else {
-            XCTAssertEqual(0, 1)
-            return
-        }
         scanVM.upc = "1234567890"
         scanVM.state = .nutritionFactScanning
-        scanVM.captureCompletionHandler(image, nil)
+        scanVM.captureCompletionHandler(noTextImage, nil)
         XCTAssertEqual(.ingredientScanning, scanVM.state)
-        XCTAssertEqual(image, scanVM.nutritionFactsImage)
-        scanVM.captureCompletionHandler(image, nil)
+        XCTAssertEqual(noTextImage, scanVM.nutritionFactsImage)
+        scanVM.captureCompletionHandler(noTextImage, nil)
         XCTAssertEqual(.ingredientScanning, scanVM.state)
-        XCTAssertEqual(image, scanVM.ingredientsImage)
+        XCTAssertEqual(noTextImage, scanVM.ingredientsImage)
     }
 
     func test_completeManualScan_success() {
@@ -92,6 +89,7 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_completeManualScan_failure_readNutritionFacts() {
+        scanVM.imageReader = SuccessfulMockImageReader(sequence: [""])
         // fail to read nutritionFacts image
         scanVM.upc = "1234567890"
         scanVM.nutritionFactsImage = noTextImage
@@ -103,6 +101,7 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_completeManualScan_failure_readIngredients() {
+        scanVM.imageReader = SuccessfulMockImageReader(sequence: ["Some Text", ""])
         // fail to read ingredients image
         scanVM.upc = "1234567890"
         scanVM.nutritionFactsImage = textImage
@@ -129,7 +128,7 @@ class ScanViewModelTests: XCTestCase {
         scanVM.captureCompletionHandler(nil, nil)
         XCTAssertTrue(scanVM.errorNeedsAttention)
         XCTAssertTrue(scanVM.anyAlerts)
-        XCTAssertEqual("Picture could not be taken", scanVM.errorMessage)
+        XCTAssertEqual("Picture could not be taken", self.scanVM.errorMessage)
     }
 
     func test_goToUpcScan() {

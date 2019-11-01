@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */; };
+		970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CF209236C5BB400A557AF /* MockImageReaders.swift */; };
 		9725FDF52361D0E500EA9094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF42361D0E500EA9094 /* AppDelegate.swift */; };
 		9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF62361D0E500EA9094 /* SceneDelegate.swift */; };
 		9725FDFA2361D0E500EA9094 /* CavEat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF82361D0E500EA9094 /* CavEat.xcdatamodeld */; };
@@ -72,6 +73,7 @@
 		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
 		621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		970CF209236C5BB400A557AF /* MockImageReaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageReaders.swift; sourceTree = "<group>"; };
 		9725FDF12361D0E500EA9094 /* CavEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CavEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9725FDF42361D0E500EA9094 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9725FDF62361D0E500EA9094 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */,
 				978E76A7236B644900B9DA5D /* ImagesHelper.swift */,
+				970CF209236C5BB400A557AF /* MockImageReaders.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				978E76A6236B5DAD00B9DA5D /* MockAPIClients.swift in Sources */,
 				97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */,
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
+				970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */,
 				97E5233423627989006116D4 /* APIClientTests.swift in Sources */,
 				97E523232362380A006116D4 /* IngredientTests.swift in Sources */,
 				9725FE0F2361D0E700EA9094 /* CavEatTests.swift in Sources */,

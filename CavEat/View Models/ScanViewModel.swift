@@ -40,7 +40,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     @Published var showFood: Bool = false
 
     var apiClient = APIClient() // set to var for testing purposes
-    let imageReader: ImageReader = ImageReader()
+    var imageReader: ImageReader = ImageReader() // set to var for testing purposes
 
     var food: Food = Food(id: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
     var upc: String?
@@ -58,15 +58,13 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
             self.upc = upc
             self.nutritionFactsImage = nil
             self.ingredientsImage = nil
-            DispatchQueue.main.async {
-                self.waiting = true
-                self.apiClient.findByUpc(upc: upc) { food in
-                    self.waiting = false
-                    if let food = food {
-                        self.handleFoodResult(food)
-                    } else { // will need to ask if user wants to manually scan
-                        self.promptForManual()
-                    }
+            self.waiting = true
+            self.apiClient.findByUpc(upc: upc) { food in
+                self.waiting = false
+                if let food = food {
+                    self.handleFoodResult(food)
+                } else { // will need to ask if user wants to manually scan
+                    self.promptForManual()
                 }
             }
         }
@@ -143,7 +141,6 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
 
         var nutritionFactsString = ""
         var ingredientsString = ""
-
         DispatchQueue.main.async {
             let nutritionImgRequestSuccess = self.imageReader.imageToText(image: nutImg) { result in
                 if !result.isEmpty { // valid string result
@@ -176,6 +173,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
                 self.setError("Request failed to read the nutrition facts image for text.")
             }
         }
+        print("EXITING COMPLETEMANUALSCAN")
     }
 
     private func setError(_ errorMessage: String) {
