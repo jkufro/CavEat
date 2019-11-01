@@ -10,14 +10,13 @@ import XCTest
 @testable import CavEat
 
 class ScanViewModelTests: XCTestCase {
-    let textImage: UIImage = ImagesHelper.shared.loadUIImage("caveat_image", "jpg")!
-    let noTextImage: UIImage = ImagesHelper.shared.loadUIImage("no_text_image", "jpg")!
+    let image: UIImage = ImagesHelper.shared.loadUIImage("no_text_image", "jpg")!
     var scanVM = ScanViewModel()
 
     override func setUp() {
         scanVM = ScanViewModel()
         scanVM.apiClient = SuccessfulAPIClientMock()
-        scanVM.imageReader = SuccessfulMockImageReader(sequence: ["Some Text"])
+        scanVM.imageReader = MockImageReader(strSequence: ["Some Text"], boolSequence: [true])
     }
 
     override func tearDown() {
@@ -27,54 +26,50 @@ class ScanViewModelTests: XCTestCase {
     func test_scanCompletionHandler_success() {
         XCTAssertNil(scanVM.upc)
         scanVM.scanCompletionHandler("1234567890")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual("1234567890", self.scanVM.upc)
-            XCTAssertTrue(self.scanVM.showFood)
-            XCTAssertEqual("SuccessfulAPIClientMock Food", self.scanVM.food.name)
-            XCTAssertFalse(self.scanVM.waiting)
-        }
-
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("1234567890", self.scanVM.upc)
+        XCTAssertTrue(self.scanVM.showFood)
+        XCTAssertEqual("SuccessfulAPIClientMock Food", self.scanVM.food.name)
+        XCTAssertFalse(self.scanVM.waiting)
     }
 
     func test_scanCompletionHandler_failure() {
         scanVM.apiClient = FailedAPIClientMock()
         XCTAssertNil(scanVM.upc)
         scanVM.scanCompletionHandler("1234567890")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual("1234567890", self.scanVM.upc)
-            XCTAssertTrue(self.scanVM.promptForManualDecision)
-            XCTAssertTrue(self.scanVM.anyAlerts)
-            XCTAssertFalse(self.scanVM.waiting)
-        }
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("1234567890", self.scanVM.upc)
+        XCTAssertTrue(self.scanVM.promptForManualDecision)
+        XCTAssertTrue(self.scanVM.anyAlerts)
+        XCTAssertFalse(self.scanVM.waiting)
     }
 
     func test_captureCompletionHandler_success() {
         scanVM.upc = "1234567890"
         scanVM.state = .nutritionFactScanning
-        scanVM.captureCompletionHandler(noTextImage, nil)
+        scanVM.captureCompletionHandler(image, nil)
         XCTAssertEqual(.ingredientScanning, scanVM.state)
-        XCTAssertEqual(noTextImage, scanVM.nutritionFactsImage)
-        scanVM.captureCompletionHandler(noTextImage, nil)
+        XCTAssertEqual(image, scanVM.nutritionFactsImage)
+        scanVM.captureCompletionHandler(image, nil)
         XCTAssertEqual(.ingredientScanning, scanVM.state)
-        XCTAssertEqual(noTextImage, scanVM.ingredientsImage)
+        XCTAssertEqual(image, scanVM.ingredientsImage)
     }
 
     func test_completeManualScan_success() {
         // fail to read ingredients image
         scanVM.upc = "1234567890"
-        scanVM.nutritionFactsImage = textImage
+        scanVM.nutritionFactsImage = image
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(textImage, nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual(.upcScanning, self.scanVM.state)
-            XCTAssertTrue(self.scanVM.showFood)
-        }
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual(.upcScanning, self.scanVM.state)
+        XCTAssertTrue(self.scanVM.showFood)
     }
 
     func test_completeManualScan_failure_guardUPC() {
         // fail on upc guard
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(noTextImage, nil)
+        scanVM.captureCompletionHandler(image, nil)
         XCTAssertEqual(.upcScanning, scanVM.state)
         XCTAssertNil(scanVM.ingredientsImage)
     }
@@ -83,45 +78,64 @@ class ScanViewModelTests: XCTestCase {
         // fail on nutritionFactsImage guard
         scanVM.upc = "1234567890"
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(noTextImage, nil)
+        scanVM.captureCompletionHandler(image, nil)
         XCTAssertEqual(.nutritionFactScanning, scanVM.state)
         XCTAssertNil(scanVM.ingredientsImage)
     }
 
     func test_completeManualScan_failure_readNutritionFacts() {
-        scanVM.imageReader = SuccessfulMockImageReader(sequence: [""])
+        scanVM.imageReader = MockImageReader(strSequence: [""], boolSequence: [true])
         // fail to read nutritionFacts image
         scanVM.upc = "1234567890"
-        scanVM.nutritionFactsImage = noTextImage
+        scanVM.nutritionFactsImage = image
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(noTextImage, nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual("Could not read the nutrition facts image for text.", self.scanVM.errorMessage)
-        }
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("Could not read the nutrition facts image for text.", self.scanVM.errorMessage)
     }
 
     func test_completeManualScan_failure_readIngredients() {
-        scanVM.imageReader = SuccessfulMockImageReader(sequence: ["Some Text", ""])
+        scanVM.imageReader = MockImageReader(strSequence: ["Some Text", ""], boolSequence: [true, true])
         // fail to read ingredients image
         scanVM.upc = "1234567890"
-        scanVM.nutritionFactsImage = textImage
+        scanVM.nutritionFactsImage = image
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(noTextImage, nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual("Could not read the ingredients image for text.", self.scanVM.errorMessage)
-        }
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("Could not read the ingredients image for text.", self.scanVM.errorMessage)
+    }
+
+    func test_completeManualScan_failure_nutritionFactRequest() {
+        scanVM.imageReader = MockImageReader(strSequence: [""], boolSequence: [false])
+        // fail to read ingredients image
+        scanVM.upc = "1234567890"
+        scanVM.nutritionFactsImage = image
+        scanVM.state = .ingredientScanning
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("Request failed to read the nutrition facts image for text.", self.scanVM.errorMessage)
+    }
+
+    func test_completeManualScan_failure_ingredientRequest() {
+        scanVM.imageReader = MockImageReader(strSequence: ["Some Text", ""], boolSequence: [true, false])
+        // fail to read ingredients image
+        scanVM.upc = "1234567890"
+        scanVM.nutritionFactsImage = image
+        scanVM.state = .ingredientScanning
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("Request failed to read the ingredients image for text.", self.scanVM.errorMessage)
     }
 
     func test_completeManualScan_failure_foodFromAPI() {
         // fail to get food from api
         scanVM.apiClient = FailedAPIClientMock()
         scanVM.upc = "1234567890"
-        scanVM.nutritionFactsImage = textImage
+        scanVM.nutritionFactsImage = image
         scanVM.state = .ingredientScanning
-        scanVM.captureCompletionHandler(textImage, nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual("Did not get result back from server.", self.scanVM.errorMessage)
-        }
+        scanVM.captureCompletionHandler(image, nil)
+        Thread.sleep(forTimeInterval: 0.25)
+        XCTAssertEqual("Did not get result back from server.", self.scanVM.errorMessage)
     }
 
     func test_captureCompletionHandler_failure() {
@@ -132,8 +146,8 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_goToUpcScan() {
-        scanVM.nutritionFactsImage = noTextImage
-        scanVM.ingredientsImage = noTextImage
+        scanVM.nutritionFactsImage = image
+        scanVM.ingredientsImage = image
         scanVM.state = .nutritionFactScanning
         XCTAssertEqual(.nutritionFactScanning, scanVM.state)
         scanVM.goToUpcScan()
@@ -144,8 +158,8 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_goToFactsScan() {
-        scanVM.nutritionFactsImage = noTextImage
-        scanVM.ingredientsImage = noTextImage
+        scanVM.nutritionFactsImage = image
+        scanVM.ingredientsImage = image
         XCTAssertEqual(.upcScanning, scanVM.state)
         scanVM.goToFactsScan()
         XCTAssertEqual(.nutritionFactScanning, scanVM.state)
@@ -154,7 +168,7 @@ class ScanViewModelTests: XCTestCase {
     }
 
     func test_goToIngredientsScan() {
-        scanVM.ingredientsImage = noTextImage
+        scanVM.ingredientsImage = image
         XCTAssertEqual(.upcScanning, scanVM.state)
         scanVM.goToIngredientsScan()
         XCTAssertEqual(.ingredientScanning, scanVM.state)

@@ -141,7 +141,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
 
         var nutritionFactsString = ""
         var ingredientsString = ""
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .utility).async {
             let nutritionImgRequestSuccess = self.imageReader.imageToText(image: nutImg) { result in
                 if !result.isEmpty { // valid string result
                     nutritionFactsString = result
@@ -173,7 +173,6 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
                 self.setError("Request failed to read the nutrition facts image for text.")
             }
         }
-        print("EXITING COMPLETEMANUALSCAN")
     }
 
     private func setError(_ errorMessage: String) {

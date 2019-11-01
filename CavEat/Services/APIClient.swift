@@ -32,7 +32,7 @@ class APIClient {
     }
 
     internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .utility).async {
             Alamofire.request(url,
                        method: .post,
                        parameters: parameters)

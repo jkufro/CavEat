@@ -10,24 +10,24 @@ import Foundation
 import XCTest
 @testable import CavEat
 
-// will cycle through a sequence of strings as imageToText is called
-class SuccessfulMockImageReader: ImageReader {
-    private var sequence: [String] = ["This is the string result"]
-    private var index = 0
+// will cycle through a sequence of strings and booleans as imageToText is called
+class MockImageReader: ImageReader {
+    private var strSequence: [String] = ["This is the string result"]
+    private var boolSequence: [Bool] = [true]
+    private var index = -1
 
-    init(sequence: [String]) {
-        self.sequence = sequence
+    init(strSequence: [String], boolSequence: [Bool]) {
+        self.strSequence = strSequence
+        self.boolSequence = boolSequence
     }
 
     override func imageToText(image: UIImage, _ completion: @escaping (String) -> Void) -> Bool {
-        completion(sequence[index % sequence.count])
         index += 1
-        return true
-    }
-}
+        let returnBool = boolSequence[index % boolSequence.count]
 
-class FailedMockImageReader: ImageReader {
-    override func imageToText(image: UIImage, _ completion: @escaping (String) -> Void) -> Bool {
-        return false
+        if returnBool {
+            completion(strSequence[index % strSequence.count])
+        }
+        return returnBool
     }
 }
