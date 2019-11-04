@@ -8,11 +8,16 @@
 
 import Foundation
 
-struct NutrientSetting {
+struct NutrientSetting: Identifiable {
+    let id: UUID = UUID()
     let name: String
     let unit: String
     var dailyValue: Float
-
+    let minValue: Float
+    let maxValue: Float
+    let valueStep: Float
+    let defaultValue: Float
+    
     func dailyValuePercentage(nutrientValue: Float) -> Int? {
         guard dailyValue > 0.1 else { // avoid absurdly large percentages
             return nil
