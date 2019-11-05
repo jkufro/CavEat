@@ -9,7 +9,7 @@
 import Foundation
 
 class NutrientSettings {
-    static let shared = NutrientSettings()
+    static var shared = NutrientSettings()
 
     var nutrientDictionary: [String: NutrientSetting]
 
@@ -30,15 +30,8 @@ class NutrientSettings {
         ]
     }
 
-    public func getSetting(name: String) -> NutrientSetting? {
-        if let nutrientSetting = nutrientDictionary[name] {
-            return nutrientSetting
-        }
-        return nil
-    }
-
     public func dailyValuePercentage(name: String, nutrientValue: Float) -> Int? {
-        guard let nutrientSetting = getSetting(name: name) else {
+        guard let nutrientSetting = nutrientDictionary[name] else {
             return nil
         }
         return nutrientSetting.dailyValuePercentage(nutrientValue: nutrientValue)

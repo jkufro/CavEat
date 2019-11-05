@@ -37,6 +37,9 @@ class NutritionFactTests: XCTestCase {
         XCTAssertFalse(dietaryFiber.isWarning())
         dietaryFiber = NutritionFact(id: "2", name: "Dietary Fiber", description: "dietary fiber desc", source: "https://medlineplus.gov/dietaryfiber.html", amount: 32, unit: "g", isLimiting: true)
         XCTAssertTrue(dietaryFiber.isWarning())
+        NutrientSettings.shared.nutrientDictionary["Dietary Fiber"]!.updateDailyValue(newValue: 0.0)
+        XCTAssertTrue(dietaryFiber.isWarning())
+        NutrientSettings.shared.nutrientDictionary["Dietary Fiber"]!.updateDailyValue(newValue: 25.0)
         let nonexistentFact = NutritionFact(id: "2", name: "I dont exist", description: "", source: nil, amount: 32, unit: "g", isLimiting: true)
         XCTAssertFalse(nonexistentFact.isWarning())
     }

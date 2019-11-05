@@ -10,11 +10,12 @@ import SwiftUI
 
 struct DVSettings: View {
     @State private var showInfo = false
+    let nutrientSettings = NutrientSettings.shared.nutrientDictionary.map {$0.value}
 
     var body: some View {
         NavigationView {
             VStack {
-                List(NutrientSettings.shared.nutrientDictionary.map {$0.value}) { nutrientSetting in
+                List(nutrientSettings) { nutrientSetting in
                     NutrientSettingRow(
                         settingRowVM: DVSettingRowViewModel(
                             nutrientSetting: nutrientSetting

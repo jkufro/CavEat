@@ -18,11 +18,6 @@ class NutrientSettingsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func test_getSetting() {
-        XCTAssertEqual("Added Sugars", NutrientSettings.shared.getSetting(name: "Added Sugars")!.name)
-        XCTAssertEqual("Dietary Fiber", NutrientSettings.shared.getSetting(name: "Dietary Fiber")!.name)
-    }
-
     func test_dailyValuePercentage() {
         XCTAssertEqual(0, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 0)!)
         XCTAssertEqual(50, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 16)!)

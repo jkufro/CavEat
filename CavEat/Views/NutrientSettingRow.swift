@@ -40,7 +40,7 @@ struct NutrientSettingRow: View {
                                 .imageScale(.large)
                                 .rotationEffect(.degrees(showDetail ? 90 : 0))
                                 .fixedSize(horizontal: false, vertical: true)
-                                .padding()
+                                .padding([.leading, .trailing], 5.0)
                         }
                     }
                 )

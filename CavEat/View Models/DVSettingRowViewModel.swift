@@ -23,7 +23,7 @@ class DVSettingRowViewModel: ObservableObject {
     }
 
     func savePressed() {
-
+        nutrientSetting.updateDailyValue(newValue: selectionOptions[selection])
     }
 
     func resetToDefaultPressed() {
