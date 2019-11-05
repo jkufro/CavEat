@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct Scan: View {
     @ObservedObject var scanVM: ScanViewModel
@@ -48,6 +49,20 @@ struct Scan: View {
 
     var body: some View {
         ZStack {
+            if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
+                VStack {
+                    Text("Please enable camera access under:")
+                        .font(.subheadline)
+                        .frame(width: 300)
+                        .foregroundColor(.primary)
+                        .padding(.bottom)
+                    Text("Settings > CavEat > Camera")
+                        .font(.headline)
+                        .frame(width: 300)
+                        .foregroundColor(.primary)
+                }
+            }
+
             ScanCap(
                 captureRequested: $scanVM.captureRequested,
                 scanCompletionHandler: scanVM.scanCompletionHandler,
@@ -58,8 +73,10 @@ struct Scan: View {
 
             if scanVM.state == .nutritionFactScanning || scanVM.state == .ingredientScanning {
                 CaptureButton(pressHandler: {
-                    self.scanVM.updateBool = !self.scanVM.updateBool
-                    self.scanVM.captureRequested = true
+                    if !self.scanVM.waiting && !self.scanVM.captureRequested {
+                        self.scanVM.updateBool = !self.scanVM.updateBool
+                        self.scanVM.captureRequested = true
+                    }
                 })
             }
 

@@ -167,7 +167,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
                 } else {  // empty result returned for nutrition facts OCR
                     self.setError("Could not read the nutrition facts image for text.")
                 }
-                self.waiting = false
+                DispatchQueue.main.async { self.waiting = false }
             }
             if !nutritionImgRequestSuccess { // request to read ingredients image failed
                 self.setError("Request failed to read the nutrition facts image for text.")

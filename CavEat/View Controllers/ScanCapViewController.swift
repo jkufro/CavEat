@@ -128,7 +128,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
         captureSession = nil
-        view.backgroundColor = UIColor.red
+        //view.backgroundColor = UIColor.red
     }
 
     override func viewWillAppear(_ animated: Bool) {
