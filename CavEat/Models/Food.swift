@@ -11,7 +11,7 @@ import Foundation
 struct Food: Codable {
     let id: String
     let upc: Int64
-    let name: String
+    var name: String
     let ingredients: [Ingredient]
     let nutritionFacts: [NutritionFact]
 
