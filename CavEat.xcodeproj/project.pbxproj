@@ -55,6 +55,7 @@
 		97F611B42364C94A001A7271 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611B32364C94A001A7271 /* Result.swift */; };
 		97F611B62364CD79001A7271 /* FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F611B52364CD79001A7271 /* FoodList.swift */; };
 		9C659A1EEA5D67037AC17939 /* Pods_CavEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */; };
+		E1F00B7E2372721100CBAC0D /* ResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F00B7D2372721100CBAC0D /* ResultViewModelTests.swift */; };
 		E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F929E92367FCD000F7757D /* IngredientRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		97F611B52364CD79001A7271 /* FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodList.swift; sourceTree = "<group>"; };
 		9A2C9330A0C0F0B35C0382F8 /* Pods-CavEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.debug.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.debug.xcconfig"; sourceTree = "<group>"; };
 		A26DBC014434E8F015AB1BE2 /* Pods-CavEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.debug.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1F00B7D2372721100CBAC0D /* ResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModelTests.swift; sourceTree = "<group>"; };
 		E1F929E92367FCD000F7757D /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				978E76A2236B5D4A00B9DA5D /* ScanViewModelTests.swift */,
+				E1F00B7D2372721100CBAC0D /* ResultViewModelTests.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
 				970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */,
 				97E5233423627989006116D4 /* APIClientTests.swift in Sources */,
+				E1F00B7E2372721100CBAC0D /* ResultViewModelTests.swift in Sources */,
 				97E523232362380A006116D4 /* IngredientTests.swift in Sources */,
 				9725FE0F2361D0E700EA9094 /* CavEatTests.swift in Sources */,
 				978E76A8236B644900B9DA5D /* ImagesHelper.swift in Sources */,

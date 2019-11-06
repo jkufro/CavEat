@@ -10,6 +10,8 @@ import SwiftUI
 
 struct Result: View {
     @Binding var showFood: Bool
+    @State private var resultText = ""
+    @State private var showCancelButton: Bool = false
     let resultVM: ResultViewModel
 
     var body: some View {
@@ -26,13 +28,26 @@ struct Result: View {
                 )
             }
             HStack {
-                Text(resultVM.food.name)
+                TextField(resultVM.food.name, text: $resultText, onEditingChanged: { isEditing in
+                    self.showCancelButton = true
+                }, onCommit: {
+                    print("onCommit")
+                  }).foregroundColor(.primary)
                     .font(.largeTitle)
                     .multilineTextAlignment(.leading)
-                    .padding(.leading)
+                  .padding(.leading)
                 Spacer()
             }
             FoodList(food: resultVM.food)
+          
+//          if showCancelButton  {
+//              Button("Cancel") {
+//                  UIApplication.shared.endEditing(true) // this must be placed before the other commands here
+//                      self.resultText = ""
+//                      self.showCancelButton = false
+//              }
+//              .foregroundColor(Color(.systemBlue))
+//          }
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol ResultViewModelProtocol {
     func renameFood(newName: String)
-    func renameAndSaveFood(newName: String)
+//    func renameAndSaveFood(newName: String)
 }
 
 class ResultViewModel: ObservableObject, ResultViewModelProtocol {
@@ -21,10 +21,12 @@ class ResultViewModel: ObservableObject, ResultViewModelProtocol {
     }
 
     func renameFood(newName: String) {
-
+      self.food.changeName(name: newName)
     }
 
-    func renameAndSaveFood(newName: String) {
+    
 
-    }
+//    func renameAndSaveFood(newName: String) {
+//
+//    }
 }

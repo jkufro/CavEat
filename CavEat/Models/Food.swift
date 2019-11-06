@@ -11,7 +11,7 @@ import Foundation
 struct Food: Codable {
     let id: String
     let upc: Int64
-    let name: String
+    var name: String
     let ingredients: [Ingredient]
     let nutritionFacts: [NutritionFact]
 
@@ -22,4 +22,8 @@ struct Food: Codable {
         case ingredients
         case nutritionFacts = "nutrition_facts"
     }
+    
+  mutating func changeName(name: String) {
+    self.name = name
+  }
 }
