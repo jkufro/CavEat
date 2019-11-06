@@ -22,8 +22,4 @@ struct Food: Codable {
         case ingredients
         case nutritionFacts = "nutrition_facts"
     }
-    
-  mutating func changeName(name: String) {
-    self.name = name
-  }
 }

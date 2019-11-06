@@ -10,37 +10,53 @@ import XCTest
 @testable import CavEat
 
 class ResultViewModelTests: XCTestCase {
-  var resultVM = ResultViewModel(food: Food)
+    var resultVM = ResultViewModel(
+        food: Food(
+            id: "1",
+            upc: 1234567890,
+            name: "My Food",
+            ingredients: [
+        Ingredient(
+            id: "123",
+            name: "Milk",
+            composition: nil,
+            description: nil,
+            source: nil,
+            isWarning: false)
+        ],
+        nutritionFacts: [
+            NutritionFact(
+                id: "1",
+                name: "Cholesterol",
+                description: "Needed for the body in moderate amounts. Excess consumption is known to lead to plaque buildup in arteries. This may lead to coronary artery disease, heart attack, or stroke.",
+                source: "https://medlineplus.gov/cholesterol.html",
+                amount: 5.2,
+                unit: "mg",
+                isLimiting: true),
+            NutritionFact(
+                id: "2",
+                name: "Dietary Fiber",
+                description: "Helps digestions and prevent constipation, and helps control your weight by making you feel full faster. You should get enough fiber, but adding too much too quickly can lead to gas, bloating, and cramps.",
+                source: "https://medlineplus.gov/dietaryfiber.html",
+                amount: 3,
+                unit: "g",
+                isLimiting: false),
+            NutritionFact(
+                id: "3",
+                name: "Energy",
+                description: nil,
+                source: nil,
+                amount: 0,
+                unit: "kcal",
+                isLimiting: false)
+            ]
+        )
+    )
 
     override func setUp() {
-        resultVM = ResultViewModel()
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func test_renameFood_success() {
-        XCTAssertNil(scanVM.upc)
-        scanVM.scanCompletionHandler("1234567890")
-        Thread.sleep(forTimeInterval: 0.25)
-        XCTAssertEqual("1234567890", self.scanVM.upc)
-        XCTAssertTrue(self.scanVM.showFood)
-        XCTAssertEqual("SuccessfulAPIClientMock Food", self.scanVM.food.name)
-        XCTAssertFalse(self.scanVM.waiting)
-    }
-
-    func test_renameFood_failure() {
-        scanVM.apiClient = FailedAPIClientMock()
-        XCTAssertNil(scanVM.upc)
-        scanVM.scanCompletionHandler("1234567890")
-        Thread.sleep(forTimeInterval: 0.25)
-        XCTAssertEqual("1234567890", self.scanVM.upc)
-        XCTAssertTrue(self.scanVM.promptForManualDecision)
-        XCTAssertTrue(self.scanVM.anyAlerts)
-        XCTAssertFalse(self.scanVM.waiting)
-    }
-
-   
 }
-
