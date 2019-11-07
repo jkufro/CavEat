@@ -31,6 +31,8 @@ class NutritionFactTests: XCTestCase {
     func test_getDescription() {
         XCTAssertEqual("dietary fiber desc", dietaryFiber.getDescription())
         XCTAssertEqual("No description available", energy.getDescription())
+        energy = NutritionFact(id: "3", name: "Energy", description: " ", source: nil, amount: 0, unit: "kcal", isLimiting: false)
+        XCTAssertEqual("No description available", energy.getDescription())
     }
 
     func test_isWarning() {

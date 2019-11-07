@@ -10,15 +10,21 @@ import XCTest
 @testable import CavEat
 
 class IngredientTests: XCTestCase {
+    var milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func test_nothing() {
-
+    func test_getDescription() {
+        XCTAssertEqual("From a cow.", milk.getDescription())
+        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: nil, source: nil, isWarning: false)
+        XCTAssertEqual("No description available", milk.getDescription())
+        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: " ", source: nil, isWarning: false)
+        XCTAssertEqual("No description available", milk.getDescription())
     }
 }

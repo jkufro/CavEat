@@ -25,7 +25,13 @@ struct Ingredient: Codable, Identifiable {
         case isWarning = "is_warning"
     }
 
-  func getDescription() -> String {
-      return self.description ?? "No description available"
-  }
+    func getDescription() -> String {
+        guard let desc = self.description else {
+            return "No description available"
+        }
+        if desc.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "No description available"
+        }
+        return desc
+    }
 }
