@@ -37,7 +37,13 @@ struct NutritionFact: Codable, Identifiable {
     }
 
     func getDescription() -> String {
-        return self.description ?? "No description available"
+        guard let desc = self.description else {
+            return "No description available"
+        }
+        if desc.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "No description available"
+        }
+        return desc
     }
 
     func isWarning() -> Bool {
