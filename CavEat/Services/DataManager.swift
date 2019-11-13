@@ -82,7 +82,27 @@ class DataManager {
         return foods
     }
 
-    // Delete food, is it gonna be in a tableView? Should I override the tableView function like in contacts? How do I test any of this?
+    func deleteFood(food: Food) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_Food")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                if let uuid = data.value(forKey: "id") as? UUID {
+                    if uuid == food.id {
+                        context.delete(data)
+                        try context.save()
+                        return true
+                    }
+                }
+            }
+            return false
+        } catch {
+            return false
+        }
+    }
 
     func saveSetting(setting: NutrientSetting) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
