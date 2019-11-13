@@ -72,7 +72,7 @@
 
 /* Begin PBXFileReference section */
 		001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19A4905823744C9900DA88DC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		19A4905823744C9900DA88DC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; tabWidth = 4; };
 		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
 		621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
