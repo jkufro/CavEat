@@ -32,7 +32,7 @@ struct FoodList_Previews: PreviewProvider {
     static var previews: some View {
         FoodList(
             food: Food(
-                id: "1",
+              api_id: "1",
                 upc: 1234567890,
                 name: "My Food",
                 ingredients: [

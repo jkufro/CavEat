@@ -11,7 +11,7 @@ import Foundation
 
 class SuccessfulAPIClientMock: APIClient {
     override internal func APIRequest(url: String, parameters: [String: String], _ completion: @escaping (Food?) -> Void) {
-        completion(Food(id: "1", upc: 1234567890, name: "SuccessfulAPIClientMock Food", ingredients: [], nutritionFacts: []))
+      completion(Food(api_id: "1", upc: 1234567890, name: "SuccessfulAPIClientMock Food", ingredients: [], nutritionFacts: []))
     }
 }
 
