@@ -12,7 +12,7 @@ import CoreData
 
 class DataManager {
   
-  func saveFood(food: Food) {
+  func saveFood(food: Food) -> Bool {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
     if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context) {
@@ -51,9 +51,10 @@ class DataManager {
         }
     }
     do {
-        try context.save()
+        try context.save() return true
     } catch {
-        print("Failed saving food")
+        print("Failed to save food")
+        return false
     }
   }
   
@@ -83,7 +84,7 @@ class DataManager {
   
   // Delete food, is it gonna be in a tableView? Should I override the tableView function like in contacts? How do I test any of this?
 
-  func saveSetting(setting: NutrientSetting) {
+  func saveSetting(setting: NutrientSetting) -> Bool {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
     if let entity = NSEntityDescription.entity(forEntityName: "CD_nutrientSetting", in: context) {
@@ -93,9 +94,10 @@ class DataManager {
         newSetting.setValue(setting.dailyValue, forKey: "dailyValue")
     }
     do {
-        try context.save()
+        try context.save() return true
     } catch {
         print("Failed saving setting")
+        return false
     }
   }
 
