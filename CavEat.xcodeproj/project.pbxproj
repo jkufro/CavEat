@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A4905923744C9900DA88DC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4905823744C9900DA88DC /* DataManager.swift */; };
 		42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */; };
 		970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CF209236C5BB400A557AF /* MockImageReaders.swift */; };
 		9725FDF52361D0E500EA9094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF42361D0E500EA9094 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19A4905823744C9900DA88DC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
 		621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +208,7 @@
 				9725FE052361D0E700EA9094 /* Info.plist */,
 				9725FDF82361D0E500EA9094 /* CavEat.xcdatamodeld */,
 				9725FDFF2361D0E700EA9094 /* Preview Content */,
+				19A4905823744C9900DA88DC /* DataManager.swift */,
 			);
 			path = CavEat;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				97F611B12364C85C001A7271 /* ResultViewModel.swift in Sources */,
 				97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */,
 				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,
+				19A4905923744C9900DA88DC /* DataManager.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
 				97F611AE23646936001A7271 /* ManualScanHeader.swift in Sources */,
 				97745B372361F6A2001E5B76 /* MainView.swift in Sources */,

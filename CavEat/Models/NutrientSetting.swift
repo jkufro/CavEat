@@ -9,6 +9,7 @@
 import Foundation
 
 struct NutrientSetting {
+    let id: UUID
     let name: String
     let unit: String
     var dailyValue: Float
