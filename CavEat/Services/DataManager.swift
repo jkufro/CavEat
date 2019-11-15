@@ -76,13 +76,17 @@ class DataManager {
         do {
             let result = try context.viewContext.fetch(request)
             for data in result as! [NSManagedObject] {
+              print(data.mutableSetValue(forKey: "ingredients"))
                 if let api_id = data.value(forKey: "api_id") as? String,
                     let upc = data.value(forKey: "upc") as? Int64,
                     let name = data.value(forKey: "name") as? String,
-                    let ingredients = data.value(forKey: "ingredients") as? [Ingredient],
-                    let nutritionFacts = data.value(forKey: "nutritionFacts") as? [NutritionFact]{
-                    let food = Food(api_id: api_id, upc: upc, name: name, ingredients: ingredients, nutritionFacts: nutritionFacts)
-                    foods.append(food)
+                    let ingredientsSet = data.mutableSetValue(forKey: "ingredients") as? NSMutableSet,
+                    let nutritionFactsSet = data.mutableSetValue(forKey: "nutritionFacts") as? NSMutableSet {
+//                      if let ingredients = decodeIngredients(ingredientsSet) as? [Ingredient],
+//                        let nutritionFacts = decodeNutritionFacts(nutritionFactsSet) as? [NutritionFact] {
+//                        let food = Food(api_id: api_id, upc: upc, name: name, ingredients: ingredients, nutritionFacts: nutritionFacts)
+//                        foods.append(food)
+//                      }
                   
                 }
             }
@@ -91,6 +95,39 @@ class DataManager {
         }
         return foods
     }
+  
+//    private func decodeIngredients(_ set: NSMutableSet) -> [Ingredient] {
+//      var ingredients = [Ingredient]()
+//      for data in set {
+//        if let id = data.value(forKey: "id") as? String,
+//          let name = data.value(forKey: "name") as? String,
+//          let comp = data.value(forKey: "composition") as? String,
+//          let desc = data.value(forKey: "description") as? String,
+//          let source = data.value(forKey: "source") as? String,
+//          let isWarning = data.value(forKey: "isWarning") as? Bool {
+//          let ing = Ingredient(id: id, name: name, composition: comp, description: desc, source: source, isWarning: isWarning)
+//          ingredients.append(ing)
+//        }
+//      }
+//      return ingredients
+//    }
+//
+//    private func decodeNutritionFacts(_ set: NSMutableSet) -> [NutritionFact] {
+//      var nutritionFacts = [NutritionFact]()
+//      for data in set {
+//        if let id = data.value(forKey: "id") as? String,
+//          let name = data.value(forKey: "name") as? String,
+//          let desc = data.value(forKey: "description") as? String,
+//          let source = data.value(forKey: "source") as? String,
+//          let amount = data.value(forKey: "amount") as? Float,
+//          let unit = data.value(forKey: "unit") as? String,
+//          let isLimiting = data.value(forKey: "isLimiting") as? Bool {
+//          let nf = NutritionFact(id: id, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting)
+//          nutritionFacts.append(nf)
+//        }
+//      }
+//      return nutritionFacts
+//    }
 
     func deleteFood(food: Food) -> Bool {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
