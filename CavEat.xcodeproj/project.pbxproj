@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193D145E237DDAE900146E61 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193D145D237DDAE900146E61 /* DataManagerTests.swift */; };
+		193D145F237DE0B100146E61 /* CavEat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF82361D0E500EA9094 /* CavEat.xcdatamodeld */; };
 		19A4905923744C9900DA88DC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4905823744C9900DA88DC /* DataManager.swift */; };
 		42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */; };
 		970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CF209236C5BB400A557AF /* MockImageReaders.swift */; };
@@ -72,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		001D5DC2E0D35625712A1A3A /* Pods_CavEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		193D145D237DDAE900146E61 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		19A4905823744C9900DA88DC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; tabWidth = 4; };
 		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +284,7 @@
 				978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */,
 				978E76A7236B644900B9DA5D /* ImagesHelper.swift */,
 				970CF209236C5BB400A557AF /* MockImageReaders.swift */,
+				193D145D237DDAE900146E61 /* DataManagerTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -572,6 +576,7 @@
 				97E5232923623863006116D4 /* NutrientSettingsTests.swift in Sources */,
 				978E76A6236B5DAD00B9DA5D /* MockAPIClients.swift in Sources */,
 				97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */,
+				193D145E237DDAE900146E61 /* DataManagerTests.swift in Sources */,
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
 				970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */,
 				97E5233423627989006116D4 /* APIClientTests.swift in Sources */,
@@ -582,6 +587,7 @@
 				97E7D4BD2368F7630016C3CE /* ImageReaderTest.swift in Sources */,
 				97E52321236237CD006116D4 /* FoodTests.swift in Sources */,
 				978E76A3236B5D4A00B9DA5D /* ScanViewModelTests.swift in Sources */,
+				193D145F237DE0B100146E61 /* CavEat.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
