@@ -212,7 +212,7 @@ class ScanViewModelTests: XCTestCase {
     func test_handleFoodResult() {
         XCTAssertFalse(scanVM.showFood)
         XCTAssertEqual("Blank Food", scanVM.food.name)
-      let result: Food = Food(api_id: "", upc: 0, name: "New Food", ingredients: [], nutritionFacts: [])
+      let result: Food = Food(apiId: "", upc: 0, name: "New Food", ingredients: [], nutritionFacts: [])
         scanVM.handleFoodResult(result)
         XCTAssertTrue(scanVM.showFood)
         XCTAssertEqual("New Food", scanVM.food.name)

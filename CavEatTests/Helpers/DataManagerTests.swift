@@ -26,8 +26,8 @@ class DataManagerTests: XCTestCase {
     var addedSugars: NutrientSetting = NutrientSetting(id: UUID(uuidString: "093A8D5E-AB17-4D51-9E4B-EB14A87ADBB8")!, name: "Added Sugars", unit: "g", dailyValue: 32)
     var dietaryFiberNS: NutrientSetting = NutrientSetting(id: UUID(uuidString: "C97F7160-4F88-452D-B834-94BDB6332480")!, name: "Dietary Fiber", unit: "g", dailyValue: 25)
     // Foods
-    lazy var candy = Food(api_id: "1", upc: Int64(1), name: "Snickers", ingredients: [cocoa], nutritionFacts: [energy, dietaryFiberNF])
-    lazy var chocMilk = Food(api_id: "2", upc: Int64(2), name: "TruMoo", ingredients: [cocoa, milk], nutritionFacts: [energy, dietaryFiberNF])
+    lazy var candy = Food(apiId: "1", upc: Int64(1), name: "Snickers", ingredients: [cocoa], nutritionFacts: [energy, dietaryFiberNF])
+    lazy var chocMilk = Food(apiId: "2", upc: Int64(2), name: "TruMoo", ingredients: [cocoa, milk], nutritionFacts: [energy, dietaryFiberNF])
 
     // MARK: - Actual Tests
     func test_saveFood() {
@@ -83,13 +83,22 @@ class DataManagerTests: XCTestCase {
 
     func test_saveSettings() {
         XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_nutrientSetting")
-        request.returnsObjectsAsFaults = false
-        let result = try! dataHelper.context.viewContext.fetch(request)
-        XCTAssertEqual(1, result.count)
-        let data = result[0] as! NSManagedObject
-        XCTAssertEqual(data.value(forKey: "name") as? String, "Added Sugars")
-        XCTAssertEqual(data.value(forKey: "dailyValue") as? Float, 32)
+        var settings = dataHelper.loadSettings()
+        XCTAssertEqual(1, settings.count)
+        // test that re-saving a setting does not create a duplicate
+        XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
+        XCTAssertEqual(1, settings.count)
+        // test that updating the dv of an existing food works
+        XCTAssertEqual(32, settings[0].dailyValue)
+        settings[0].dailyValue = 5
+        XCTAssertTrue(dataHelper.saveSetting(setting: settings[0]))
+        settings = dataHelper.loadSettings()
+        XCTAssertEqual(1, settings.count)
+        XCTAssertEqual(5, settings[0].dailyValue)
+        // test saving a second setting
+        XCTAssertTrue(dataHelper.saveSetting(setting: dietaryFiberNS))
+        settings = dataHelper.loadSettings()
+        XCTAssertEqual(2, settings.count)
     }
 
     func test_loadSettings() {
@@ -115,12 +124,12 @@ class DataManagerTests: XCTestCase {
     func flushData() {
         let models = ["CD_food", "CD_ingredient", "CD_nutrientSetting", "CD_nutritionFact"]
         for model in models {
-            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: model)
-            let objs = try! mockPersistentContainer().viewContext.fetch(fetchRequest)
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: model)
+            let objs = try! mockPersistentContainer().viewContext.fetch(fetchRequest) // swiftlint:disable:this force_try
             for case let obj as NSManagedObject in objs {
                 mockPersistentContainer().viewContext.delete(obj)
             }
-            try! mockPersistentContainer().viewContext.save()
+            try! mockPersistentContainer().viewContext.save() // swiftlint:disable:this force_try
         }
     }
 
@@ -140,7 +149,6 @@ class DataManagerTests: XCTestCase {
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-
             // Check if creating container wrong
             if let error = error {
                 fatalError("Create an in-mem coordinator failed \(error)")
@@ -148,5 +156,4 @@ class DataManagerTests: XCTestCase {
         }
         return container
     }
-  
 }

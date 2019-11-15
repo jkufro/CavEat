@@ -92,7 +92,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                 metadataOutput.metadataObjectTypes = [
                     .ean13,
-                    .code128,
+                    .code128
 //                    .code39,
 //                    .ean8,
 //                    .code93,
