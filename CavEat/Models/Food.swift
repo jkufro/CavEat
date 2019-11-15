@@ -15,6 +15,7 @@ struct Food: Codable {
     var name: String
     let ingredients: [Ingredient]
     let nutritionFacts: [NutritionFact]
+    var createdAt: Date?
 
     enum CodingKeys: String, CodingKey {
         case api_id = "id"
@@ -23,9 +24,4 @@ struct Food: Codable {
         case ingredients
         case nutritionFacts = "nutrition_facts"
     }
-
-//    mutating func ensureUUIDPresent() {
-//        guard id == nil else { return }
-//        self.id = UUID()
-//    }
 }

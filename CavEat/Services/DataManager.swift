@@ -25,43 +25,62 @@ class DataManager {
     }
   
     func saveFood(food: Food) -> Bool {
-        if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context.viewContext) {
-            let newFood = NSManagedObject(entity: entity, insertInto: context.viewContext)
-            if let id = food.id {
-                newFood.setValue(id, forKey: "id")
-            } else {
-                newFood.setValue(UUID(), forKey: "id")
+        if food.createdAt != nil { // update the food
+            // fetch the specific food
+            guard let id = food.id else { return false }
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
+            request.returnsObjectsAsFaults = false
+            request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+            do {
+                let result = try context.viewContext.fetch(request)
+                let foodDataList  = result as! [NSManagedObject]
+                guard foodDataList.count > 0 else { return false }
+                let foodData = foodDataList[0]
+                // realistically we will only ever update the name
+                foodData.setValue(food.name, forKey: "name")
+            } catch {
+                return false
             }
-            newFood.setValue(food.api_id, forKey: "api_id")
-            newFood.setValue(food.name, forKey: "name")
-            newFood.setValue(food.upc, forKey: "upc")
-            // Loop over ingredients and nutritionFacts and add to array
-            // Should refactor these into helpers
-            let ingredients = newFood.mutableSetValue(forKey: #keyPath(CD_food.ingredients))
-            for i in food.ingredients {
-                if let ingEntity = NSEntityDescription.entity(forEntityName: "CD_ingredient", in: context.viewContext) {
-                    let newIng = NSManagedObject(entity: ingEntity, insertInto: context.viewContext)
-                    newIng.setValue(i.id, forKey: "id")
-                    newIng.setValue(i.name, forKey: "name")
-                    newIng.setValue(i.composition, forKey: "composition")
-                    newIng.setValue(i.description, forKey: "ing_description")
-                    newIng.setValue(i.source, forKey: "source")
-                    newIng.setValue(i.isWarning, forKey: "isWarning")
-                    ingredients.add(newIng)
+        } else { // create the food
+            if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context.viewContext) {
+                let newFood = NSManagedObject(entity: entity, insertInto: context.viewContext)
+                if let id = food.id {
+                    newFood.setValue(id, forKey: "id")
+                } else {
+                    newFood.setValue(UUID(), forKey: "id")
                 }
-            }
-            let nutritionFacts = newFood.mutableSetValue(forKey: #keyPath(CD_food.nutritionFacts))
-            for n in food.nutritionFacts {
-                if let nfEntity = NSEntityDescription.entity(forEntityName: "CD_nutritionFact", in: context.viewContext) {
-                    let newNF = NSManagedObject(entity: nfEntity, insertInto: context.viewContext)
-                    newNF.setValue(n.id, forKey: "id")
-                    newNF.setValue(n.name, forKey: "name")
-                    newNF.setValue(n.unit, forKey: "unit")
-                    newNF.setValue(n.amount, forKey: "amount")
-                    newNF.setValue(n.description, forKey: "nf_description")
-                    newNF.setValue(n.source, forKey: "source")
-                    newNF.setValue(n.isLimiting, forKey: "isLimiting")
-                    nutritionFacts.add(newNF)
+                newFood.setValue(food.api_id, forKey: "api_id")
+                newFood.setValue(food.name, forKey: "name")
+                newFood.setValue(food.upc, forKey: "upc")
+                newFood.setValue(Date(), forKey: "created_at")
+                // Loop over ingredients and nutritionFacts and add to array
+                // Should refactor these into helpers
+                let ingredients = newFood.mutableSetValue(forKey: #keyPath(CD_food.ingredients))
+                for i in food.ingredients {
+                    if let ingEntity = NSEntityDescription.entity(forEntityName: "CD_ingredient", in: context.viewContext) {
+                        let newIng = NSManagedObject(entity: ingEntity, insertInto: context.viewContext)
+                        newIng.setValue(i.id, forKey: "id")
+                        newIng.setValue(i.name, forKey: "name")
+                        newIng.setValue(i.composition, forKey: "composition")
+                        newIng.setValue(i.description, forKey: "ing_description")
+                        newIng.setValue(i.source, forKey: "source")
+                        newIng.setValue(i.isWarning, forKey: "isWarning")
+                        ingredients.add(newIng)
+                    }
+                }
+                let nutritionFacts = newFood.mutableSetValue(forKey: #keyPath(CD_food.nutritionFacts))
+                for n in food.nutritionFacts {
+                    if let nfEntity = NSEntityDescription.entity(forEntityName: "CD_nutritionFact", in: context.viewContext) {
+                        let newNF = NSManagedObject(entity: nfEntity, insertInto: context.viewContext)
+                        newNF.setValue(n.id, forKey: "id")
+                        newNF.setValue(n.name, forKey: "name")
+                        newNF.setValue(n.unit, forKey: "unit")
+                        newNF.setValue(n.amount, forKey: "amount")
+                        newNF.setValue(n.description, forKey: "nf_description")
+                        newNF.setValue(n.source, forKey: "source")
+                        newNF.setValue(n.isLimiting, forKey: "isLimiting")
+                        nutritionFacts.add(newNF)
+                    }
                 }
             }
         }
@@ -85,10 +104,11 @@ class DataManager {
                     let api_id = data.value(forKey: "api_id") as? String,
                     let upc = data.value(forKey: "upc") as? Int64,
                     let name = data.value(forKey: "name") as? String,
+                    let createdAt = data.value(forKey: "created_at") as? Date,
                     let ingredients = decodeIngredients(data.mutableSetValue(forKey: "ingredients") as? NSMutableSet),
                     let nutritionFacts = decodeNutritionFacts(data.mutableSetValue(forKey: "nutritionFacts") as? NSMutableSet)
                 {
-                    let food = Food(id: id, api_id: api_id, upc: upc, name: name, ingredients: ingredients, nutritionFacts: nutritionFacts)
+                    let food = Food(id: id, api_id: api_id, upc: upc, name: name, ingredients: ingredients, nutritionFacts: nutritionFacts, createdAt: createdAt)
                         foods.append(food)
                 }
             }
@@ -108,7 +128,7 @@ class DataManager {
                 let isWarning = data.value(forKey: "isWarning") as? Bool
             {
                 let comp = data.value(forKey: "composition") as? String
-                let desc = data.value(forKey: "description") as? String
+                let desc = data.value(forKey: "ing_description") as? String
                 let source = data.value(forKey: "source") as? String
                 let ing = Ingredient(id: id, name: name, composition: comp, description: desc, source: source, isWarning: isWarning)
                 ingredients.append(ing)
@@ -128,7 +148,7 @@ class DataManager {
                 let unit = data.value(forKey: "unit") as? String,
                 let isLimiting = data.value(forKey: "isLimiting") as? Bool
             {
-                let desc = data.value(forKey: "description") as? String
+                let desc = data.value(forKey: "nf_description") as? String
                 let source = data.value(forKey: "source") as? String
                 let nf = NutritionFact(id: id, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting)
                   nutritionFacts.append(nf)

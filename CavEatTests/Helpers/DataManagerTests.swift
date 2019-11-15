@@ -35,11 +35,18 @@ class DataManagerTests: XCTestCase {
         var foods = dataHelper.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Snickers")
+        XCTAssertNotNil(foods[0].createdAt)
         // test that re-saving a food does not create a duplicate
-        XCTAssertTrue(dataHelper.saveFood(food: candy))
+        XCTAssertTrue(dataHelper.saveFood(food: foods[0]))
         foods = dataHelper.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Snickers")
+        // test that renaming a food works
+        foods[0].name = "Hazelnut Snickers"
+        XCTAssertTrue(dataHelper.saveFood(food: foods[0]))
+        foods = dataHelper.loadFoods()
+        XCTAssertEqual(1, foods.count)
+        XCTAssertEqual(foods[0].name, "Hazelnut Snickers")
     }
 
     func test_loadFoods() {
