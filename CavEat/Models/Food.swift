@@ -9,7 +9,7 @@
 import Foundation
 
 struct Food: Codable {
-    let id = UUID()
+    var id: UUID?
     let api_id: String
     let upc: Int64
     var name: String
@@ -17,11 +17,15 @@ struct Food: Codable {
     let nutritionFacts: [NutritionFact]
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case api_id
+        case api_id = "id"
         case upc
         case name
         case ingredients
         case nutritionFacts = "nutrition_facts"
     }
+
+//    mutating func ensureUUIDPresent() {
+//        guard id == nil else { return }
+//        self.id = UUID()
+//    }
 }

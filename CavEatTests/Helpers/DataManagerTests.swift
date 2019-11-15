@@ -41,8 +41,8 @@ class DataManagerTests: XCTestCase {
   }
   
   func test_loadFoods() {
-    dataHelper.saveFood(food: candy)
-    dataHelper.saveFood(food: chocMilk)
+    XCTAssertTrue(dataHelper.saveFood(food: candy))
+    XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
     // This snippet is essentially the same as what's in DataManager.loadFoods and it passes
 //    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
 //    request.returnsObjectsAsFaults = false
@@ -51,25 +51,28 @@ class DataManagerTests: XCTestCase {
     
     let foods = dataHelper.loadFoods()
     XCTAssertEqual(2, foods.count)
+    XCTAssertNotNil(foods[0].id)
     XCTAssertEqual(foods[0].name, "Snickers")
+    XCTAssertEqual(foods[0].nutritionFacts.count, 2)
+    XCTAssertEqual(foods[0].ingredients.count, 1)
+    XCTAssertNotNil(foods[1].id)
     XCTAssertEqual(foods[1].name, "TruMoo")
+    XCTAssertEqual(foods[1].nutritionFacts.count, 2)
+    XCTAssertEqual(foods[1].ingredients.count, 2)
   }
   
   func test_deleteFood() {
-    dataHelper.saveFood(food: candy)
-    dataHelper.saveFood(food: chocMilk)
-    let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
-    request1.returnsObjectsAsFaults = false
-    let result1 = try! dataHelper.context.viewContext.fetch(request1)
-    XCTAssertEqual(2, result1.count)
-    
-    XCTAssertTrue(dataHelper.deleteFood(food: candy))
-    let request2 = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
-    request2.returnsObjectsAsFaults = false
-    let result2 = try! dataHelper.context.viewContext.fetch(request2)
-    XCTAssertEqual(1, result2.count)
-    let data = result2[0] as! NSManagedObject
-    XCTAssertEqual(data.value(forKey: "name") as? String, "Snickers")
+    XCTAssertTrue(dataHelper.saveFood(food: candy))
+    XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
+    var foods = dataHelper.loadFoods() // candy and chocMilk dont get uuids until they are saved
+    XCTAssertEqual(2, foods.count)
+    let deleteTarget = foods[0]
+    let remainingTarget = foods[1]
+
+    XCTAssertTrue(dataHelper.deleteFood(food: deleteTarget))
+    foods = dataHelper.loadFoods()
+    XCTAssertEqual(1, foods.count)
+    XCTAssertEqual(foods[0].id, remainingTarget.id)
   }
   
   func test_saveSettings() {
@@ -84,18 +87,13 @@ class DataManagerTests: XCTestCase {
   }
   
   func test_loadSettings() {
-    dataHelper.saveSetting(setting: addedSugars)
-    dataHelper.saveSetting(setting: dietaryFiberNS)
-    // This snippet is essentially the same as what's in DataManager.loadSettings and it passes
-//    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_nutrientSetting")
-//    request.returnsObjectsAsFaults = false
-//    let result = try! dataHelper.context.viewContext.fetch(request)
-//    XCTAssertEqual(2, result.count)
+    XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
+    XCTAssertTrue(dataHelper.saveSetting(setting: dietaryFiberNS))
     
     let settings = dataHelper.loadSettings()
     XCTAssertEqual(2, settings.count)
-    XCTAssertEqual(settings[0].name, "Added Sugars")
-    XCTAssertEqual(settings[1].name, "Dietary Fiber")
+    XCTAssertEqual(settings[0].name, "Dietary Fiber")
+    XCTAssertEqual(settings[1].name, "Added Sugars")
   }
   
   // MARK: - Data Setup and Teardown
