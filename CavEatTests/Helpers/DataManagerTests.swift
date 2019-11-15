@@ -12,7 +12,7 @@ import XCTest
 @testable import CavEat
 
 class DataManagerTests: XCTestCase {
-    lazy var dataHelper = DataManager(context: mockPersistentContainer())
+    lazy var dataManager = InMemoryDataManagerHelper.shared.getInMemoryDataManager()
 
     // Ingredients
     var milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
@@ -29,34 +29,43 @@ class DataManagerTests: XCTestCase {
     lazy var candy = Food(apiId: "1", upc: Int64(1), name: "Snickers", ingredients: [cocoa], nutritionFacts: [energy, dietaryFiberNF])
     lazy var chocMilk = Food(apiId: "2", upc: Int64(2), name: "TruMoo", ingredients: [cocoa, milk], nutritionFacts: [energy, dietaryFiberNF])
 
+    // MARK: - Data Setup and Teardown
+    override func setUp() {
+        DataManager.shared = dataManager
+    }
+
+    override func tearDown() {
+        InMemoryDataManagerHelper.shared.flushData(dataManager: dataManager)
+    }
+
     // MARK: - Actual Tests
     func test_saveFood() {
-        XCTAssertTrue(dataHelper.saveFood(food: candy))
-        var foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.saveFood(food: candy))
+        var foods = DataManager.shared.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Snickers")
         XCTAssertNotNil(foods[0].createdAt)
         // test that re-saving a food does not create a duplicate
-        XCTAssertTrue(dataHelper.saveFood(food: foods[0]))
-        foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.saveFood(food: foods[0]))
+        foods = DataManager.shared.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Snickers")
         // test that renaming a food works
         foods[0].name = "Hazelnut Snickers"
-        XCTAssertTrue(dataHelper.saveFood(food: foods[0]))
-        foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.saveFood(food: foods[0]))
+        foods = DataManager.shared.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Hazelnut Snickers")
         // test saving a second food
-        XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
-        foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.saveFood(food: chocMilk))
+        foods = DataManager.shared.loadFoods()
         XCTAssertEqual(2, foods.count)
     }
 
     func test_loadFoods() {
-        XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
-        XCTAssertTrue(dataHelper.saveFood(food: candy))
-        let foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.saveFood(food: chocMilk))
+        XCTAssertTrue(DataManager.shared.saveFood(food: candy))
+        let foods = DataManager.shared.loadFoods()
         XCTAssertEqual(2, foods.count)
         XCTAssertNotNil(foods[0].id)
         XCTAssertEqual(foods[0].name, "Snickers")
@@ -69,91 +78,44 @@ class DataManagerTests: XCTestCase {
     }
 
     func test_deleteFood() {
-        XCTAssertTrue(dataHelper.saveFood(food: candy))
-        XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
-        var foods = dataHelper.loadFoods() // candy and chocMilk dont get uuids until they are saved
+        XCTAssertTrue(DataManager.shared.saveFood(food: candy))
+        XCTAssertTrue(DataManager.shared.saveFood(food: chocMilk))
+        var foods = DataManager.shared.loadFoods() // candy and chocMilk dont get uuids until they are saved
         XCTAssertEqual(2, foods.count)
         let deleteTarget = foods[0]
         let remainingTarget = foods[1]
-        XCTAssertTrue(dataHelper.deleteFood(food: deleteTarget))
-        foods = dataHelper.loadFoods()
+        XCTAssertTrue(DataManager.shared.deleteFood(food: deleteTarget))
+        foods = DataManager.shared.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].id, remainingTarget.id)
     }
 
     func test_saveSettings() {
-        XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
-        var settings = dataHelper.loadSettings()
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: addedSugars))
+        var settings = DataManager.shared.loadSettings()
         XCTAssertEqual(1, settings.count)
         // test that re-saving a setting does not create a duplicate
-        XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: addedSugars))
         XCTAssertEqual(1, settings.count)
         // test that updating the dv of an existing food works
         XCTAssertEqual(32, settings[0].dailyValue)
         settings[0].dailyValue = 5
-        XCTAssertTrue(dataHelper.saveSetting(setting: settings[0]))
-        settings = dataHelper.loadSettings()
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: settings[0]))
+        settings = DataManager.shared.loadSettings()
         XCTAssertEqual(1, settings.count)
         XCTAssertEqual(5, settings[0].dailyValue)
         // test saving a second setting
-        XCTAssertTrue(dataHelper.saveSetting(setting: dietaryFiberNS))
-        settings = dataHelper.loadSettings()
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: dietaryFiberNS))
+        settings = DataManager.shared.loadSettings()
         XCTAssertEqual(2, settings.count)
     }
 
     func test_loadSettings() {
-        XCTAssertTrue(dataHelper.saveSetting(setting: addedSugars))
-        XCTAssertTrue(dataHelper.saveSetting(setting: dietaryFiberNS))
-        let settings = dataHelper.loadSettings()
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: addedSugars))
+        XCTAssertTrue(DataManager.shared.saveSetting(setting: dietaryFiberNS))
+        let settings = DataManager.shared.loadSettings()
         XCTAssertEqual(2, settings.count)
         XCTAssertEqual(settings[0].name, "Dietary Fiber")
         XCTAssertEqual(settings[1].name, "Added Sugars")
-    }
-
-    // MARK: - Data Setup and Teardown
-    override func setUp() {
-        super.setUp()
-        dataHelper = DataManager(context: mockPersistentContainer())
-    }
-
-    override func tearDown() {
-        flushData()
-        super.tearDown()
-    }
-
-    func flushData() {
-        let models = ["CD_food", "CD_ingredient", "CD_nutrientSetting", "CD_nutritionFact"]
-        for model in models {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: model)
-            let objs = try! mockPersistentContainer().viewContext.fetch(fetchRequest) // swiftlint:disable:this force_try
-            for case let obj as NSManagedObject in objs {
-                mockPersistentContainer().viewContext.delete(obj)
-            }
-            try! mockPersistentContainer().viewContext.save() // swiftlint:disable:this force_try
-        }
-    }
-
-    // MARK: - Mock Persistent Container Code
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!
-        return managedObjectModel
-    }()
-
-    func mockPersistentContainer() -> NSPersistentContainer {
-        let container = NSPersistentContainer(name: "PersistentDataManager", managedObjectModel: self.managedObjectModel)
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false // Make it simpler in test env
-
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { (description, error) in
-            // Check if the data store is in memory
-            precondition( description.type == NSInMemoryStoreType )
-            // Check if creating container wrong
-            if let error = error {
-                fatalError("Create an in-mem coordinator failed \(error)")
-            }
-        }
-        return container
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 class DataManager {
-    static let shared = DataManager(context: nil)
+    static var shared = DataManager(context: nil)
 
     let context: NSPersistentContainer
 

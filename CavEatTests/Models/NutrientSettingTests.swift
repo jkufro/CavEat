@@ -40,8 +40,4 @@ class NutrientSettingTests: XCTestCase {
         addedSugars.dailyValue = -1.555
         XCTAssertEqual(nil, addedSugars.dailyValuePercentage(nutrientValue: 5))
     }
-
-    func test_seedSettings() {
-        XCTAssertEqual(10, DataManager.shared.loadSettings().count)
-    }
 }

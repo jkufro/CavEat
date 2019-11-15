@@ -44,7 +44,7 @@ class NutrientSettings {
         return nutrientSetting.dailyValuePercentage(nutrientValue: nutrientValue)
     }
 
-    private func seedSettings() {
+    func seedSettings() {
         let existingSettings = DataManager.shared.loadSettings()
         for (_, setting) in NutrientSettings.defaultSettings {
             if existingSettings.contains(where: { $0.id == setting.id }) { continue }
