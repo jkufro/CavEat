@@ -47,11 +47,15 @@ class DataManagerTests: XCTestCase {
         foods = dataHelper.loadFoods()
         XCTAssertEqual(1, foods.count)
         XCTAssertEqual(foods[0].name, "Hazelnut Snickers")
+        // test saving a second food
+        XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
+        foods = dataHelper.loadFoods()
+        XCTAssertEqual(2, foods.count)
     }
 
     func test_loadFoods() {
-        XCTAssertTrue(dataHelper.saveFood(food: candy))
         XCTAssertTrue(dataHelper.saveFood(food: chocMilk))
+        XCTAssertTrue(dataHelper.saveFood(food: candy))
         let foods = dataHelper.loadFoods()
         XCTAssertEqual(2, foods.count)
         XCTAssertNotNil(foods[0].id)

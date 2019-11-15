@@ -95,6 +95,8 @@ class DataManager {
 
     func loadFoods() -> [Food] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
+        let sort = NSSortDescriptor(key: "created_at", ascending: false)
+        request.sortDescriptors = [sort]
         request.returnsObjectsAsFaults = false
         var foods = [Food]()
         do {
