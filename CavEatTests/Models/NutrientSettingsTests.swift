@@ -11,7 +11,7 @@ import XCTest
 
 class NutrientSettingsTests: XCTestCase {
     lazy var dataManager = InMemoryDataManagerHelper.shared.getInMemoryDataManager()
-    
+
     override func setUp() {
         DataManager.shared = dataManager
     }
