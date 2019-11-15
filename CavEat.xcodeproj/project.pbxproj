@@ -286,7 +286,6 @@
 				978E76A5236B5DAD00B9DA5D /* MockAPIClients.swift */,
 				978E76A7236B644900B9DA5D /* ImagesHelper.swift */,
 				970CF209236C5BB400A557AF /* MockImageReaders.swift */,
-				193D145D237DDAE900146E61 /* DataManagerTests.swift */,
 				97A79167237F0FD900773F5F /* InMemoryDataManagerHelper.swift */,
 			);
 			path = Helpers;
@@ -345,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				97E5233323627989006116D4 /* APIClientTests.swift */,
+				193D145D237DDAE900146E61 /* DataManagerTests.swift */,
 				97E7D4BC2368F7630016C3CE /* ImageReaderTest.swift */,
 			);
 			path = Services;
