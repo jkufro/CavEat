@@ -18,7 +18,7 @@ struct NutrientSetting: Identifiable {
     let valueStep: Float
     let defaultValue: Float
     let sortingOrder: Int
-    
+
     func dailyValuePercentage(nutrientValue: Float) -> Int? {
         guard dailyValue > 0.1 else { // avoid absurdly large percentages
             return nil

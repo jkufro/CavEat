@@ -11,7 +11,7 @@ import SwiftUI
 struct NutrientSettingRow: View {
     @State private var showDetail = false
     @ObservedObject var settingRowVM: DVSettingRowViewModel
-    
+
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: HorizontalAlignment.leading) {

@@ -10,17 +10,17 @@ import Foundation
 import SwiftUI
 
 class DVSettingRowViewModel: ObservableObject {
-    @Published var nutrientSetting:NutrientSetting
-    @Published var selection:Int
-    var selectionOptions:[Float]
-    var defaultSelectionIndex:Int
+    @Published var nutrientSetting: NutrientSetting
+    @Published var selection: Int
+    var selectionOptions: [Float]
+    var defaultSelectionIndex: Int
 
-    init(nutrientSetting:NutrientSetting) {
+    init(nutrientSetting: NutrientSetting) {
         self.nutrientSetting = nutrientSetting
         let selectionOptions = DVSettingRowViewModel.getSelectionOptions(nutrientSetting: nutrientSetting)
         self.selectionOptions = selectionOptions
         self.defaultSelectionIndex = DVSettingRowViewModel.getDefaultSelectionIndex(selectionOptions: selectionOptions, nutrientSetting: nutrientSetting)
-        self.selection = selectionOptions.firstIndex{$0 == nutrientSetting.dailyValue} ?? 0
+        self.selection = selectionOptions.firstIndex { $0 == nutrientSetting.dailyValue } ?? 0
     }
 
     func savePressed() {
@@ -41,6 +41,6 @@ class DVSettingRowViewModel: ObservableObject {
     }
 
     private static func getDefaultSelectionIndex(selectionOptions: [Float], nutrientSetting: NutrientSetting) -> Int {
-        return selectionOptions.firstIndex{$0 == nutrientSetting.defaultValue} ?? 0
+        return selectionOptions.firstIndex { $0 == nutrientSetting.defaultValue } ?? 0
     }
 }
