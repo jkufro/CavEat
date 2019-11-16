@@ -88,6 +88,7 @@ struct NutrientSettingRow_Previews: PreviewProvider {
         NutrientSettingRow(
             settingRowVM: DVSettingRowViewModel(
                 nutrientSetting: NutrientSetting(
+                    id: UUID(uuidString: "093A8D5E-AB17-4D51-9E4B-EB14A87ADBB8")!,
                     name: "Added Sugars",
                     unit: "g",
                     dailyValue: 32,

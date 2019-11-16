@@ -90,7 +90,17 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
                 self.captureSession.addOutput(metadataOutput)
 
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                metadataOutput.metadataObjectTypes = [.ean13, .code128]
+                metadataOutput.metadataObjectTypes = [
+                    .ean13,
+                    .code128
+//                    .code39,
+//                    .ean8,
+//                    .code93,
+//                    .upce,
+//                    .code39Mod43,
+//                    .itf14,
+//                    .interleaved2of5
+                ]
             } else {
                 self.failed()
                 return

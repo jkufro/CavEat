@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Result: View {
     @Binding var showFood: Bool
-    let resultVM: ResultViewModel
+    @ObservedObject var resultVM: ResultViewModel
 
     var body: some View {
         VStack {
@@ -26,10 +26,21 @@ struct Result: View {
                 )
             }
             HStack {
-                Text(resultVM.food.name)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading)
+                TextField(
+                    resultVM.food.name,
+                    text: $resultVM.food.name,
+                    onEditingChanged: { isEditing in
+                        print("FOOD NAME: \(self.resultVM.food.name)")
+                        if !isEditing {
+                            // save if a previously saved food (sprint 6)
+                        }
+                    },
+                    onCommit: {}
+                )
+                .foregroundColor(.primary)
+                .font(.largeTitle)
+                .multilineTextAlignment(.leading)
+                .padding(.leading)
                 Spacer()
             }
             FoodList(food: resultVM.food)
@@ -42,7 +53,7 @@ struct Result_Previews: PreviewProvider {
         Result(showFood: .constant(true), resultVM: ResultViewModel(
             food:
                 Food(
-                    id: "1",
+                  apiId: "1",
                     upc: 1234567890,
                     name: "My Food",
                     ingredients: [

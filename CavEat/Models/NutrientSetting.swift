@@ -9,7 +9,7 @@
 import Foundation
 
 struct NutrientSetting: Identifiable {
-    let id: UUID = UUID()
+    let id: UUID
     let name: String
     let unit: String
     var dailyValue: Float
@@ -17,13 +17,6 @@ struct NutrientSetting: Identifiable {
     let maxValue: Float
     let valueStep: Float
     let defaultValue: Float
-
-    // needs to be tested
-    mutating func updateDailyValue(newValue: Float) {
-        self.dailyValue = newValue
-        NutrientSettings.shared.nutrientDictionary.updateValue(self, forKey: name)
-        
-    }
     
     func dailyValuePercentage(nutrientValue: Float) -> Int? {
         guard dailyValue > 0.1 else { // avoid absurdly large percentages

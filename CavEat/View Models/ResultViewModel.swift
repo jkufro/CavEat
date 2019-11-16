@@ -9,8 +9,7 @@
 import Foundation
 
 protocol ResultViewModelProtocol {
-    func renameFood(newName: String)
-    func renameAndSaveFood(newName: String)
+//    func saveFood(newName: String)
 }
 
 class ResultViewModel: ObservableObject, ResultViewModelProtocol {
@@ -18,13 +17,5 @@ class ResultViewModel: ObservableObject, ResultViewModelProtocol {
 
     init(food: Food) {
         self.food = food
-    }
-
-    func renameFood(newName: String) {
-
-    }
-
-    func renameAndSaveFood(newName: String) {
-
     }
 }
