@@ -22,7 +22,7 @@ struct SavedScans: View {
                     List {
                         ForEach(savedScansVM.getSectionedFoods(), id: \.day) { section in
                             Section(header: Text(section.day)) {
-                                ForEach(section.foods, id: \.id) { food in
+                                ForEach(section.foods) { food in
                                     Button(
                                         action: {
                                             self.savedScansVM.food = food
@@ -37,21 +37,14 @@ struct SavedScans: View {
                                             }
                                         }
                                     )
-                                }
+                                }.onDelete { self.savedScansVM.deleteFood(at: $0, day: section.day) }
                             }
                         }
                     }
                 }
             }
             .navigationBarTitle("Saved Scans")
-            .navigationBarItems(trailing:
-                Button(
-                    action: {  },
-                    label: {
-                        Image(systemName: "info.circle").imageScale(.large)
-                    }
-                )
-            )
+            .navigationBarItems(trailing: self.savedScansVM.isFilteredFoodsEmpty() ? AnyView(EmptyView()) : AnyView(EditButton()))
         }
         .sheet(
             isPresented: $savedScansVM.showFood,

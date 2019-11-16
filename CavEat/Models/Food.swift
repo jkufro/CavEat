@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Food: Codable {
+struct Food: Codable, Identifiable {
     var id: UUID?
     let apiId: String
     let upc: Int64

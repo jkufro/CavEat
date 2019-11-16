@@ -64,4 +64,17 @@ class SavedScansViewModel: ObservableObject {
     func dismissCallback() {
         allSavedFoods = DataManager.shared.loadFoods()
     }
+
+    func deleteFood(at offsets: IndexSet, day: String) {
+        if let section = getSectionedFoods().first(where: { $0.day == day }) {
+            if let index = offsets.first {
+                if index < section.foods.count {
+                    let foodToDelete = section.foods[index]
+                    _ = DataManager.shared.deleteFood(food: foodToDelete)
+                    allSavedFoods = DataManager.shared.loadFoods()
+                }
+            }
+        }
+
+    }
 }
