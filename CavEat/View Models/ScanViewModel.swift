@@ -42,7 +42,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
     var apiClient = APIClient() // set to var for testing purposes
     var imageReader: ImageReader = ImageReader() // set to var for testing purposes
 
-  var food: Food = Food(apiId: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
+    var food: Food = Food(apiId: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
     var upc: String?
     var nutritionFactsImage: UIImage?
     var ingredientsImage: UIImage?

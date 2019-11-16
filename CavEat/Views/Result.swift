@@ -11,19 +11,27 @@ import SwiftUI
 struct Result: View {
     @Binding var showFood: Bool
     @ObservedObject var resultVM: ResultViewModel
+    let dismissCallback: () -> Void
 
     var body: some View {
         VStack {
             HStack {
                 Button(
-                    action: { self.showFood.toggle() },
-                    label: { Text("Discard").padding() }
+                    action: {
+                        self.showFood.toggle()
+                        self.dismissCallback()
+                    },
+                    label: {
+                        Text(resultVM.food.createdAt == nil ? "Discard" : "Close").padding()
+                    }
                 )
                 Spacer()
-                Button(
-                    action: {},
-                    label: { Text("Save").padding() }
-                )
+                if resultVM.food.createdAt == nil {
+                    Button(
+                        action: { self.showFood =  !DataManager.shared.saveFood(food: self.resultVM.food) },
+                        label: { Text("Save").padding() }
+                    )
+                }
             }
             HStack {
                 TextField(
@@ -32,7 +40,9 @@ struct Result: View {
                     onEditingChanged: { isEditing in
                         print("FOOD NAME: \(self.resultVM.food.name)")
                         if !isEditing {
-                            // save if a previously saved food (sprint 6)
+                            if self.resultVM.food.createdAt != nil {
+                                DataManager.shared.saveFood(food: self.resultVM.food)
+                            }
                         }
                     },
                     onCommit: {}
@@ -93,7 +103,8 @@ struct Result_Previews: PreviewProvider {
                             isLimiting: false)
                     ]
                 )
-            )
+            ),
+            dismissCallback: {}
         )
     }
 }
