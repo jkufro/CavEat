@@ -14,8 +14,10 @@ struct SavedScans: View {
     var body: some View {
         NavigationView {
             VStack {
+                SearchBar(text: $savedScansVM.searchTerm)
                 if savedScansVM.isFilteredFoodsEmpty() {
                     Text("No Foods to Display")
+                    Spacer()
                 } else {
                     List {
                         ForEach(savedScansVM.getSectionedFoods(), id: \.day) { section in
