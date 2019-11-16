@@ -95,7 +95,8 @@ struct NutrientSettingRow_Previews: PreviewProvider {
                     minValue: 0,
                     maxValue: 50,
                     valueStep: 1,
-                    defaultValue: 32
+                    defaultValue: 32,
+                    sortingOrder: 10
                 )
             )
         )

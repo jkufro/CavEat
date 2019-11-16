@@ -204,6 +204,7 @@ class DataManager {
                     newSetting.setValue(setting.maxValue, forKey: "max_value")
                     newSetting.setValue(setting.valueStep, forKey: "value_step")
                     newSetting.setValue(setting.defaultValue, forKey: "default_value")
+                    newSetting.setValue(setting.sortingOrder, forKey: "sorting_order")
                 }
             }
             try context.viewContext.save()
@@ -227,9 +228,10 @@ class DataManager {
                     let minValue = data.value(forKey: "min_value") as? Float,
                     let maxValue = data.value(forKey: "max_value") as? Float,
                     let valueStep = data.value(forKey: "value_step") as? Float,
-                    let defaultValue = data.value(forKey: "default_value") as? Float
+                    let defaultValue = data.value(forKey: "default_value") as? Float,
+                    let sortingOrder = data.value(forKey: "sorting_order") as? Int
                 { // swiftlint:disable:this opening_brace
-                    let setting = NutrientSetting(id: id, name: name, unit: unit, dailyValue: dailyValue, minValue: minValue, maxValue: maxValue, valueStep: valueStep, defaultValue: defaultValue)
+                    let setting = NutrientSetting(id: id, name: name, unit: unit, dailyValue: dailyValue, minValue: minValue, maxValue: maxValue, valueStep: valueStep, defaultValue: defaultValue, sortingOrder: sortingOrder)
                     settings.append(setting)
                 }
             }

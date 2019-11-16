@@ -25,6 +25,7 @@
         <attribute name="max_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="min_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sorting_order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <attribute name="value_step" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
@@ -41,7 +42,7 @@
     <elements>
         <element name="CD_food" positionX="-19.61328125" positionY="-38.859375" width="128" height="148"/>
         <element name="CD_ingredient" positionX="-314.61328125" positionY="23.12890625" width="128" height="148"/>
-        <element name="CD_nutrientSetting" positionX="33.890625" positionY="197.48828125" width="128" height="163"/>
+        <element name="CD_nutrientSetting" positionX="33.890625" positionY="197.48828125" width="128" height="178"/>
         <element name="CD_nutritionFact" positionX="-248.5234375" positionY="221.75" width="128" height="163"/>
     </elements>
 </model>

@@ -15,7 +15,7 @@ struct DVSettings: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(nutrientSettings.nutrientDictionary.map { $0.value }) { nutrientSetting in
+                List(nutrientSettings.nutrientDictionary.map { $0.value }.sorted(by: { $0.sortingOrder < $1.sortingOrder })) { nutrientSetting in
                     NutrientSettingRow(
                         settingRowVM: DVSettingRowViewModel(
                             nutrientSetting: nutrientSetting
