@@ -23,13 +23,13 @@ class APIClientTests: XCTestCase {
 
     func test_successfulfindByUpc() {
         successfulClient.findByUpc(upc: "this does not matter") { food in
-            XCTAssertEqual("1", food!.id)
+            XCTAssertEqual("1", food!.apiId)
         }
     }
 
     func test_successfulfindByStrings() {
         successfulClient.findByStrings(upc: "this does not matter", nutritionFacts: "", ingredients: "") { food in
-            XCTAssertEqual("1", food!.id)
+            XCTAssertEqual("1", food!.apiId)
         }
     }
 

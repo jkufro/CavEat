@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CD_food" representedClassName="CD_food" syncable="YES" codeGenerationType="class">
+        <attribute name="api_id" optional="YES" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="upc" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_ingredient" inverseName="food" inverseEntity="CD_ingredient"/>
+        <relationship name="nutritionFacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_nutritionFact" inverseName="food" inverseEntity="CD_nutritionFact"/>
+    </entity>
+    <entity name="CD_ingredient" representedClassName="CD_ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="composition" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="ing_description" optional="YES" attributeType="String"/>
+        <attribute name="isWarning" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <relationship name="food" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CD_food" inverseName="ingredients" inverseEntity="CD_food"/>
+    </entity>
+    <entity name="CD_nutrientSetting" representedClassName="CD_nutrientSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="dailyValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CD_nutritionFact" representedClassName="CD_nutritionFact" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isLimiting" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nf_description" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <relationship name="food" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CD_food" inverseName="nutritionFacts" inverseEntity="CD_food"/>
+    </entity>
+    <elements>
+        <element name="CD_food" positionX="-19.61328125" positionY="-38.859375" width="128" height="148"/>
+        <element name="CD_ingredient" positionX="-314.61328125" positionY="23.12890625" width="128" height="148"/>
+        <element name="CD_nutrientSetting" positionX="33.890625" positionY="197.48828125" width="128" height="103"/>
+        <element name="CD_nutritionFact" positionX="-248.5234375" positionY="221.75" width="128" height="163"/>
+    </elements>
 </model>

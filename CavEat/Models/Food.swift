@@ -9,14 +9,16 @@
 import Foundation
 
 struct Food: Codable {
-    let id: String
+    var id: UUID?
+    let apiId: String
     let upc: Int64
     var name: String
     let ingredients: [Ingredient]
     let nutritionFacts: [NutritionFact]
+    var createdAt: Date?
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case apiId = "id"
         case upc
         case name
         case ingredients

@@ -53,7 +53,7 @@ struct Result_Previews: PreviewProvider {
         Result(showFood: .constant(true), resultVM: ResultViewModel(
             food:
                 Food(
-                    id: "1",
+                  apiId: "1",
                     upc: 1234567890,
                     name: "My Food",
                     ingredients: [

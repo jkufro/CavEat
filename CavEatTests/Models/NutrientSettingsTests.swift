@@ -10,12 +10,14 @@ import XCTest
 @testable import CavEat
 
 class NutrientSettingsTests: XCTestCase {
+    lazy var dataManager = InMemoryDataManagerHelper.shared.getInMemoryDataManager()
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        DataManager.shared = dataManager
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        InMemoryDataManagerHelper.shared.flushData(dataManager: dataManager)
     }
 
     func test_getSetting() {
@@ -28,5 +30,13 @@ class NutrientSettingsTests: XCTestCase {
         XCTAssertEqual(50, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 16)!)
         XCTAssertEqual(200, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 64)!)
         XCTAssertEqual(nil, NutrientSettings.shared.dailyValuePercentage(name: "Doesn't Exist", nutrientValue: 5))
+    }
+
+    func test_seedSettings() {
+        NutrientSettings.shared.seedSettings()
+        XCTAssertEqual(10, DataManager.shared.loadSettings().count)
+        NutrientSettings.shared.seedSettings()
+        NutrientSettings.shared.seedSettings()
+        XCTAssertEqual(10, DataManager.shared.loadSettings().count)
     }
 }
