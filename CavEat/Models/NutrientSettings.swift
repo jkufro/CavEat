@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NutrientSettings {
+class NutrientSettings: ObservableObject {
     static let shared = NutrientSettings()
     private static var defaultSettings: [String: NutrientSetting] = [
         "Added Sugars": NutrientSetting(id: UUID(uuidString: "093A8D5E-AB17-4D51-9E4B-EB14A87ADBB8")!, name: "Added Sugars", unit: "g", dailyValue: 32, minValue: 0, maxValue: 50, valueStep: 1, defaultValue: 32),
@@ -23,7 +23,7 @@ class NutrientSettings {
         "Trans Fat": NutrientSetting(id: UUID(uuidString: "55DADEE5-95BD-4105-82F3-1F0B20C67DA6")!, name: "Trans Fat", unit: "g", dailyValue: 2, minValue: 0, maxValue: 50, valueStep: 0.5, defaultValue: 5)
     ]
 
-    var nutrientDictionary: [String: NutrientSetting]
+    @Published var nutrientDictionary: [String: NutrientSetting]
 
     private init() {
         nutrientDictionary = [String: NutrientSetting]()
@@ -38,22 +38,12 @@ class NutrientSettings {
     }
 
     func updateDailyValue(name: String, newValue: Float) {
-        guard let nutrientSetting = nutrientDictionary[name] else {
+        guard var nutrientSetting = nutrientDictionary[name] else {
             return
         }
-        nutrientDictionary.updateValue(
-            NutrientSetting(
-                id: nutrientSetting.id,
-                name: nutrientSetting.name,
-                unit: nutrientSetting.unit,
-                dailyValue: newValue,
-                minValue: nutrientSetting.minValue,
-                maxValue: nutrientSetting.maxValue,
-                valueStep: nutrientSetting.valueStep,
-                defaultValue: nutrientSetting.defaultValue
-            ),
-            forKey: name
-        )
+        nutrientSetting.dailyValue = newValue
+        _ = DataManager.shared.saveSetting(setting: nutrientSetting)
+        nutrientDictionary.updateValue(nutrientSetting, forKey: name)
     }
 
     func seedSettings() {

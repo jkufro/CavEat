@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class DVSettingRowViewModel: ObservableObject {
     @Published var nutrientSetting:NutrientSetting
@@ -23,6 +24,7 @@ class DVSettingRowViewModel: ObservableObject {
     }
 
     func savePressed() {
+        nutrientSetting.dailyValue = selectionOptions[selection]
         NutrientSettings.shared.updateDailyValue(name: nutrientSetting.name, newValue: selectionOptions[selection])
     }
 
