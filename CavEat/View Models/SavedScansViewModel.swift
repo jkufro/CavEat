@@ -26,8 +26,9 @@ class SavedScansViewModel: ObservableObject {
     }
 
     func getSectionedFoods() -> [SavedFoodSection] {
-        var sections = [Date: [Food]]()
+        allSavedFoods = DataManager.shared.loadFoods()
         let filteredFoods = getFilteredFoods()
+        var sections = [Date: [Food]]()
 
         // split up into separate days
         for food in filteredFoods {

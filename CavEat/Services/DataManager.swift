@@ -28,7 +28,6 @@ class DataManager {
     func saveFood(food: Food) -> Bool {
         if food.createdAt != nil { // update the food
             // fetch the specific food
-            //guard let id = food.id else { return false }
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
             request.returnsObjectsAsFaults = false
             request.predicate = NSPredicate(format: "id = %@", food.id as CVarArg)
@@ -45,11 +44,6 @@ class DataManager {
         } else { // create the food
             if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context.viewContext) {
                 let newFood = NSManagedObject(entity: entity, insertInto: context.viewContext)
-//                if let id = food.id {
-//                    newFood.setValue(id, forKey: "id")
-//                } else {
-//                    newFood.setValue(UUID(), forKey: "id")
-//                }
                 newFood.setValue(food.id, forKey: "id")
                 newFood.setValue(food.apiId, forKey: "api_id")
                 newFood.setValue(food.name, forKey: "name")
@@ -163,7 +157,6 @@ class DataManager {
     }
 
     func deleteFood(food: Food) -> Bool {
-        //guard let id = food.id else { return false }
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
         request.returnsObjectsAsFaults = false
         do {

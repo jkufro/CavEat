@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SavedScans: View {
     @ObservedObject var savedScansVM = SavedScansViewModel()
+    //@ObservedObject var dataManager = DataManager.shared
 
     var body: some View {
         NavigationView {
@@ -46,6 +47,9 @@ struct SavedScans: View {
             .navigationBarTitle("Saved Scans")
             .navigationBarItems(trailing: self.savedScansVM.isFilteredFoodsEmpty() ? AnyView(EmptyView()) : AnyView(EditButton()))
         }
+        .onAppear(perform: {
+            self.savedScansVM.allSavedFoods = DataManager.shared.loadFoods()
+        })
         .sheet(
             isPresented: $savedScansVM.showFood,
             onDismiss: { self.savedScansVM.dismissCallback() },
