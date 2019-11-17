@@ -13,12 +13,8 @@ class SavedScansViewModel: ObservableObject {
     @Published var searchTerm: String = ""
     @Published var showFood: Bool = false
     var food: Food = Food(apiId: "", upc: 0, name: "Blank Food", ingredients: [], nutritionFacts: [])
-    let dateFormatter = DateFormatter()
 
-    init() {
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-    }
+    init() { }
 
     func getFilteredFoods() -> [Food] {
         guard searchTerm != "" else { return allSavedFoods }
@@ -41,7 +37,7 @@ class SavedScansViewModel: ObservableObject {
             }
         }
 
-        return sections.map { SavedFoodSection(day: dateFormatter.string(from: $0), foods: $1) }
+        return sections.map({ SavedFoodSection(day: $0, foods: $1) }).sorted()
     }
 
     func isFilteredFoodsEmpty() -> Bool {
@@ -52,7 +48,7 @@ class SavedScansViewModel: ObservableObject {
         allSavedFoods = DataManager.shared.loadFoods()
     }
 
-    func deleteFood(at offsets: IndexSet, day: String) {
+    func deleteFood(at offsets: IndexSet, day: Date) {
         if let section = getSectionedFoods().first(where: { $0.day == day }) {
             if let index = offsets.first {
                 if index < section.foods.count {
