@@ -32,7 +32,7 @@ struct SavedFoodSection: Identifiable, Comparable {
     }
 
     static func < (lhs: SavedFoodSection, rhs: SavedFoodSection) -> Bool {
-        lhs.day < rhs.day
+        lhs.day > rhs.day
     }
 
     static func == (lhs: SavedFoodSection, rhs: SavedFoodSection) -> Bool {

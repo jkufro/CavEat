@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+// modified from: https://stackoverflow.com/questions/56608996/swiftui-search-in-list-header
 struct SearchBar: UIViewRepresentable {
 
     @Binding var text: String

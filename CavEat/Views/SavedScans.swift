@@ -10,7 +10,6 @@ import SwiftUI
 
 struct SavedScans: View {
     @ObservedObject var savedScansVM = SavedScansViewModel()
-    //@ObservedObject var dataManager = DataManager.shared
 
     var body: some View {
         NavigationView {
