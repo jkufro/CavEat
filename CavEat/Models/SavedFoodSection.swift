@@ -25,6 +25,9 @@ struct SavedFoodSection: Identifiable, Comparable {
     }
 
     func dayString() -> String {
+        if Calendar.current.startOfDay(for: Date()) == day {
+            return "Today"
+        }
         return dateFormatter.string(from: day)
     }
 
