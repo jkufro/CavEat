@@ -28,10 +28,10 @@ class DataManager {
     func saveFood(food: Food) -> Bool {
         if food.createdAt != nil { // update the food
             // fetch the specific food
-            guard let id = food.id else { return false }
+            //guard let id = food.id else { return false }
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
             request.returnsObjectsAsFaults = false
-            request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+            request.predicate = NSPredicate(format: "id = %@", food.id as CVarArg)
             do {
                 let result = try context.viewContext.fetch(request)
                 guard let foodDataList = result as? [NSManagedObject] else { return false }
@@ -45,11 +45,12 @@ class DataManager {
         } else { // create the food
             if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context.viewContext) {
                 let newFood = NSManagedObject(entity: entity, insertInto: context.viewContext)
-                if let id = food.id {
-                    newFood.setValue(id, forKey: "id")
-                } else {
-                    newFood.setValue(UUID(), forKey: "id")
-                }
+//                if let id = food.id {
+//                    newFood.setValue(id, forKey: "id")
+//                } else {
+//                    newFood.setValue(UUID(), forKey: "id")
+//                }
+                newFood.setValue(food.id, forKey: "id")
                 newFood.setValue(food.apiId, forKey: "api_id")
                 newFood.setValue(food.name, forKey: "name")
                 newFood.setValue(food.upc, forKey: "upc")
@@ -162,14 +163,14 @@ class DataManager {
     }
 
     func deleteFood(food: Food) -> Bool {
-        guard let id = food.id else { return false }
+        //guard let id = food.id else { return false }
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
         request.returnsObjectsAsFaults = false
         do {
             guard let result = try context.viewContext.fetch(request) as? [NSManagedObject] else { return false }
             for data in result {
                 if let dataId = data.value(forKey: "id") as? UUID {
-                    if dataId == id {
+                    if dataId == food.id {
                         context.viewContext.delete(data)
                         try context.viewContext.save()
                         return true

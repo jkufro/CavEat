@@ -20,9 +20,9 @@ struct SavedScans: View {
                     Spacer()
                 } else {
                     List {
-                        ForEach(savedScansVM.getSectionedFoods(), id: \.day) { section in
-                            Section(header: Text(section.day)) {
-                                ForEach(section.foods) { food in
+                        ForEach(savedScansVM.getSectionedFoods()) { savedFoodSection in
+                            Section(header: Text(savedFoodSection.day)) {
+                                ForEach(savedFoodSection.foods) { food in
                                     Button(
                                         action: {
                                             self.savedScansVM.food = food
@@ -37,10 +37,10 @@ struct SavedScans: View {
                                             }
                                         }
                                     )
-                                }.onDelete { self.savedScansVM.deleteFood(at: $0, day: section.day) }
+                                }.onDelete { self.savedScansVM.deleteFood(at: $0, day: savedFoodSection.day) }
                             }
                         }
-                    }
+                    }.listStyle(GroupedListStyle())
                 }
             }
             .navigationBarTitle("Saved Scans")

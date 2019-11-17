@@ -45,6 +45,7 @@
 		97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF12365190A001AB241 /* LoadingOverlay.swift */; };
 		97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */; };
 		97C3BBF62365228D001AB241 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF52365228D001AB241 /* CaptureButton.swift */; };
+		97C5D3C82380C72700228745 /* SavedFoodSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5D3C72380C72700228745 /* SavedFoodSection.swift */; };
 		97E52321236237CD006116D4 /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E52320236237CD006116D4 /* FoodTests.swift */; };
 		97E523232362380A006116D4 /* IngredientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523222362380A006116D4 /* IngredientTests.swift */; };
 		97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523242362382D006116D4 /* NutritionFactTests.swift */; };
@@ -122,6 +123,7 @@
 		97C3BBF12365190A001AB241 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		97C3BBF52365228D001AB241 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
+		97C5D3C72380C72700228745 /* SavedFoodSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodSection.swift; sourceTree = "<group>"; };
 		97E52320236237CD006116D4 /* FoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTests.swift; sourceTree = "<group>"; };
 		97E523222362380A006116D4 /* IngredientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTests.swift; sourceTree = "<group>"; };
 		97E523242362382D006116D4 /* NutritionFactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactTests.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				9725FE202361D42A00EA9094 /* NutritionFact.swift */,
 				97745B322361EDAF001E5B76 /* NutrientSetting.swift */,
 				97745B342361EDBA001E5B76 /* NutrientSettings.swift */,
+				97C5D3C72380C72700228745 /* SavedFoodSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */,
 				97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */,
 				9725FE1B2361D41400EA9094 /* Food.swift in Sources */,
+				97C5D3C82380C72700228745 /* SavedFoodSection.swift in Sources */,
 				97F611B12364C85C001A7271 /* ResultViewModel.swift in Sources */,
 				97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */,
 				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,

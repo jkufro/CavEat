@@ -9,7 +9,7 @@
 import Foundation
 
 struct Food: Codable, Identifiable {
-    var id: UUID?
+    var id: UUID = UUID()
     let apiId: String
     let upc: Int64
     var name: String
@@ -24,4 +24,16 @@ struct Food: Codable, Identifiable {
         case ingredients
         case nutritionFacts = "nutrition_facts"
     }
+
+//    static func == (lhs: Food, rhs: Food) -> Bool {
+//        lhs.id == rhs.id
+//    }
+//
+//    func hash(into hasher: inout Hasher) {
+//        if let uuid = id {
+//            hasher.combine(uuid)
+//        } else {
+//            hasher.combine(1)
+//        }
+//    }
 }
