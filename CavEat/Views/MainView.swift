@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainView: View {
     @State var selectedView = 1
+    // for demo purposes later we might just want to disable setting 'introAlreadyShown' to true below
+    @State var showIntroSheet = !UserDefaults.standard.bool(forKey: "introAlreadyShown")
 
     var body: some View {
         TabView(selection: $selectedView) {
@@ -28,7 +30,40 @@ struct MainView: View {
                     Image(systemName: "gear").imageScale(.large)
                     Text("DV Settings")
                 }.tag(2)
-        }.edgesIgnoringSafeArea(.top)
+        }
+        .edgesIgnoringSafeArea(.top)
+        .sheet(
+            isPresented: $showIntroSheet,
+            onDismiss: {
+                UserDefaults.standard.set(true, forKey: "introAlreadyShown")
+                self.showIntroSheet = false
+            },
+            content: {
+                VStack {
+                    HStack {
+                        Button("Close") {
+                            UserDefaults.standard.set(true, forKey: "introAlreadyShown")
+                            self.showIntroSheet = false
+                        }
+                        Spacer()
+                    }
+                    Text("CavEat")
+                        .font(.title)
+                        .padding(.bottom)
+                    VStack(alignment: .leading) {
+                        Text("Thank you for downloading CavEat!")
+                            .padding(.bottom)
+                        Text("CavEat (ca·ve·at) is designed to provide you with insights on food products that you are considering purchasing at the store.")
+                            .padding(.bottom)
+                        Text("When you scan an item you may receive opinionated information, insights, or warnings based on a product's nutrition facts and ingredients.")
+                            .padding(.bottom)
+                        Text("If we do not recognize a product's bar code you will still be able to receive your information! Simply follow the on-screen prompts to take pictures of the nutrition facts label and ingredients list.")
+                            .padding(.bottom)
+                    }
+                    Spacer()
+                }.padding()
+            }
+        )
     }
 }
 
