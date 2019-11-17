@@ -11,6 +11,8 @@
 		193D145F237DE0B100146E61 /* CavEat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF82361D0E500EA9094 /* CavEat.xcdatamodeld */; };
 		19A4905923744C9900DA88DC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4905823744C9900DA88DC /* DataManager.swift */; };
 		42854DFB9638D03BE892C090 /* Pods_CavEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */; };
+		9702677A2370CFF60087A574 /* NutrientSettingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970267792370CFF60087A574 /* NutrientSettingRow.swift */; };
+		9702677C2370DA450087A574 /* DVSettingRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702677B2370DA450087A574 /* DVSettingRowViewModel.swift */; };
 		970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CF209236C5BB400A557AF /* MockImageReaders.swift */; };
 		9725FDF52361D0E500EA9094 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF42361D0E500EA9094 /* AppDelegate.swift */; };
 		9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725FDF62361D0E500EA9094 /* SceneDelegate.swift */; };
@@ -38,9 +40,12 @@
 		978E76A8236B644900B9DA5D /* ImagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978E76A7236B644900B9DA5D /* ImagesHelper.swift */; };
 		97A6CE1F2361E1B5008B9825 /* NutritionFactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */; };
 		97A79168237F0FD900773F5F /* InMemoryDataManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A79167237F0FD900773F5F /* InMemoryDataManagerHelper.swift */; };
+		97A7916C238050F400773F5F /* SavedScansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7916B238050F400773F5F /* SavedScansViewModel.swift */; };
+		97A7916E2380AEB000773F5F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7916D2380AEB000773F5F /* SearchBar.swift */; };
 		97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF12365190A001AB241 /* LoadingOverlay.swift */; };
 		97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */; };
 		97C3BBF62365228D001AB241 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF52365228D001AB241 /* CaptureButton.swift */; };
+		97C5D3C82380C72700228745 /* SavedFoodSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5D3C72380C72700228745 /* SavedFoodSection.swift */; };
 		97E52321236237CD006116D4 /* FoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E52320236237CD006116D4 /* FoodTests.swift */; };
 		97E523232362380A006116D4 /* IngredientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523222362380A006116D4 /* IngredientTests.swift */; };
 		97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E523242362382D006116D4 /* NutritionFactTests.swift */; };
@@ -80,6 +85,8 @@
 		24AD58A7888556ED2FD66027 /* Pods-CavEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEatTests.release.xcconfig"; path = "Target Support Files/Pods-CavEatTests/Pods-CavEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B6CBEA06C01681EB5F44376 /* Pods-CavEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CavEat.release.xcconfig"; path = "Target Support Files/Pods-CavEat/Pods-CavEat.release.xcconfig"; sourceTree = "<group>"; };
 		621AB00BEA524397EE07DE65 /* Pods_CavEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CavEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		970267792370CFF60087A574 /* NutrientSettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientSettingRow.swift; sourceTree = "<group>"; };
+		9702677B2370DA450087A574 /* DVSettingRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettingRowViewModel.swift; sourceTree = "<group>"; };
 		970CF209236C5BB400A557AF /* MockImageReaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageReaders.swift; sourceTree = "<group>"; };
 		9725FDF12361D0E500EA9094 /* CavEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CavEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9725FDF42361D0E500EA9094 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,9 +118,12 @@
 		978E76A7236B644900B9DA5D /* ImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesHelper.swift; sourceTree = "<group>"; };
 		97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactRow.swift; sourceTree = "<group>"; };
 		97A79167237F0FD900773F5F /* InMemoryDataManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDataManagerHelper.swift; sourceTree = "<group>"; };
+		97A7916B238050F400773F5F /* SavedScansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScansViewModel.swift; sourceTree = "<group>"; };
+		97A7916D2380AEB000773F5F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		97C3BBF12365190A001AB241 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		97C3BBF52365228D001AB241 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
+		97C5D3C72380C72700228745 /* SavedFoodSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodSection.swift; sourceTree = "<group>"; };
 		97E52320236237CD006116D4 /* FoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTests.swift; sourceTree = "<group>"; };
 		97E523222362380A006116D4 /* IngredientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTests.swift; sourceTree = "<group>"; };
 		97E523242362382D006116D4 /* NutritionFactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactTests.swift; sourceTree = "<group>"; };
@@ -247,6 +257,7 @@
 				9725FE202361D42A00EA9094 /* NutritionFact.swift */,
 				97745B322361EDAF001E5B76 /* NutrientSetting.swift */,
 				97745B342361EDBA001E5B76 /* NutrientSettings.swift */,
+				97C5D3C72380C72700228745 /* SavedFoodSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +278,7 @@
 				97A6CE1E2361E1B5008B9825 /* NutritionFactRow.swift */,
 				E1F929E92367FCD000F7757D /* IngredientRow.swift */,
 				978821E8236923DE008BD9A4 /* ResultRow.swift */,
+				970267792370CFF60087A574 /* NutrientSettingRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				97E7D4B7236719130016C3CE /* ScanCap.swift */,
+				97A7916D2380AEB000773F5F /* SearchBar.swift */,
 			);
 			path = Representables;
 			sourceTree = "<group>";
@@ -364,6 +377,8 @@
 			children = (
 				97F611B02364C85C001A7271 /* ResultViewModel.swift */,
 				97E7D4AD2365CDBC0016C3CE /* ScanViewModel.swift */,
+				9702677B2370DA450087A574 /* DVSettingRowViewModel.swift */,
+				97A7916B238050F400773F5F /* SavedScansViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -543,7 +558,10 @@
 				9725FDF72361D0E500EA9094 /* SceneDelegate.swift in Sources */,
 				97745B332361EDAF001E5B76 /* NutrientSetting.swift in Sources */,
 				97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */,
+				97A7916C238050F400773F5F /* SavedScansViewModel.swift in Sources */,
 				978821E9236923DE008BD9A4 /* ResultRow.swift in Sources */,
+				97A7916E2380AEB000773F5F /* SearchBar.swift in Sources */,
+				9702677A2370CFF60087A574 /* NutrientSettingRow.swift in Sources */,
 				97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */,
 				97F611AC23646837001A7271 /* UPCScan.swift in Sources */,
 				97745B2F2361EB9F001E5B76 /* SourceLink.swift in Sources */,
@@ -552,9 +570,11 @@
 				9725FE1E2361D42000EA9094 /* Ingredient.swift in Sources */,
 				97745B3D2361F7E3001E5B76 /* DVSettings.swift in Sources */,
 				9725FE1B2361D41400EA9094 /* Food.swift in Sources */,
+				97C5D3C82380C72700228745 /* SavedFoodSection.swift in Sources */,
 				97F611B12364C85C001A7271 /* ResultViewModel.swift in Sources */,
 				97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */,
 				E1F929EA2367FCD000F7757D /* IngredientRow.swift in Sources */,
+				9702677C2370DA450087A574 /* DVSettingRowViewModel.swift in Sources */,
 				19A4905923744C9900DA88DC /* DataManager.swift in Sources */,
 				9725FE212361D42A00EA9094 /* NutritionFact.swift in Sources */,
 				97F611AE23646936001A7271 /* ManualScanHeader.swift in Sources */,

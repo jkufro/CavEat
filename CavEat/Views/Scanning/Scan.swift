@@ -89,7 +89,8 @@ struct Scan: View {
             onDismiss: scanVM.goToUpcScan,
             content: {
                 Result(showFood: self.$scanVM.showFood,
-                       resultVM: ResultViewModel(food: self.scanVM.food)
+                       resultVM: ResultViewModel(food: self.scanVM.food),
+                       dismissCallback: {}
                 )
             }
         )

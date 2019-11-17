@@ -28,10 +28,9 @@ class DataManager {
     func saveFood(food: Food) -> Bool {
         if food.createdAt != nil { // update the food
             // fetch the specific food
-            guard let id = food.id else { return false }
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
             request.returnsObjectsAsFaults = false
-            request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+            request.predicate = NSPredicate(format: "id = %@", food.id as CVarArg)
             do {
                 let result = try context.viewContext.fetch(request)
                 guard let foodDataList = result as? [NSManagedObject] else { return false }
@@ -45,11 +44,7 @@ class DataManager {
         } else { // create the food
             if let entity = NSEntityDescription.entity(forEntityName: "CD_food", in: context.viewContext) {
                 let newFood = NSManagedObject(entity: entity, insertInto: context.viewContext)
-                if let id = food.id {
-                    newFood.setValue(id, forKey: "id")
-                } else {
-                    newFood.setValue(UUID(), forKey: "id")
-                }
+                newFood.setValue(food.id, forKey: "id")
                 newFood.setValue(food.apiId, forKey: "api_id")
                 newFood.setValue(food.name, forKey: "name")
                 newFood.setValue(food.upc, forKey: "upc")
@@ -162,14 +157,13 @@ class DataManager {
     }
 
     func deleteFood(food: Food) -> Bool {
-        guard let id = food.id else { return false }
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CD_food")
         request.returnsObjectsAsFaults = false
         do {
             guard let result = try context.viewContext.fetch(request) as? [NSManagedObject] else { return false }
             for data in result {
                 if let dataId = data.value(forKey: "id") as? UUID {
-                    if dataId == id {
+                    if dataId == food.id {
                         context.viewContext.delete(data)
                         try context.viewContext.save()
                         return true
@@ -192,14 +186,19 @@ class DataManager {
             guard let settingDataList  = result as? [NSManagedObject] else { return false }
             if settingDataList.count > 0 { // already exists
                 let settingData = settingDataList[0]
-                settingData.setValue(setting.dailyValue, forKey: "dailyValue")
+                settingData.setValue(setting.dailyValue, forKey: "daily_value")
             } else { // needs to be created
                 if let entity = NSEntityDescription.entity(forEntityName: "CD_nutrientSetting", in: context.viewContext) {
                     let newSetting = NSManagedObject(entity: entity, insertInto: context.viewContext)
                     newSetting.setValue(setting.id, forKey: "id")
                     newSetting.setValue(setting.name, forKey: "name")
                     newSetting.setValue(setting.unit, forKey: "unit")
-                    newSetting.setValue(setting.dailyValue, forKey: "dailyValue")
+                    newSetting.setValue(setting.dailyValue, forKey: "daily_value")
+                    newSetting.setValue(setting.minValue, forKey: "min_value")
+                    newSetting.setValue(setting.maxValue, forKey: "max_value")
+                    newSetting.setValue(setting.valueStep, forKey: "value_step")
+                    newSetting.setValue(setting.defaultValue, forKey: "default_value")
+                    newSetting.setValue(setting.sortingOrder, forKey: "sorting_order")
                 }
             }
             try context.viewContext.save()
@@ -219,9 +218,14 @@ class DataManager {
                 if let id = data.value(forKey: "id") as? UUID,
                     let name = data.value(forKey: "name") as? String,
                     let unit = data.value(forKey: "unit") as? String,
-                    let dailyValue = data.value(forKey: "dailyValue") as? Float {
-
-                    let setting = NutrientSetting(id: id, name: name, unit: unit, dailyValue: dailyValue)
+                    let dailyValue = data.value(forKey: "daily_value") as? Float,
+                    let minValue = data.value(forKey: "min_value") as? Float,
+                    let maxValue = data.value(forKey: "max_value") as? Float,
+                    let valueStep = data.value(forKey: "value_step") as? Float,
+                    let defaultValue = data.value(forKey: "default_value") as? Float,
+                    let sortingOrder = data.value(forKey: "sorting_order") as? Int
+                { // swiftlint:disable:this opening_brace
+                    let setting = NutrientSetting(id: id, name: name, unit: unit, dailyValue: dailyValue, minValue: minValue, maxValue: maxValue, valueStep: valueStep, defaultValue: defaultValue, sortingOrder: sortingOrder)
                     settings.append(setting)
                 }
             }

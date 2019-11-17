@@ -48,8 +48,11 @@ struct NutritionFact: Codable, Identifiable {
 
     func isWarning() -> Bool {
         let warningThreshold: Int = 33
-        if let dvPercentage = NutrientSettings.shared.dailyValuePercentage(name: self.name, nutrientValue: self.amount) {
-            return self.isLimiting && dvPercentage >= warningThreshold
+        if let dvSetting = NutrientSettings.shared.nutrientDictionary[self.name] {
+            if let dvPercentage = dvSetting.dailyValuePercentage(nutrientValue: self.amount) {
+                return self.isLimiting && dvPercentage >= warningThreshold
+            }
+            return self.isLimiting && self.amount >= dvSetting.dailyValue // catches if dv is zero
         }
         return false
     }

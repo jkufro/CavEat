@@ -9,8 +9,57 @@
 import SwiftUI
 
 struct SavedScans: View {
+    @ObservedObject var savedScansVM = SavedScansViewModel()
+    //@ObservedObject var dataManager = DataManager.shared
+
     var body: some View {
-        Text("Saved Scans Under Construction!")
+        NavigationView {
+            VStack {
+                SearchBar(text: $savedScansVM.searchTerm)
+                if savedScansVM.isFilteredFoodsEmpty() {
+                    Text("No Foods to Display")
+                    Spacer()
+                } else {
+                    List {
+                        ForEach(savedScansVM.getSectionedFoods()) { savedFoodSection in
+                            Section(header: Text(savedFoodSection.dayString())) {
+                                ForEach(savedFoodSection.foods) { food in
+                                    Button(
+                                        action: {
+                                            self.savedScansVM.food = food
+                                            self.savedScansVM.showFood = true
+                                        },
+                                        label: {
+                                            HStack {
+                                                Text(food.name)
+                                                    .font(.headline)
+                                                    .foregroundColor(.primary)
+                                                Spacer()
+                                            }
+                                        }
+                                    )
+                                }.onDelete { self.savedScansVM.deleteFood(at: $0, day: savedFoodSection.day) }
+                            }
+                        }
+                    }//.listStyle(GroupedListStyle())
+                }
+            }
+            .navigationBarTitle("Saved Scans")
+            .navigationBarItems(trailing: self.savedScansVM.isFilteredFoodsEmpty() ? AnyView(EmptyView()) : AnyView(EditButton()))
+        }
+        .onAppear(perform: {
+            self.savedScansVM.allSavedFoods = DataManager.shared.loadFoods()
+        })
+        .sheet(
+            isPresented: $savedScansVM.showFood,
+            onDismiss: { self.savedScansVM.dismissCallback() },
+            content: {
+                Result(showFood: self.$savedScansVM.showFood,
+                       resultVM: ResultViewModel(food: self.savedScansVM.food),
+                       dismissCallback: self.savedScansVM.dismissCallback
+                )
+            }
+        )
     }
 }
 

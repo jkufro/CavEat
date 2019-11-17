@@ -20,12 +20,8 @@ class NutrientSettingsTests: XCTestCase {
         InMemoryDataManagerHelper.shared.flushData(dataManager: dataManager)
     }
 
-    func test_getSetting() {
-        XCTAssertEqual("Added Sugars", NutrientSettings.shared.getSetting(name: "Added Sugars")!.name)
-        XCTAssertEqual("Dietary Fiber", NutrientSettings.shared.getSetting(name: "Dietary Fiber")!.name)
-    }
-
     func test_dailyValuePercentage() {
+        NutrientSettings.shared.seedSettings()
         XCTAssertEqual(0, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 0)!)
         XCTAssertEqual(50, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 16)!)
         XCTAssertEqual(200, NutrientSettings.shared.dailyValuePercentage(name: "Added Sugars", nutrientValue: 64)!)
