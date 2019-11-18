@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NutritionFact: Codable, Identifiable {
+struct NutritionFact: Codable, Identifiable, Comparable {
     let id: String
     let name: String
     let description: String?
@@ -16,6 +16,7 @@ struct NutritionFact: Codable, Identifiable {
     let amount: Float
     let unit: String
     let isLimiting: Bool
+    var sortingOrder: Int = 500 // default to high number that would appear last in a list
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -55,5 +56,13 @@ struct NutritionFact: Codable, Identifiable {
             return self.isLimiting && self.amount >= dvSetting.dailyValue // catches if dv is zero
         }
         return false
+    }
+
+    static func < (lhs: NutritionFact, rhs: NutritionFact) -> Bool {
+        lhs.sortingOrder < rhs.sortingOrder
+    }
+
+    static func == (lhs: NutritionFact, rhs: NutritionFact) -> Bool {
+        lhs.sortingOrder == rhs.sortingOrder
     }
 }

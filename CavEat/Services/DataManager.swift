@@ -52,6 +52,7 @@ class DataManager {
                 // Loop over ingredients and nutritionFacts and add to array
                 // Should refactor these into helpers
                 let ingredients = newFood.mutableSetValue(forKey: #keyPath(CD_food.ingredients))
+                var sortingOrder = 0
                 for ingredient in food.ingredients {
                     if let ingEntity = NSEntityDescription.entity(forEntityName: "CD_ingredient", in: context.viewContext) {
                         let newIng = NSManagedObject(entity: ingEntity, insertInto: context.viewContext)
@@ -60,11 +61,14 @@ class DataManager {
                         newIng.setValue(ingredient.composition, forKey: "composition")
                         newIng.setValue(ingredient.description, forKey: "ing_description")
                         newIng.setValue(ingredient.source, forKey: "source")
-                        newIng.setValue(ingredient.isWarning, forKey: "isWarning")
+                        newIng.setValue(ingredient.isWarning, forKey: "is_warning")
+                        newIng.setValue(ingredient.sortingOrder, forKey: "sorting_order")
                         ingredients.add(newIng)
+                        sortingOrder += 1
                     }
                 }
                 let nutritionFacts = newFood.mutableSetValue(forKey: #keyPath(CD_food.nutritionFacts))
+                sortingOrder = 0
                 for nutritionFact in food.nutritionFacts {
                     if let nfEntity = NSEntityDescription.entity(forEntityName: "CD_nutritionFact", in: context.viewContext) {
                         let newNF = NSManagedObject(entity: nfEntity, insertInto: context.viewContext)
@@ -74,8 +78,10 @@ class DataManager {
                         newNF.setValue(nutritionFact.amount, forKey: "amount")
                         newNF.setValue(nutritionFact.description, forKey: "nf_description")
                         newNF.setValue(nutritionFact.source, forKey: "source")
-                        newNF.setValue(nutritionFact.isLimiting, forKey: "isLimiting")
+                        newNF.setValue(nutritionFact.isLimiting, forKey: "is_limiting")
+                        newNF.setValue(nutritionFact.sortingOrder, forKey: "sorting_order")
                         nutritionFacts.add(newNF)
+                        sortingOrder += 1
                     }
                 }
             }
@@ -124,16 +130,17 @@ class DataManager {
             guard let data = data as? NSManagedObject else { continue }
             if let id = data.value(forKey: "id") as? String,
                 let name = data.value(forKey: "name") as? String,
-                let isWarning = data.value(forKey: "isWarning") as? Bool
+                let isWarning = data.value(forKey: "is_warning") as? Bool,
+                let sortingOrder = data.value(forKey: "sorting_order") as? Int
             { // swiftlint:disable:this opening_brace
                 let comp = data.value(forKey: "composition") as? String
                 let desc = data.value(forKey: "ing_description") as? String
                 let source = data.value(forKey: "source") as? String
-                let ing = Ingredient(id: id, name: name, composition: comp, description: desc, source: source, isWarning: isWarning)
-                ingredients.append(ing)
+                let ingredient = Ingredient(id: id, name: name, composition: comp, description: desc, source: source, isWarning: isWarning, sortingOrder: sortingOrder)
+                ingredients.append(ingredient)
             }
         }
-        return ingredients
+        return ingredients.sorted()
     }
 
     private func decodeNutritionFacts(_ dataSet: NSMutableSet?) -> [NutritionFact]? {
@@ -145,15 +152,16 @@ class DataManager {
                 let name = data.value(forKey: "name") as? String,
                 let amount = data.value(forKey: "amount") as? Float,
                 let unit = data.value(forKey: "unit") as? String,
-                let isLimiting = data.value(forKey: "isLimiting") as? Bool
+                let isLimiting = data.value(forKey: "is_limiting") as? Bool,
+                let sortingOrder = data.value(forKey: "sorting_order") as? Int
             { // swiftlint:disable:this opening_brace
                 let desc = data.value(forKey: "nf_description") as? String
                 let source = data.value(forKey: "source") as? String
-                let nutritionFact = NutritionFact(id: id, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting)
+                let nutritionFact = NutritionFact(id: id, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting, sortingOrder: sortingOrder)
                   nutritionFacts.append(nutritionFact)
             }
         }
-        return nutritionFacts
+        return nutritionFacts.sorted()
     }
 
     func deleteFood(food: Food) -> Bool {

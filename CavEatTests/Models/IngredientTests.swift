@@ -11,9 +11,11 @@ import XCTest
 
 class IngredientTests: XCTestCase {
     var milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+    var tomato = Ingredient(id: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
 
     override func setUp() {
         milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+        tomato = Ingredient(id: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
     }
 
     override func tearDown() {
@@ -26,5 +28,12 @@ class IngredientTests: XCTestCase {
         XCTAssertEqual("No description available", milk.getDescription())
         milk = Ingredient(id: "1", name: "Milk", composition: nil, description: " ", source: nil, isWarning: false)
         XCTAssertEqual("No description available", milk.getDescription())
+    }
+
+    func test_comparable() {
+        XCTAssertEqual(tomato, tomato)
+        XCTAssertEqual(tomato, milk)
+        tomato.sortingOrder = 1
+        XCTAssertTrue(tomato < milk)
     }
 }
