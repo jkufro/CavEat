@@ -44,6 +44,7 @@
 		97A7916E2380AEB000773F5F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7916D2380AEB000773F5F /* SearchBar.swift */; };
 		97BEE0882382E81900EB6286 /* DVSettingRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE0872382E81900EB6286 /* DVSettingRowViewModelTest.swift */; };
 		97BEE08A2382E82800EB6286 /* SavedScansViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE0892382E82800EB6286 /* SavedScansViewModelTest.swift */; };
+		97BEE08C2382FCC600EB6286 /* SavedFoodSectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE08B2382FCC600EB6286 /* SavedFoodSectionTest.swift */; };
 		97C3BBF22365190A001AB241 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF12365190A001AB241 /* LoadingOverlay.swift */; };
 		97C3BBF423651AA7001AB241 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */; };
 		97C3BBF62365228D001AB241 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C3BBF52365228D001AB241 /* CaptureButton.swift */; };
@@ -124,6 +125,7 @@
 		97A7916D2380AEB000773F5F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		97BEE0872382E81900EB6286 /* DVSettingRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettingRowViewModelTest.swift; sourceTree = "<group>"; };
 		97BEE0892382E82800EB6286 /* SavedScansViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScansViewModelTest.swift; sourceTree = "<group>"; };
+		97BEE08B2382FCC600EB6286 /* SavedFoodSectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodSectionTest.swift; sourceTree = "<group>"; };
 		97C3BBF12365190A001AB241 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		97C3BBF323651AA7001AB241 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		97C3BBF52365228D001AB241 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				97E523242362382D006116D4 /* NutritionFactTests.swift */,
 				97E5232823623863006116D4 /* NutrientSettingsTests.swift */,
 				97E5232D2362414B006116D4 /* NutrientSettingTests.swift */,
+				97BEE08B2382FCC600EB6286 /* SavedFoodSectionTest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				978E76A6236B5DAD00B9DA5D /* MockAPIClients.swift in Sources */,
 				97E523252362382D006116D4 /* NutritionFactTests.swift in Sources */,
 				193D145E237DDAE900146E61 /* DataManagerTests.swift in Sources */,
+				97BEE08C2382FCC600EB6286 /* SavedFoodSectionTest.swift in Sources */,
 				97E5232E2362414B006116D4 /* NutrientSettingTests.swift in Sources */,
 				97BEE0882382E81900EB6286 /* DVSettingRowViewModelTest.swift in Sources */,
 				970CF20A236C5BB400A557AF /* MockImageReaders.swift in Sources */,
