@@ -45,4 +45,11 @@ class NutritionFactTests: XCTestCase {
         let nonexistentFact = NutritionFact(id: "2", name: "I dont exist", description: "", source: nil, amount: 32, unit: "g", isLimiting: true)
         XCTAssertFalse(nonexistentFact.isWarning())
     }
+
+    func test_comparable() {
+        XCTAssertEqual(dietaryFiber, dietaryFiber)
+        XCTAssertEqual(dietaryFiber, energy)
+        dietaryFiber.sortingOrder = 1
+        XCTAssertTrue(dietaryFiber < energy)
+    }
 }

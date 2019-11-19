@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct Ingredient: Codable, Identifiable {
+struct Ingredient: Codable, Identifiable, Comparable {
     let id: String
     let name: String
     let composition: String?
     let description: String?
     let source: String?
     let isWarning: Bool
+    var sortingOrder: Int = 500 // default to high number that would appear last in a list
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -33,5 +34,13 @@ struct Ingredient: Codable, Identifiable {
             return "No description available"
         }
         return desc
+    }
+
+    static func < (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        lhs.sortingOrder < rhs.sortingOrder
+    }
+
+    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        lhs.sortingOrder == rhs.sortingOrder
     }
 }

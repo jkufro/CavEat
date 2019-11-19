@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 class DVSettingRowViewModel: ObservableObject {
     @Published var nutrientSetting: NutrientSetting
