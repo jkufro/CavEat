@@ -30,6 +30,31 @@ struct Scan: View {
         }
     }
 
+    var captureSuggestion: AnyView {
+        switch scanVM.state {
+        case .upcScanning:
+            return AnyView(EmptyView())
+        case .nutritionFactScanning:
+            return AnyView(
+                Image("nutrition facts 1")
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(0.3)
+                    .padding(75)
+            )
+        case .ingredientScanning:
+            return AnyView(
+               Image("ingredients 1")
+                   .resizable()
+                   .scaledToFit()
+                   .opacity(0.3)
+                   .padding(75)
+            )
+        default:
+            return AnyView(EmptyView())
+        }
+    }
+
     var upcAlert: Alert {
         Alert(
             title: Text("UPC Not Found"),
@@ -70,6 +95,7 @@ struct Scan: View {
             )
 
             currentHeaderView
+            captureSuggestion
 
             if scanVM.state == .nutritionFactScanning || scanVM.state == .ingredientScanning {
                 CaptureButton(pressHandler: {
