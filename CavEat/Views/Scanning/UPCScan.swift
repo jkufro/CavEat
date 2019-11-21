@@ -32,7 +32,7 @@ struct UPCScan: View {
                 }
             }
             Spacer()
-        }.edgesIgnoringSafeArea(.top)
+        }
     }
 }
 

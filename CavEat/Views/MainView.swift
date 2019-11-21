@@ -21,6 +21,7 @@ struct MainView: View {
                     Text("Saved Scans")
                 }.tag(0)
             Scan()
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Image(systemName: "barcode.viewfinder").imageScale(.large)
                     Text("Scan")
