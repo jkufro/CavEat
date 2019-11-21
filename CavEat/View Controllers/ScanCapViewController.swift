@@ -164,10 +164,11 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
         // https://nsscreencast.com/episodes/303-camera-capture-high-quality-photo
         // https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/capturing_still_and_live_photos/capturing_uncompressed_image_data
         // Choose a 32-bit BGRA pixel format and verify the camera supports it.
-        let pixelFormatType = kCVPixelFormatType_32BGRA
-        guard self.photoOutput!.availablePhotoPixelFormatTypes.contains(pixelFormatType) else { return }
-        let settings = AVCapturePhotoSettings(format:
-            [ kCVPixelBufferPixelFormatTypeKey as String: pixelFormatType ])
+        //let pixelFormatType = kCVPixelFormatType_32BGRA
+        //guard self.photoOutput!.availablePhotoPixelFormatTypes.contains(pixelFormatType) else { return }
+        //let settings = AVCapturePhotoSettings(format:
+        //    [ kCVPixelBufferPixelFormatTypeKey as String: pixelFormatType ])
+        let settings = AVCapturePhotoSettings()
 
         //let settings = AVCapturePhotoSettings()
         if let photoOut = self.photoOutput {
