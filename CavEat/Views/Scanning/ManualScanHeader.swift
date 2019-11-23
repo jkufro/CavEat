@@ -12,17 +12,18 @@ struct ManualScanHeader: View {
     let state: ScanVMState
     let inactiveColor: Color = Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
     let pressHandler: () -> Void
+    let hasNotch = UIDevice.current.hasNotch
 
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
                 Rectangle()
-                    .frame(height: 120)
+                    .frame(height: hasNotch ? 120 : 105)
                     .foregroundColor(Color.black)
                     .opacity(0.75)
                 VStack {
                     Spacer()
-                        .frame(height: 35)
+                        .frame(height: hasNotch ? 35: 25)
                     HStack {
                         if state == .nutritionFactScanning {
                             Button(action: pressHandler) {

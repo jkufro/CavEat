@@ -42,6 +42,7 @@
 		97A79168237F0FD900773F5F /* InMemoryDataManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A79167237F0FD900773F5F /* InMemoryDataManagerHelper.swift */; };
 		97A7916C238050F400773F5F /* SavedScansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7916B238050F400773F5F /* SavedScansViewModel.swift */; };
 		97A7916E2380AEB000773F5F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7916D2380AEB000773F5F /* SearchBar.swift */; };
+		97AFCF8A2386B79900508292 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AFCF892386B79900508292 /* UIDeviceExtensions.swift */; };
 		97BEE0882382E81900EB6286 /* DVSettingRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE0872382E81900EB6286 /* DVSettingRowViewModelTest.swift */; };
 		97BEE08A2382E82800EB6286 /* SavedScansViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE0892382E82800EB6286 /* SavedScansViewModelTest.swift */; };
 		97BEE08C2382FCC600EB6286 /* SavedFoodSectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEE08B2382FCC600EB6286 /* SavedFoodSectionTest.swift */; };
@@ -123,6 +124,7 @@
 		97A79167237F0FD900773F5F /* InMemoryDataManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDataManagerHelper.swift; sourceTree = "<group>"; };
 		97A7916B238050F400773F5F /* SavedScansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScansViewModel.swift; sourceTree = "<group>"; };
 		97A7916D2380AEB000773F5F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		97AFCF892386B79900508292 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		97BEE0872382E81900EB6286 /* DVSettingRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSettingRowViewModelTest.swift; sourceTree = "<group>"; };
 		97BEE0892382E82800EB6286 /* SavedScansViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScansViewModelTest.swift; sourceTree = "<group>"; };
 		97BEE08B2382FCC600EB6286 /* SavedFoodSectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodSectionTest.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				97E5233023627517006116D4 /* APIClient.swift */,
 				97E7D4AF2365DB200016C3CE /* ImageReader.swift */,
 				19A4905823744C9900DA88DC /* DataManager.swift */,
+				97AFCF892386B79900508292 /* UIDeviceExtensions.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				97A7916C238050F400773F5F /* SavedScansViewModel.swift in Sources */,
 				978821E9236923DE008BD9A4 /* ResultRow.swift in Sources */,
 				97A7916E2380AEB000773F5F /* SearchBar.swift in Sources */,
+				97AFCF8A2386B79900508292 /* UIDeviceExtensions.swift in Sources */,
 				9702677A2370CFF60087A574 /* NutrientSettingRow.swift in Sources */,
 				97745B352361EDBA001E5B76 /* NutrientSettings.swift in Sources */,
 				97F611AC23646837001A7271 /* UPCScan.swift in Sources */,

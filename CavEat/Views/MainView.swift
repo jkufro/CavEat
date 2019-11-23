@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var selectedView = 1
+    @State var selectedView = UserDefaults.standard.bool(forKey: "introAlreadyShown") ? 1 : 2
     // for demo purposes later we might just want to disable setting 'introAlreadyShown' to true below
     @State var showIntroSheet = !UserDefaults.standard.bool(forKey: "introAlreadyShown")
 
@@ -21,6 +21,7 @@ struct MainView: View {
                     Text("Saved Scans")
                 }.tag(0)
             Scan()
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     Image(systemName: "barcode.viewfinder").imageScale(.large)
                     Text("Scan")
@@ -35,15 +36,17 @@ struct MainView: View {
         .sheet(
             isPresented: $showIntroSheet,
             onDismiss: {
-                UserDefaults.standard.set(true, forKey: "introAlreadyShown")
+                //UserDefaults.standard.set(true, forKey: "introAlreadyShown")
                 self.showIntroSheet = false
+                self.selectedView = 1 // hack to reload the view so that scanning works after the modal is dismissed
             },
             content: {
                 VStack {
                     HStack {
                         Button("Close") {
-                            UserDefaults.standard.set(true, forKey: "introAlreadyShown")
+                            //UserDefaults.standard.set(true, forKey: "introAlreadyShown")
                             self.showIntroSheet = false
+                            self.selectedView = 1
                         }
                         Spacer()
                     }

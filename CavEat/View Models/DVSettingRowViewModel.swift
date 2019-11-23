@@ -33,6 +33,7 @@ class DVSettingRowViewModel: ObservableObject {
 
     private static func getSelectionOptions(nutrientSetting: NutrientSetting) -> [Float] {
         var result = [Float]()
+        guard nutrientSetting.minValue < nutrientSetting.maxValue && nutrientSetting.valueStep != 0 else { return result }
         for value in stride(from: nutrientSetting.minValue, through: nutrientSetting.maxValue, by: nutrientSetting.valueStep) {
             result.append(value)
         }

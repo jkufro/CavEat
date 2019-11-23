@@ -9,16 +9,18 @@
 import SwiftUI
 
 struct UPCScan: View {
+    let hasNotch = UIDevice.current.hasNotch
+
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
-                    .frame(height: 85)
+                    .frame(height: hasNotch ? 85 : 70)
                     .foregroundColor(Color.black)
                     .opacity(0.75)
                 VStack {
                     Spacer()
-                    .frame(height: 15)
+                        .frame(height: hasNotch ? 15 : 5)
                     HStack {
                         Image(systemName: "barcode")
                             .imageScale(.large)
@@ -32,7 +34,7 @@ struct UPCScan: View {
                 }
             }
             Spacer()
-        }.edgesIgnoringSafeArea(.top)
+        }
     }
 }
 

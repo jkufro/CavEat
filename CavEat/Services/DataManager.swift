@@ -62,7 +62,7 @@ class DataManager {
                         newIng.setValue(ingredient.description, forKey: "ing_description")
                         newIng.setValue(ingredient.source, forKey: "source")
                         newIng.setValue(ingredient.isWarning, forKey: "is_warning")
-                        newIng.setValue(ingredient.sortingOrder, forKey: "sorting_order")
+                        newIng.setValue(sortingOrder, forKey: "sorting_order")
                         ingredients.add(newIng)
                         sortingOrder += 1
                     }
@@ -79,7 +79,7 @@ class DataManager {
                         newNF.setValue(nutritionFact.description, forKey: "nf_description")
                         newNF.setValue(nutritionFact.source, forKey: "source")
                         newNF.setValue(nutritionFact.isLimiting, forKey: "is_limiting")
-                        newNF.setValue(nutritionFact.sortingOrder, forKey: "sorting_order")
+                        newNF.setValue(sortingOrder, forKey: "sorting_order")
                         nutritionFacts.add(newNF)
                         sortingOrder += 1
                     }
