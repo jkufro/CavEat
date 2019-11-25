@@ -57,6 +57,7 @@ class DataManager {
                     if let ingEntity = NSEntityDescription.entity(forEntityName: "CD_ingredient", in: context.viewContext) {
                         let newIng = NSManagedObject(entity: ingEntity, insertInto: context.viewContext)
                         newIng.setValue(ingredient.id, forKey: "id")
+                        newIng.setValue(ingredient.apiId, forKey: "api_id")
                         newIng.setValue(ingredient.name, forKey: "name")
                         newIng.setValue(ingredient.composition, forKey: "composition")
                         newIng.setValue(ingredient.description, forKey: "ing_description")
@@ -73,6 +74,7 @@ class DataManager {
                     if let nfEntity = NSEntityDescription.entity(forEntityName: "CD_nutritionFact", in: context.viewContext) {
                         let newNF = NSManagedObject(entity: nfEntity, insertInto: context.viewContext)
                         newNF.setValue(nutritionFact.id, forKey: "id")
+                        newNF.setValue(nutritionFact.apiId, forKey: "api_id")
                         newNF.setValue(nutritionFact.name, forKey: "name")
                         newNF.setValue(nutritionFact.unit, forKey: "unit")
                         newNF.setValue(nutritionFact.amount, forKey: "amount")
@@ -128,7 +130,8 @@ class DataManager {
         guard let dataSet = dataSet else { return nil }
         for data in dataSet {
             guard let data = data as? NSManagedObject else { continue }
-            if let id = data.value(forKey: "id") as? String,
+            if let id = data.value(forKey: "id") as? UUID,
+                let apiId = data.value(forKey: "api_id") as? String,
                 let name = data.value(forKey: "name") as? String,
                 let isWarning = data.value(forKey: "is_warning") as? Bool,
                 let sortingOrder = data.value(forKey: "sorting_order") as? Int
@@ -136,7 +139,7 @@ class DataManager {
                 let comp = data.value(forKey: "composition") as? String
                 let desc = data.value(forKey: "ing_description") as? String
                 let source = data.value(forKey: "source") as? String
-                let ingredient = Ingredient(id: id, name: name, composition: comp, description: desc, source: source, isWarning: isWarning, sortingOrder: sortingOrder)
+                let ingredient = Ingredient(id: id, apiId: apiId, name: name, composition: comp, description: desc, source: source, isWarning: isWarning, sortingOrder: sortingOrder)
                 ingredients.append(ingredient)
             }
         }
@@ -148,7 +151,8 @@ class DataManager {
         guard let dataSet = dataSet else { return nil }
         for data in dataSet {
             guard let data = data as? NSManagedObject else { continue }
-            if let id = data.value(forKey: "id") as? String,
+            if let id = data.value(forKey: "id") as? UUID,
+                let apiId = data.value(forKey: "api_id") as? String,
                 let name = data.value(forKey: "name") as? String,
                 let amount = data.value(forKey: "amount") as? Float,
                 let unit = data.value(forKey: "unit") as? String,
@@ -157,7 +161,7 @@ class DataManager {
             { // swiftlint:disable:this opening_brace
                 let desc = data.value(forKey: "nf_description") as? String
                 let source = data.value(forKey: "source") as? String
-                let nutritionFact = NutritionFact(id: id, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting, sortingOrder: sortingOrder)
+                let nutritionFact = NutritionFact(id: id, apiId: apiId, name: name, description: desc, source: source, amount: amount, unit: unit, isLimiting: isLimiting, sortingOrder: sortingOrder)
                   nutritionFacts.append(nutritionFact)
             }
         }

@@ -15,12 +15,12 @@ class DataManagerTests: XCTestCase {
     lazy var dataManager = InMemoryDataManagerHelper.shared.getInMemoryDataManager()
 
     // Ingredients
-    var milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
-    var cocoa = Ingredient(id: "2", name: "Cocoa", composition: nil, description: "From a cocoa bean.", source: nil, isWarning: false)
+    var milk = Ingredient(apiId: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+    var cocoa = Ingredient(apiId: "2", name: "Cocoa", composition: nil, description: "From a cocoa bean.", source: nil, isWarning: false)
 
     // Nutrition Facts
-    var dietaryFiberNF: NutritionFact = NutritionFact(id: "2", name: "Dietary Fiber", description: "dietary fiber desc", source: "https://medlineplus.gov/dietaryfiber.html", amount: 25, unit: "g", isLimiting: false)
-    var energy: NutritionFact = NutritionFact(id: "3", name: "Energy", description: nil, source: nil, amount: 200, unit: "kcal", isLimiting: false)
+    var dietaryFiberNF: NutritionFact = NutritionFact(apiId: "2", name: "Dietary Fiber", description: "dietary fiber desc", source: "https://medlineplus.gov/dietaryfiber.html", amount: 25, unit: "g", isLimiting: false)
+    var energy: NutritionFact = NutritionFact(apiId: "3", name: "Energy", description: nil, source: nil, amount: 200, unit: "kcal", isLimiting: false)
 
     // Nutrient Settings
     var addedSugars: NutrientSetting = NutrientSetting(id: UUID(uuidString: "093A8D5E-AB17-4D51-9E4B-EB14A87ADBB8")!, name: "Added Sugars", unit: "g", dailyValue: 32, minValue: 0, maxValue: 50, valueStep: 1, defaultValue: 32, sortingOrder: 10)

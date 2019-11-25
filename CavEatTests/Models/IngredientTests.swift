@@ -10,12 +10,12 @@ import XCTest
 @testable import CavEat
 
 class IngredientTests: XCTestCase {
-    var milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
-    var tomato = Ingredient(id: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
+    var milk = Ingredient(apiId: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+    var tomato = Ingredient(apiId: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
 
     override func setUp() {
-        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
-        tomato = Ingredient(id: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
+        milk = Ingredient(apiId: "1", name: "Milk", composition: nil, description: "From a cow.", source: nil, isWarning: false)
+        tomato = Ingredient(apiId: "1", name: "Tomato", composition: nil, description: "From a plant.", source: nil, isWarning: false)
     }
 
     override func tearDown() {
@@ -24,9 +24,9 @@ class IngredientTests: XCTestCase {
 
     func test_getDescription() {
         XCTAssertEqual("From a cow.", milk.getDescription())
-        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: nil, source: nil, isWarning: false)
+        milk = Ingredient(apiId: "1", name: "Milk", composition: nil, description: nil, source: nil, isWarning: false)
         XCTAssertEqual("No description available", milk.getDescription())
-        milk = Ingredient(id: "1", name: "Milk", composition: nil, description: " ", source: nil, isWarning: false)
+        milk = Ingredient(apiId: "1", name: "Milk", composition: nil, description: " ", source: nil, isWarning: false)
         XCTAssertEqual("No description available", milk.getDescription())
     }
 

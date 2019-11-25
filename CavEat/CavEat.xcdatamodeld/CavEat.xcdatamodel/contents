@@ -10,8 +10,9 @@
         <relationship name="nutritionFacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_nutritionFact" inverseName="food" inverseEntity="CD_nutritionFact"/>
     </entity>
     <entity name="CD_ingredient" representedClassName="CD_ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="api_id" optional="YES" attributeType="String"/>
         <attribute name="composition" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="ing_description" optional="YES" attributeType="String"/>
         <attribute name="is_warning" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -32,7 +33,8 @@
     </entity>
     <entity name="CD_nutritionFact" representedClassName="CD_nutritionFact" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="api_id" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="is_limiting" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="nf_description" optional="YES" attributeType="String"/>
@@ -43,8 +45,8 @@
     </entity>
     <elements>
         <element name="CD_food" positionX="-19.61328125" positionY="-38.859375" width="128" height="148"/>
-        <element name="CD_ingredient" positionX="-314.61328125" positionY="23.12890625" width="128" height="163"/>
+        <element name="CD_ingredient" positionX="-314.61328125" positionY="23.12890625" width="128" height="178"/>
         <element name="CD_nutrientSetting" positionX="33.890625" positionY="197.48828125" width="128" height="178"/>
-        <element name="CD_nutritionFact" positionX="-248.5234375" positionY="221.75" width="128" height="178"/>
+        <element name="CD_nutritionFact" positionX="-248.5234375" positionY="221.75" width="128" height="193"/>
     </elements>
 </model>

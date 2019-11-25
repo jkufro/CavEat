@@ -24,6 +24,6 @@ struct NutritionFactRow: View {
 
 struct NutritionFactRow_Previews: PreviewProvider {
     static var previews: some View {
-        NutritionFactRow(nutritionFact: NutritionFact(id: "2", name: "Dietary Fiber", description: "Helps digestions and prevent constipation, and helps control your weight by making you feel full faster. You should get enough fiber, but adding too much too quickly can lead to gas, bloating, and cramps.", source: "https://medlineplus.gov/dietaryfiber.html", amount: 3, unit: "g", isLimiting: false))
+        NutritionFactRow(nutritionFact: NutritionFact(apiId: "2", name: "Dietary Fiber", description: "Helps digestions and prevent constipation, and helps control your weight by making you feel full faster. You should get enough fiber, but adding too much too quickly can lead to gas, bloating, and cramps.", source: "https://medlineplus.gov/dietaryfiber.html", amount: 3, unit: "g", isLimiting: false))
     }
 }
