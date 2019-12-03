@@ -5,7 +5,7 @@
 //  Created by Justin Kufro on 10/28/19.
 //  Copyright © 2019 Justin Kufro. All rights reserved.
 //
-
+//import CoreMotion
 import AVFoundation
 import UIKit
 
@@ -182,6 +182,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print("took image")
+//        let motionManager = CMMotionManager()
         if let error = error {
             self.delegate?.photoCaptureCompletion(nil, error)
             return

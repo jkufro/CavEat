@@ -15,22 +15,87 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $selectedView) {
-            SavedScans()
-                .tabItem {
-                    Image(systemName: "rectangle.stack").imageScale(.large)
-                    Text("Saved Scans")
-                }.tag(0)
-            Scan()
-                .edgesIgnoringSafeArea(.top)
-                .tabItem {
-                    Image(systemName: "barcode.viewfinder").imageScale(.large)
-                    Text("Scan")
-                }.tag(1)
-            DVSettings()
-                .tabItem {
-                    Image(systemName: "gear").imageScale(.large)
-                    Text("DV Settings")
-                }.tag(2)
+          if UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft{
+              SavedScans()
+                  .tabItem {
+                      Image(systemName: "rectangle.stack").imageScale(.large)
+                        .rotationEffect(degrees(-90))
+                      Text("Saved Scans")
+                  }.tag(0)
+              Scan()
+                  .edgesIgnoringSafeArea(.top)
+                  .tabItem {
+                      Image(systemName: "barcode.viewfinder").imageScale(.large)
+                    .rotationEffect(degrees(-90))
+                      Text("Scan")
+                  }.tag(1)
+              DVSettings()
+                  .tabItem {
+                      Image(systemName: "gear").imageScale(.large)
+                    .rotationEffect(degrees(-90))
+                      Text("DV Settings")
+                  }.tag(2)
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight{
+              SavedScans()
+                  .tabItem {
+                      Image(systemName: "rectangle.stack").imageScale(.large)
+                        .rotationEffect(degrees(90))
+                      Text("Saved Scans")
+                  }.tag(0)
+              Scan()
+                  .edgesIgnoringSafeArea(.top)
+                  .tabItem {
+                      Image(systemName: "barcode.viewfinder").imageScale(.large)
+                    .rotationEffect(degrees(90))
+                      Text("Scan")
+                  }.tag(1)
+              DVSettings()
+                  .tabItem {
+                      Image(systemName: "gear").imageScale(.large)
+                    .rotationEffect(degrees(90))
+                      Text("DV Settings")
+                  }.tag(2)
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.UIDeviceOrientationPortraitUpsideDown{
+              SavedScans()
+                  .tabItem {
+                      Image(systemName: "rectangle.stack").imageScale(.large)
+                        .rotationEffect(degrees(180))
+                      Text("Saved Scans")
+                  }.tag(0)
+              Scan()
+                  .edgesIgnoringSafeArea(.top)
+                  .tabItem {
+                      Image(systemName: "barcode.viewfinder").imageScale(.large)
+                    .rotationEffect(degrees(180))
+                      Text("Scan")
+                  }.tag(1)
+              DVSettings()
+                  .tabItem {
+                      Image(systemName: "gear").imageScale(.large)
+                    .rotationEffect(degrees(180))
+                      Text("DV Settings")
+                  }.tag(2)
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.UIDeviceOrientationPortrait{
+              SavedScans()
+                  .tabItem {
+                      Image(systemName: "rectangle.stack").imageScale(.large)
+                      Text("Saved Scans")
+                  }.tag(0)
+              Scan()
+                  .edgesIgnoringSafeArea(.top)
+                  .tabItem {
+                      Image(systemName: "barcode.viewfinder").imageScale(.large)
+                      Text("Scan")
+                  }.tag(1)
+              DVSettings()
+                  .tabItem {
+                      Image(systemName: "gear").imageScale(.large)
+                      Text("DV Settings")
+                  }.tag(2)
+          }
         }
         .edgesIgnoringSafeArea(.top)
         .sheet(
