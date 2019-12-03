@@ -9,7 +9,8 @@
 import Foundation
 
 struct Ingredient: Codable, Identifiable, Comparable {
-    let id: String
+    var id: UUID = UUID()
+    let apiId: String
     let name: String
     let composition: String?
     let description: String?
@@ -18,7 +19,7 @@ struct Ingredient: Codable, Identifiable, Comparable {
     var sortingOrder: Int = 500 // default to high number that would appear last in a list
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case apiId = "id"
         case name
         case composition
         case description

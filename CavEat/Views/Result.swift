@@ -68,7 +68,7 @@ struct Result_Previews: PreviewProvider {
                     name: "My Food",
                     ingredients: [
                         Ingredient(
-                            id: "123",
+                            apiId: "123",
                             name: "Milk",
                             composition: nil,
                             description: nil,
@@ -78,7 +78,7 @@ struct Result_Previews: PreviewProvider {
                     ],
                     nutritionFacts: [
                         NutritionFact(
-                            id: "1",
+                            apiId: "1",
                             name: "Cholesterol",
                             description: "Needed for the body in moderate amounts. Excess consumption is known to lead to plaque buildup in arteries. This may lead to coronary artery disease, heart attack, or stroke.",
                             source: "https://medlineplus.gov/cholesterol.html",
@@ -86,7 +86,7 @@ struct Result_Previews: PreviewProvider {
                             unit: "mg",
                             isLimiting: true),
                         NutritionFact(
-                            id: "2",
+                            apiId: "2",
                             name: "Dietary Fiber",
                             description: "Helps digestions and prevent constipation, and helps control your weight by making you feel full faster. You should get enough fiber, but adding too much too quickly can lead to gas, bloating, and cramps.",
                             source: "https://medlineplus.gov/dietaryfiber.html",
@@ -94,7 +94,7 @@ struct Result_Previews: PreviewProvider {
                             unit: "g",
                             isLimiting: false),
                         NutritionFact(
-                            id: "3",
+                            apiId: "3",
                             name: "Energy",
                             description: nil,
                             source: nil,
