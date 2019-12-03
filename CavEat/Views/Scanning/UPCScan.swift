@@ -10,13 +10,14 @@ import SwiftUI
 
 struct UPCScan: View {
     let hasNotch = UIDevice.current.hasNotch
+    let foreground = Color(UIColor(named: "Foregrounds")!)
 
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
                     .frame(height: hasNotch ? 85 : 70)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(foreground)
                     .opacity(0.75)
                 VStack {
                     Spacer()
@@ -24,10 +25,10 @@ struct UPCScan: View {
                     HStack {
                         Image(systemName: "barcode")
                             .imageScale(.large)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.primary)
                         Text("Point camera at bar code")
                             .font(.title)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.primary)
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top)
