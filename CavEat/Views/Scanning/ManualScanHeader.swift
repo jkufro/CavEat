@@ -13,6 +13,7 @@ struct ManualScanHeader: View {
     let inactiveColor: Color = Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
     let pressHandler: () -> Void
     let hasNotch = UIDevice.current.hasNotch
+    let foreground = Color(UIColor(named: "Foregrounds")!)
 
     var body: some View {
         VStack {
@@ -42,13 +43,13 @@ struct ManualScanHeader: View {
 
                         Text("1. Capture nutrition facts")
                             .font(.title)
-                            .foregroundColor(state == .nutritionFactScanning ? Color.white : inactiveColor)
+                            .foregroundColor(state == .nutritionFactScanning ? Color.primary : inactiveColor)
                             .multilineTextAlignment(.center)
                     }
                     HStack {
                         Text("2. Capture ingredients")
                             .font(.title)
-                            .foregroundColor(state == .ingredientScanning ? Color.white : inactiveColor)
+                            .foregroundColor(state == .ingredientScanning ? Color.primary : inactiveColor)
                             .multilineTextAlignment(.center)
                     }
                 }
