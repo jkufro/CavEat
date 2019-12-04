@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ManualScanHeader: View {
     let state: ScanVMState
-    let inactiveColor: Color = Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
+    let inactiveColor: Color = Color.secondary //Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.4))
     let pressHandler: () -> Void
     let hasNotch = UIDevice.current.hasNotch
     let foreground = Color(UIColor(named: "Foregrounds")!)
@@ -20,7 +20,7 @@ struct ManualScanHeader: View {
             ZStack(alignment: .top) {
                 Rectangle()
                     .frame(height: hasNotch ? 120 : 105)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(foreground)
                     .opacity(0.75)
                 VStack {
                     Spacer()
@@ -30,13 +30,13 @@ struct ManualScanHeader: View {
                             Button(action: pressHandler) {
                                 Image(systemName: "x.circle")
                                     .imageScale(.large)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.primary)
                             }
                         } else if state == .ingredientScanning {
                             Button(action: pressHandler) {
                                 Image(systemName: "arrow.uturn.left.circle")
                                     .imageScale(.large)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.primary)
                             }
 
                         }
