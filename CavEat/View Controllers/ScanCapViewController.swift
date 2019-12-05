@@ -179,6 +179,32 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             print("no photo out")
         }
     }
+  
+  
+  
+    extension UIImage {
+        func rotate(radians: Float) -> UIImage? {
+            var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
+            // Trim off the extremely small float value to prevent core graphics from rounding it up
+            newSize.width = floor(newSize.width)
+            newSize.height = floor(newSize.height)
+
+            UIGraphicsBeginImageContextWithOptions(newSize, false, self.scale)
+            let context = UIGraphicsGetCurrentContext()!
+
+            // Move origin to middle
+            context.translateBy(x: newSize.width/2, y: newSize.height/2)
+            // Rotate around middle
+            context.rotate(by: CGFloat(radians))
+            // Draw the image at its center
+            self.draw(in: CGRect(x: -self.size.width/2, y: -self.size.height/2, width: self.size.width, height: self.size.height))
+
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            return newImage
+        }
+    }
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print("took image")
@@ -187,8 +213,25 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             self.delegate?.photoCaptureCompletion(nil, error)
             return
         } else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
+          if UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft{
+            let image = image.rotate(radians: .-pi/2)
             self.delegate?.photoCaptureCompletion(image, nil)
             return
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight{
+            let image = image.rotate(radians: .pi/2)
+            self.delegate?.photoCaptureCompletion(image, nil)
+            return
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.UIDeviceOrientationPortraitUpsideDown{
+            let image = image.rotate(radians: .pi)
+            self.delegate?.photoCaptureCompletion(image, nil)
+            return
+          }
+          else if UIDevice.currentDevice().orientation == UIDeviceOrientation.UIDeviceOrientationPortrait{
+            self.delegate?.photoCaptureCompletion(image, nil)
+            return
+          }
         }
         self.delegate?.photoCaptureCompletion(nil, nil)
     }
