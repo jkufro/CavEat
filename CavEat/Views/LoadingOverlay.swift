@@ -10,17 +10,19 @@ import SwiftUI
 
 struct LoadingOverlay: View {
     let squareWidth: CGFloat = 120
-
+    let foreground = Color(UIColor(named: "Foregrounds")!)
+  
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: squareWidth, height: squareWidth)
-                .foregroundColor(Color.black)
-                .opacity(0.5)
+                .foregroundColor(foreground)
+                .opacity(0.75)
             VStack {
                 Text("Please Wait")
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
                 ActivityIndicator(isAnimating: true, style: .large)
+                    .foregroundColor(.primary)
             }
         }
     }
