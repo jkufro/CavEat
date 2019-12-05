@@ -190,17 +190,17 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
             self.delegate?.photoCaptureCompletion(nil, error)
             return
         } else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
-          if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft{
+          if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
             let newImage = image.rotate(radians: .pi)
             self.delegate?.photoCaptureCompletion(newImage, nil)
             return
           }
-          else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight{
-            let newImage = image.rotate(radians: .pi/2)
+          else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            let newImage = image.rotate(radians: .pi / -2)
             self.delegate?.photoCaptureCompletion(newImage, nil)
             return
           }
-          else if UIDevice.current.orientation == UIDeviceOrientation.portrait{
+          else {
             self.delegate?.photoCaptureCompletion(image, nil)
             return
           }
