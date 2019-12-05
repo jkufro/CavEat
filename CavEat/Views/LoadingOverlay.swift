@@ -11,7 +11,7 @@ import SwiftUI
 struct LoadingOverlay: View {
     let squareWidth: CGFloat = 120
     let foreground = Color(UIColor(named: "Foregrounds")!)
-  
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
