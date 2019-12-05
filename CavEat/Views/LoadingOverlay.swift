@@ -17,11 +17,12 @@ struct LoadingOverlay: View {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: squareWidth, height: squareWidth)
                 .foregroundColor(foreground)
-                .opacity(0.5)
+                .opacity(0.75)
             VStack {
                 Text("Please Wait")
                     .foregroundColor(.primary)
                 ActivityIndicator(isAnimating: true, style: .large)
+                    .foregroundColor(.primary)
             }
         }
     }

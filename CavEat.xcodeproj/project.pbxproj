@@ -775,14 +775,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CavEat/Preview Content\"";
-				DEVELOPMENT_TEAM = LSV9G3BZK8;
+				DEVELOPMENT_TEAM = 376366D83D;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CavEat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dweems.CavEat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jkufro.CavEat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -798,14 +798,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CavEat/Preview Content\"";
-				DEVELOPMENT_TEAM = LSV9G3BZK8;
+				DEVELOPMENT_TEAM = 376366D83D;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CavEat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dweems.CavEat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jkufro.CavEat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
