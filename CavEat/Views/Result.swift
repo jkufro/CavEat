@@ -50,7 +50,7 @@ struct Result: View {
                 .foregroundColor(.primary)
                 .font(.largeTitle)
                 .multilineTextAlignment(.leading)
-                .padding(.leading)
+                  .padding(.leading)
                 Spacer()
             }
             FoodList(food: resultVM.food)

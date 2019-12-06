@@ -5,7 +5,6 @@
 //  Created by Justin Kufro on 10/24/19.
 //  Copyright © 2019 Justin Kufro. All rights reserved.
 //
-
 import SwiftUI
 
 struct MainView: View {
