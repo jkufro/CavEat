@@ -32,7 +32,7 @@ struct UPCScan: View {
                             .foregroundColor(Color.primary)
                             .multilineTextAlignment(.center)
                         Button(action: pressHandler) {
-                            Image(systemName: "arrow.right.circle")
+                            Image(systemName: "arrow.uturn.right.circle")
                                 .imageScale(.large)
                                 .foregroundColor(Color.primary)
                         }
