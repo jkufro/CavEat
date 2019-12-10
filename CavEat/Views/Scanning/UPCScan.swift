@@ -11,6 +11,7 @@ import SwiftUI
 struct UPCScan: View {
     let hasNotch = UIDevice.current.hasNotch
     let foreground = Color(UIColor(named: "Foregrounds")!)
+    let pressHandler: () -> Void
 
     var body: some View {
         VStack {
@@ -30,6 +31,11 @@ struct UPCScan: View {
                             .font(.title)
                             .foregroundColor(Color.primary)
                             .multilineTextAlignment(.center)
+                        Button(action: pressHandler) {
+                            Image(systemName: "arrow.right.circle")
+                                .imageScale(.large)
+                                .foregroundColor(Color.primary)
+                        }
                     }
                     .padding(.top)
                 }
@@ -41,6 +47,6 @@ struct UPCScan: View {
 
 struct UPCScan_Previews: PreviewProvider {
     static var previews: some View {
-        UPCScan()
+        UPCScan(pressHandler: {})
     }
 }

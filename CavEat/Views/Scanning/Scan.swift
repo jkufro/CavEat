@@ -19,12 +19,19 @@ struct Scan: View {
     var currentHeaderView: AnyView {
         switch scanVM.state {
         case .upcScanning:
-            return AnyView(UPCScan())
-        case .nutritionFactScanning, .ingredientScanning:
+            return AnyView(UPCScan(
+                pressHandler: scanVM.goToFactsScan
+            ))
+        case .nutritionFactScanning:
             return AnyView(ManualScanHeader(
                 state: scanVM.state,
                 pressHandler: scanVM.goToUpcScan
             ))
+        case .ingredientScanning:
+        return AnyView(ManualScanHeader(
+            state: scanVM.state,
+            pressHandler: scanVM.goToFactsScan
+        ))
         default:
             return AnyView(Text("Something went wrong!"))
         }
