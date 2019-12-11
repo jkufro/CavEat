@@ -91,11 +91,11 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                 metadataOutput.metadataObjectTypes = [
                     .ean13,
-                    .code128
+                    .code128,
 //                    .code39,
 //                    .ean8,
 //                    .code93,
-//                    .upce,
+                    .upce
 //                    .code39Mod43,
 //                    .itf14,
 //                    .interleaved2of5
@@ -160,6 +160,7 @@ class ScanCapViewController: UIViewController, AVCapturePhotoCaptureDelegate, AV
 
     func captureImage() {
         print("capturing image")
+        AudioServicesPlaySystemSound(1520)
         // https://nsscreencast.com/episodes/303-camera-capture-high-quality-photo
         // https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/capturing_still_and_live_photos/capturing_uncompressed_image_data
         // Choose a 32-bit BGRA pixel format and verify the camera supports it.

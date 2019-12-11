@@ -93,6 +93,7 @@ class ScanViewModel: ScanViewModelProtocol, ObservableObject {
 
     func goToFactsScan() {
         self.state = .nutritionFactScanning
+        if self.upc == nil { self.upc = "1234567890" }
         self.nutritionFactsImage = nil
         self.ingredientsImage = nil
     }
